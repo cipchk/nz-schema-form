@@ -1,6 +1,17 @@
 <div nz-row [nzGutter]="24">
     <div nz-col [nzSpan]="12">
         <div style="margin: 16px 0;">
+            <nz-radio-group [(ngModel)]="layout">
+                <label nz-radio-button [nzValue]="'horizontal'">
+                    <span>Horizontal</span>
+                </label>
+                <label nz-radio-button [nzValue]="'vertical'">
+                    <span>Vertical</span>
+                </label>
+                <label nz-radio-button [nzValue]="'inline'">
+                    <span>Inline</span>
+                </label>
+            </nz-radio-group>
             <button nz-button [nzType]="'primary'" (click)="run()">运行</button>
         </div>
         <h1>Schema</h1>

@@ -1,41 +1,62 @@
 import { Component } from '@angular/core';
-import { WidgetRegistry } from 'angular2-schema-form';
 import { NzMessageService } from 'ng-zorro-antd';
-import { ObjectProperty } from 'angular2-schema-form/dist/model';
-import { SFSchema } from '../../../lib/index';
+import { SFSchema } from 'nz-schema-form';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
+    value: any;
     schema: SFSchema = {
-        span_label: 4,
-        span: 8,
+        debug: true,
+        span_label: 5,
+        span_control: 19,
+        grid: {
+            span: 8
+        },
         properties: {
             email: {
                 type: 'string',
                 title: '邮箱',
                 format: 'email',
                 placeholder: '请输入邮箱，最多20个字符',
-                maxLength: 20,
-                debug: true
+                maxLength: 20
             },
             name: {
                 type: 'string',
                 title: '姓名',
                 placeholder: '请输入姓名',
-                description: '必须大写开头且3个字以上',
-                minLength: 3,
-                debug: true
+                description: '3个字以上',
+                minLength: 3
             },
             age: {
                 type: 'number',
                 title: '年龄'
             },
-            remark: {
+            remark1: {
                 type: 'string',
-                title: '描述'
+                title: '描述1'
+            },
+            remark2: {
+                type: 'string',
+                title: '描述2'
+            },
+            remark3: {
+                type: 'string',
+                title: '描述3'
+            },
+            remark4: {
+                type: 'string',
+                title: '描述4'
+            },
+            remark5: {
+                type: 'string',
+                title: '描述5'
+            },
+            remark6: {
+                type: 'string',
+                title: '描述6'
             },
             products: {
                 type: 'array',
@@ -43,6 +64,8 @@ export class HomeComponent {
                 maxItems: 2,
                 items: {
                     type: 'object',
+                    span_label: 5,
+                    span_control: 19,
                     properties: {
                         pn: {
                             title: '产品名称',
@@ -64,21 +87,26 @@ export class HomeComponent {
             }
         },
         required: [ 'email', 'name' ],
-        buttons: [
-            { label: 'Send', id: 'send', submit: true, offset: 4 },
-            { label: 'Reset', id: 'reset' }
-        ]
+        button: {
+            grid: { span: 24 },
+            style: { 'text-align': 'center' },
+            items: [
+                { label: '登录', id: 'send', submit: true },
+                { label: '重置', id: 'reset' }
+            ]
+        }
     };
     model = { email: 'cipchk@qq.com' };
     actions = {
-        send: (form: ObjectProperty) => {
+        send: (form: any) => {
             this.msg.success(JSON.stringify(form.value));
         },
-        reset: (form: ObjectProperty) => {
+        reset: (form: any) => {
             form.reset({});
         }
     };
 
+    verticalValue: any;
     verticalSchema: SFSchema = {
         properties: {
             email: {
@@ -123,41 +151,39 @@ export class HomeComponent {
                 }
             }
         },
-        buttons: [
-            { label: 'Send', id: 'send', submit: true },
-            { label: 'Reset', id: 'reset' }
-        ],
+        button: {
+            items: [
+                { label: 'Send', id: 'send', submit: true },
+                { label: 'Reset', id: 'reset' }
+            ]
+        },
         required: ['email']
     };
     verticalModel = { email: 'cipchk@qq.com', name: 'cipchk' };
 
+    inlineValue: any;
     inlineSchema: SFSchema = {
         properties: {
             name: {
                 type: 'string',
                 title: '用户名',
                 placeholder: '请输入用户名',
-                description: '必须3位以上',
-                minLength: 3,
-                span_label: 5,
-                span: 19
+                minLength: 3
             },
             password: {
                 type: 'string',
                 title: '密码',
                 placeholder: '请输入密码',
-                description: '必须6位以上',
-                minLength: 6,
-                span_label: 5,
-                span: 19
+                minLength: 6
             }
         },
         required: ['name', 'password'],
-        fieldsets: [{ fields: ['name', 'password'], gutter: 24, span: 12 }],
-        buttons: [
-            { label: '登录', id: 'send', submit: true },
-            { label: '重置', id: 'reset' }
-        ]
+        button: {
+            items: [
+                { label: '登录', id: 'send', submit: true },
+                { label: '重置', id: 'reset' }
+            ]
+        }
     };
     inlineModel = { email: 'cipchk@qq.com', name: 'cipchk' };
 

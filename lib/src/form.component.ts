@@ -56,14 +56,23 @@ export class FormComponent implements OnChanges {
 
     constructor(private formPropertyFactory: FormPropertyFactory, private actionRegistry: ActionRegistry, private validatorRegistry: ValidatorRegistry, private cdr: ChangeDetectorRef, private terminator: TerminatorService) {}
 
-    private updateFS(schema: SFSchema) {
-        schema.layout = this.layout;
+    private coverProperty(schema: SFSchema) {
+        const isHorizontal = this.layout === 'horizontal';
 
-        if (!schema.span && !schema.span_label) return;
         Object.keys(schema.properties).forEach(key => {
-            if (schema.offset) schema.properties[key].offset = schema.offset;
-            if (schema.span) schema.properties[key].span = schema.span;
-            if (schema.span_label) schema.properties[key].span_label = schema.span_label;
+            const p = schema.properties[key];
+            if (isHorizontal) {
+                if (!p.span_label && schema.span_label) p.span_label = schema.span_label;
+                if (!p.span_control && schema.span_control) p.span_control = schema.span_control;
+                if (!p.offset_control && schema.offset_control) p.offset_control = schema.offset_control;
+            } else {
+                p.span_label = null;
+                p.span_control = null;
+                p.offset_control = null;
+            }
+            if (p.items && p.type === 'array') {
+                this.coverProperty(p.items);
+            }
         });
     }
 
@@ -81,12 +90,17 @@ export class FormComponent implements OnChanges {
         }
 
         if (this.schema && changes.schema) {
+
+            this.coverProperty(this.schema);
+            if (this.schema.debug) {
+                console.warn('schema', this.schema);
+            }
+
             if (!changes.schema.firstChange) {
                 this.terminator.destroy();
             }
             SchemaPreprocessor.preprocess(this.schema);
             this.rootProperty = this.formPropertyFactory.createProperty(this.schema);
-            this.updateFS(this.rootProperty.schema);
 
             this.rootProperty.valueChanges.subscribe(value => {
                 if (this.modelChanged.observers.length > 0) {

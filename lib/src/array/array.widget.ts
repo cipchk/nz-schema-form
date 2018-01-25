@@ -8,9 +8,9 @@ import { ArrayLayoutWidget } from 'angular2-schema-form';
       <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
           <label>{{ schema.title }}</label>
       </div>
-      <div nz-form-control nz-col [nzSpan]="schema.span">
+      <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
         <button nz-button nzType="primary"
-            [disabled]="schema.maxItems && formProperty.properties.length >= schema.maxItems"
+            [disabled]="schema.maxItems && $any(formProperty).properties.length >= schema.maxItems"
             (click)="addItem()" [innerHTML]="schema.addTitle || '添加'"></button>
         <div class="card-list">
             <nz-card *ngFor="let i of formProperty.properties; let idx=index">

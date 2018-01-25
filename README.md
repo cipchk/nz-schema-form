@@ -2,6 +2,8 @@
 
 [ng-zorro-antd](https://ng.ant.design/) form generation based on JSON Schema.
 
+[DEMO](https://cipchk.github.io/nz-schema-form/) & [stackblitz](https://stackblitz.com/edit/nz-schema-form?file=app%2Fapp.component.ts)
+
 ## TODO
 
 By data type, all the available widgets contains listed below:
@@ -14,9 +16,9 @@ By data type, all the available widgets contains listed below:
 
 | widget | zorro component | assigned | testing | status |
 | ------ | --------------- | -------- | ------ | ------ |
-| `object` | - | cipchk | - | - |
-| `array` | - | cipchk | - | - |
-| `string` | - | cipchk | - | - |
+| `object` | - | - | - | - |
+| `array` | - | - | - | - |
+| `string` | - | - | - | - |
 | `boolean` | `nz-switch` | - | - | - |
 | `integer` | `nz-input-number` | - | - | - |
 | `button` | `nz-button` | - | - | - |

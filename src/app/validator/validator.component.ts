@@ -33,6 +33,7 @@ export class ValidatorComponent implements OnInit {
             form.reset({});
         }
     };
+    value: any;
 
     constructor(private msg: NzMessageService) {
         this.schemaStr = require('!!raw-loader!../sampleschema.json');

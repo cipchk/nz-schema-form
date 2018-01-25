@@ -2,7 +2,8 @@
 <nz-sf [schema]="schema" [model]="model" [actions]="actions" (onChange)="value=$event.value"></nz-sf>
 <p>{{value | json}}</p>
 <h1>vertical</h1>
-<nz-sf layout="vertical" [schema]="verticalSchema" [model]="verticalModel" [actions]="actions" (onChange)="value=$event.value"></nz-sf>
+<nz-sf layout="vertical" [schema]="verticalSchema" [model]="verticalModel" [actions]="actions" (onChange)="verticalValue=$event.value"></nz-sf>
+<p>{{verticalValue | json}}</p>
 <h1>inline</h1>
 <nz-sf layout="inline" [schema]="inlineSchema" [model]="inlineModel" [actions]="actions" (onChange)="inlineValue=$event.value"></nz-sf>
 <p>{{inlineValue | json}}</p>

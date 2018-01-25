@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormProperty } from 'angular2-schema-form/dist/model';
-import { SFButtonSchema } from '../interface';
+import { SFButtonItem } from '../interface';
 
 @Component({
     selector: 'nz-sf-button-widget',
     template: `
-    <button nz-button [nzType]="type" [ngClass]="button.className"
+    <button nz-button [nzType]="type"
         [disabled]="button.submit && !formProperty.valid"
         [nzSize]="size"
         (click)="button.action($event)">{{button.label}}</button>
@@ -13,7 +13,7 @@ import { SFButtonSchema } from '../interface';
 })
 export class ButtonWidget implements OnInit {
 
-    button: SFButtonSchema;
+    button: SFButtonItem;
     formProperty: FormProperty;
     type: string = null;
 
