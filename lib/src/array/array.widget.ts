@@ -1,0 +1,39 @@
+import { Component } from '@angular/core';
+import { ArrayLayoutWidget } from 'angular2-schema-form';
+
+@Component({
+  selector: 'nz-sf-array',
+  template: `
+  <div nz-form-item nz-row>
+      <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
+          <label>{{ schema.title }}</label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="schema.span">
+        <button nz-button nzType="primary"
+            [disabled]="schema.maxItems && formProperty.properties.length >= schema.maxItems"
+            (click)="addItem()" [innerHTML]="schema.addTitle || '添加'"></button>
+        <div class="card-list">
+            <nz-card *ngFor="let i of formProperty.properties; let idx=index">
+                <ng-template #body>
+                    <nz-sf-item *ngIf="i.visible" [formProperty]="i"></nz-sf-item>
+                    <button nz-button nzType="dange" (click)="removeItem(idx)" [innerHTML]="schema.removeTitle || '移除'"></button>
+                </ng-template>
+            </nz-card>
+        </div>
+      </div>
+  </div>`
+})
+export class ArrayWidget extends ArrayLayoutWidget {
+
+  addItem() {
+    this.formProperty.addItem();
+  }
+
+  removeItem(index: number) {
+    this.formProperty.removeItem(index);
+  }
+
+  trackByIndex(index: number, item: any) {
+    return index;
+  }
+}

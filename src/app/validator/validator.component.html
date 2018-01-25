@@ -1,0 +1,42 @@
+<div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="12">
+        <div style="margin: 16px 0;">
+            <button nz-button [nzType]="'primary'" (click)="run()">运行</button>
+        </div>
+        <h1>Schema</h1>
+        <div ace-editor
+            [(text)]="schemaStr"
+            [mode]="'json'"
+            [theme]="'monokai'"
+            [options]="aceOptions"
+            style="min-height: 350px; width:100%; overflow: auto;"></div>
+        <h1>Model</h1>
+        <div ace-editor
+            [(text)]="modelStr"
+            [mode]="'json'"
+            [theme]="'monokai'"
+            [options]="aceOptions"
+            style="min-height: 100px; width:100%; overflow: auto;"></div>
+        <h1>Actions</h1>
+        <div ace-editor
+            [(text)]="actionsStr"
+            [mode]="'json'"
+            [theme]="'monokai'"
+            [options]="aceOptions"
+            [readOnly]="true"
+            style="min-height: 100px; width:100%; overflow: auto;"></div>
+    </div>
+    <div nz-col [nzSpan]="12">
+        <h1>Preview</h1>
+        <div style="border: 1px solid #999; padding: 8px;">
+            <nz-sf *ngIf="schema && model"
+                [layout]="layout"
+                [schema]="schema"
+                [model]="model"
+                [actions]="actions"
+                (onChange)="value=$event.value"></nz-sf>
+
+            <p style="padding-top: 16px">Result: {{value | json}}</p>
+        </div>
+    </div>
+</div>
