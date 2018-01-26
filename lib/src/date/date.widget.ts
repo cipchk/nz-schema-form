@@ -39,9 +39,15 @@ export class DateWidget extends ControlWidget {
                 .map((e: any) => e.message);
             this.errorMessages = messages.filter((m: any, i: any) => messages.indexOf(m) === i);
         });
-        control.valueChanges.subscribe((newValue) => {
-            const value = newValue.toISOString();   // TODO 如果使用 原始日期类型则会触发类型验证错误。
-            this.formProperty.setValue(value, false);
+        control.valueChanges.subscribe((newValue?: Date) => {
+
+            if (newValue) {
+                const value = newValue.toISOString();   // TODO 如果使用 原始日期类型则会触发类型验证错误。
+                this.formProperty.setValue(value, false);
+            } else {
+                this.formProperty.setValue(null, false);
+            }
+
             if (this.schema.debug) console.warn('valueChanges', this.formProperty.path, this.formProperty);
         });
     }
