@@ -16,7 +16,7 @@ import { ArrayLayoutWidget } from 'angular2-schema-form';
             <nz-card *ngFor="let i of formProperty.properties; let idx=index">
                 <ng-template #body>
                     <nz-sf-item *ngIf="i.visible" [formProperty]="i"></nz-sf-item>
-                    <button nz-button nzType="dange" (click)="removeItem(idx)" [innerHTML]="schema.removeTitle || '移除'"></button>
+                    <button nz-button nzType="danger" (click)="removeItem(idx)" [innerHTML]="schema.removeTitle || '移除'"></button>
                 </ng-template>
             </nz-card>
         </div>
