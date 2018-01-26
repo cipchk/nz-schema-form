@@ -1,50 +1,5 @@
-export interface SFGridSchema {
-    /**
-     * 栅格左侧的间隔格数，间隔内不可以有栅格
-     */
-    offset?: number;
 
-    /**
-     * 栅格占位格数，为 `0` 时相当于 `display: none`
-     */
-    span?: number;
-
-    /**
-     * 栅格间隔，可以写成像素值或支持响应式的对象写法 `{ xs: 8, sm: 16, md: 24}`
-     */
-    gutter?: number;
-}
-
-export interface SFRenderSchema {
-    /**
-     * 自定义类
-     */
-    className?: string | string[];
-    /**
-     * 是否禁用状态
-     */
-    disabled?: boolean;
-    /**
-     * 元素组件大小
-     * @default 'large'
-     */
-    size?: 'default' | 'large' | 'small';
-    /**
-     * 添加按钮文本
-     *
-     * 限定表格渲染时有效
-     */
-    addText?: string;
-    /**
-     * 移除按钮文本
-     *
-     * 限定表格渲染时有效
-     */
-    removeText?: string;
-}
-
-export interface SFSchema extends SFGridSchema, SFRenderSchema {
-    [key: string]: any;
+export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRenderSchema, SFActiveSchema {
     ////////////任何实例类型/////////////
     /**
      * 调试模式
@@ -159,7 +114,7 @@ export interface SFSchema extends SFGridSchema, SFRenderSchema {
     /**
      * 自定义表单元素组合
      */
-    fieldsets?: SFFieldsetsSchema[];
+    // fieldsets?: SFFieldsetsSchema[];
     ////////////注释类型/////////////
     /**
      * 标题，相当于 `label` 值
@@ -179,11 +134,11 @@ export interface SFSchema extends SFGridSchema, SFRenderSchema {
     placeholder?: string;
     ////////////其他/////////////
     /**
-     * 按钮组
+     * 按钮信息
      */
-    buttons?: SFButtonSchema[];
+    button?: SFButton;
     /**
-     * 指定小部件
+     * 指定采用什么小部件渲染
      */
     widget?: string | Object;
     /**
@@ -208,6 +163,67 @@ export interface SFSchema extends SFGridSchema, SFRenderSchema {
     readOnly?: boolean;
     ////////////渲染（非json schema标准部分）/////////////
     /**
+     * 自适应内容高度，可设置为 true|false 或对象：`{ minRows: 2, maxRows: 6 }`
+     *
+     * 限 `type=textarea` 时有效
+     */
+    autosize?: boolean | Object;
+}
+
+export interface SFHorizontalLayoutSchema {
+    /**
+     * `label` 栅格占位格数，默认：`5`
+     * - `0` 时相当于 `display: none`
+     * - 限 `horizontal` 水平布局有效
+     */
+    span_label?: number;
+
+    /**
+     * `control` 栅格占位格数，默认：`19`
+     * - `0` 时相当于 `display: none`
+     * - 限 `horizontal` 水平布局有效
+     */
+    span_control?: number;
+
+    /**
+     * `control` 栅格左侧的间隔格数，间隔内不可以有栅格
+     * - 限 `horizontal` 水平布局有效
+     */
+    offset_control?: number;
+}
+
+export interface SFArraySchema {
+    /**
+     * 添加按钮文本
+     *
+     * 限定表格渲染时有效
+     */
+    addText?: string;
+    /**
+     * 移除按钮文本
+     *
+     * 限定表格渲染时有效
+     */
+    removeText?: string;
+}
+
+export interface SFRenderSchema {
+    /**
+     * 自定义类，等同 `[ngClass]` 值
+     */
+    class?: string | string[];
+    /**
+     * 自定义样式，等同 `[ngStyle]` 值
+     */
+    style?: {[key: string]: string};
+    /**
+     * 响应式属性
+     */
+    grid?: SFGrid;
+}
+
+export interface SFActiveSchema {
+    /**
      * 是否禁用状态
      */
     disabled?: boolean;
@@ -216,35 +232,71 @@ export interface SFSchema extends SFGridSchema, SFRenderSchema {
      * @default 'large'
      */
     size?: 'default' | 'large' | 'small';
-    /**
-     * 自适应内容高度，可设置为 true|false 或对象：`{ minRows: 2, maxRows: 6 }`
-     *
-     * 限 `type=textarea` 时有效
-     */
-    autosize?: boolean | Object;
-    /**
-     * `label` 栅格占位格数，为 `0` 时相当于 `display: none`
-     */
-    span_label?: number;
-    /**
-     * 栅格占位格数，为 `0` 时相当于 `display: none`
-     */
-    span?: number;
 }
 
-export interface SFButtonSchema extends SFGridSchema, SFRenderSchema {
+export interface SFButton extends SFRenderSchema {
+    /**
+     * 按钮组
+     */
+    items: SFButtonItem[];
+}
+
+export interface SFButtonItem extends SFActiveSchema {
     [key: string]: any;
 
     id: string;
 
+    /**
+     * 按钮文本
+     */
     label: string;
 
+    /**
+     * 是否提交按钮
+     */
     submit?: boolean;
 
+    /**
+     * 回调携带参数
+     */
+    parameters?: any;
+
+    /**
+     * 按钮类型
+     */
     type?: 'primary' | 'default' | 'dashed' | 'danger';
 }
 
-export interface SFFieldsetsSchema extends SFGridSchema {
+export interface SFGridSize {
+    span?: number;
+    order?: number;
+    offset?: number;
+    push?: number;
+    pull?: number;
+}
+
+export interface SFGrid {
+    /**
+     * 栅格间隔
+     */
+    gutter?: number;
+    /**
+     * 栅格占位格数，为 `0` 时相当于 `display: none`
+     */
+    span?: number;
+    /**
+     * 栅格左侧的间隔格数，间隔内不可以有栅格
+     */
+    offset?: number;
+    xs?: number | SFGridSize;
+    sm?: number | SFGridSize;
+    md?: number | SFGridSize;
+    lg?: number | SFGridSize;
+    xl?: number | SFGridSize;
+    xxl?: number | SFGridSize;
+}
+
+export interface SFFieldsetsSchema {
     title?: string;
 
     fields: string[];

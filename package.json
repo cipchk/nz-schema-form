@@ -1,9 +1,9 @@
 {
   "name": "nz-schema-form",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.0-alpha.2",
   "license": "MIT",
   "description": "ng-zorro-antd form generation based on JSON Schema",
-  "main": "./bundles/nz-schema-form.umd.js",
+  "main": "./bundles/index.js",
   "author": "cipchk",
   "homepage": "https://cipchk.github.io/nz-schema-form/",
   "bugs": {
@@ -29,6 +29,11 @@
     "release:prepare": "npm run build:package",
     "release:validity": "npm run version:bump && npm run release:prepare",
     "release": "npm run version:bump && npm run release:prepare && npm publish --access=public .lib"
+  },
+  "peerDependencies": {
+      "z-schema": "^3.19.0",
+      "ng-zorro-antd": "^0.6.12",
+      "angular2-schema-form": "^1.2.1"
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",

@@ -11,22 +11,30 @@ const globals = {
 
     'rxjs/Subject': 'Rx',
     'rxjs/Subscription': 'Rx',
-    'rxjs/operators': 'Rx.Observable.prototype'
+    'rxjs/operators': 'Rx.Observable.prototype',
+
+    'ng-zorro-antd': 'ngZorro.antd',
+    'angular2-schema-form': 'angular2-schema-form',
+    'angular2-schema-form/dist/model': 'angular2-schema-form',
+    'angular2-schema-form/dist/widgetfactory': 'angular2-schema-form',
+    'angular2-schema-form/dist/terminator.service': 'angular2-schema-form'
 };
 
 module.exports = {
-    sourcemap: true,
     rollup: require('rollup'),
     context: 'this',
-    name: 'nz-schema-form',
-    output: 'nz-schema-form.umd.js',
-    format: 'umd',
+    output: {
+        file: 'nz-schema-form.umd.js',
+        name: 'nz-schema-form',
+        format: 'umd',
+        sourcemap: true,
+        globals: globals
+    },
     plugins: [
         resolve({
             jsnext: true,
             main: true
         })
     ],
-    external: Object.keys(globals),
-    globals: globals
+    external: Object.keys(globals)
 };

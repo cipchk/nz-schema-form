@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SchemaValidatorFactory, WidgetRegistry, ZSchemaValidatorFactory, SchemaFormModule } from 'angular2-schema-form';
 
-import { SchemaFormOptions } from './src/schema-form.options';
+import { SchemaFormOptions } from './schema-form.options';
 import { NzWidgetRegistry } from './src/widget.registry';
 
 // region: components

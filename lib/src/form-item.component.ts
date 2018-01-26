@@ -4,14 +4,19 @@ import { Widget } from 'angular2-schema-form';
 import { FormProperty, ActionRegistry } from 'angular2-schema-form/dist/model';
 import { WidgetFactory } from 'angular2-schema-form/dist/widgetfactory';
 import { TerminatorService } from 'angular2-schema-form/dist/terminator.service';
+import { SFSchema, SFButton, SFButtonItem } from './interface';
 
 @Component({
     selector: 'nz-sf-item',
     template: `
     <ng-template #target></ng-template>
-    <div *ngIf="buttons.length" nz-form-item nz-row>
-        <div nz-col [nzOffset]="buttons[0].offset" [nzSpan]="buttons[0].span">
-            <sf-form-element-action *ngFor="let button of buttons" [button]="button" [formProperty]="formProperty"></sf-form-element-action>
+    <div *ngIf="btn" nz-form-item nz-row [ngClass]="btn.class" [ngStyle]="btn.style">
+        <div nz-col
+            [nzSpan]="_grid.span" [nzOffset]="_grid.offset"
+            [nzXs]="_grid.xs" [nzSm]="_grid.sm" [nzMd]="_grid.md"
+            [nzLg]="_grid.lg" [nzXl]="_grid.xl">
+            <sf-form-element-action *ngFor="let i of btn.items"
+                [button]="i" [formProperty]="formProperty"></sf-form-element-action>
         </div>
     </div>
     `
@@ -24,7 +29,8 @@ export class FormItemComponent implements OnInit, OnChanges {
 
     control: FormControl = new FormControl('', () => null);
     widget: Widget<any> = null;
-    buttons: any[] = [];
+    btn: SFButton;
+    _grid: any = {};
     private ref: ComponentRef<any>;
 
     constructor(
@@ -44,16 +50,17 @@ export class FormItemComponent implements OnInit, OnChanges {
     }
 
     private parseButtons() {
-        if (this.formProperty.schema.buttons !== undefined) {
-            this.buttons = this.formProperty.schema.buttons;
-
-            for (let button of this.buttons) {
+        const btn = (this.formProperty.schema as SFSchema).button;
+        if (btn !== undefined) {
+            this.btn = btn;
+            this._grid = btn.grid || {};
+            for (let button of btn.items) {
                 this.createButtonCallback(button);
             }
         }
     }
 
-    private createButtonCallback(button: any) {
+    private createButtonCallback(button: SFButtonItem) {
         button.action = (e: any) => {
             let action;
             if (button.id && (action = this.actionRegistry.get(button.id))) {

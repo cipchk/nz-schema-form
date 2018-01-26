@@ -1,8 +1,3 @@
 {
-  "name": "nz-schema-form",
-  "peerDependencies": {
-      "z-schema": "^3.19.0",
-      "ng-zorro-antd": "^0.6.12",
-      "angular2-schema-form": "^1.2.1"
-  }
+  "name": "nz-schema-form"
 }

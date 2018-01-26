@@ -28,7 +28,6 @@ import { ValidatorComponent } from './validator/validator.component';
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AceEditorModule,

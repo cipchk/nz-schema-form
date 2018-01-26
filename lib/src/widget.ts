@@ -1,13 +1,31 @@
-import { AfterViewInit } from '@angular/core';
+import { AfterViewInit, HostBinding } from '@angular/core';
 import { Widget } from 'angular2-schema-form';
 import { FormProperty } from 'angular2-schema-form/dist/model';
+import { SFSchema } from './interface';
 
-export class ControlWidget extends Widget<FormProperty> implements AfterViewInit {
-
+/**
+ * 小部件基类，一般用于无须校难通知视觉小部件
+ */
+export class BaseWidget extends Widget<FormProperty> {
     get size() {
         return this.schema.size || 'large';
     }
 
+    @HostBinding('class')
+    get cls() {
+        return (this.schema as SFSchema).class || '';
+    }
+
+    @HostBinding('style')
+    get style() {
+        return (this.schema as SFSchema).style || '';
+    }
+}
+
+/**
+ * 小部件基类，带数据校验通知
+ */
+export class ControlWidget extends BaseWidget implements AfterViewInit {
     ngAfterViewInit(): void {
         const control = this.control;
         this.formProperty.valueChanges.subscribe((newValue) => {

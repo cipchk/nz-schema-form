@@ -1,8 +1,22 @@
 :host {
     ::ng-deep {
+        .array-field {
+            margin-bottom: 0;
+        }
+
+        sf-form-element-action + sf-form-element-action {
+            margin-left: 8px;
+        }
+
+        // 内联
         .ant-form-inline {
-            nz-sf-object {
-                display: inline-block;
+            // 修复标签与控制对齐
+            .ant-form-item {
+                .ant-form-item-label,
+                .ant-form-item-control-wrapper {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
             }
         }
         .card-list {

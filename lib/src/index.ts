@@ -7,5 +7,4 @@ export { StringWidget } from './string/string.widget';
 
 // endregion
 
-export * from './schema-form.options';
 export * from './interface';
