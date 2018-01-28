@@ -51,7 +51,7 @@ export class ControlWidget extends BaseWidget implements AfterViewInit {
 
 
     /**
-     * 转化控件到数据的值, 如格式处理 date 类型转化成 YYYY-MM-DD 格式
+     * 转化控件到数据的值, 如格式处理 date 类型转化成 YYYY-MM-DD 格式, 默认原样返回
      * @param value
      */
     serialize(value: any) {
@@ -59,7 +59,7 @@ export class ControlWidget extends BaseWidget implements AfterViewInit {
     }
 
     /**
-     * 解析数据传到控件的值
+     * 解析数据传到控件的值，默认原样返回
      * @param value
      */
     deserialize(value: any) {
