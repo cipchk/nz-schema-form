@@ -3,6 +3,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { SFSchema } from 'nz-schema-form';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'app-home',
     templateUrl: './home.component.html'
 })
@@ -33,6 +34,11 @@ export class HomeComponent {
             age: {
                 type: 'number',
                 title: '年龄'
+            },
+            birthday: {
+                type: 'string',
+                title: '生日',
+                widget: 'date'
             },
             remark1: {
                 type: 'string',
@@ -82,11 +88,11 @@ export class HomeComponent {
                             type: 'number'
                         }
                     },
-                    required: [ 'pn', 'num', 'price' ],
+                    required: ['pn', 'num', 'price'],
                 },
             }
         },
-        required: [ 'email', 'name' ],
+        required: ['email', 'name'],
         button: {
             grid: { span: 24 },
             style: { 'text-align': 'center' },
@@ -187,5 +193,5 @@ export class HomeComponent {
     };
     inlineModel = { email: 'cipchk@qq.com', name: 'cipchk' };
 
-    constructor(private msg: NzMessageService) {}
+    constructor(private msg: NzMessageService) { }
 }

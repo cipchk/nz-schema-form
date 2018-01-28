@@ -32,12 +32,15 @@ import { ObjectWidget } from './src/object/object.widget';
 import { ArrayWidget } from './src/array/array.widget';
 import { ButtonWidget } from './src/button/button.widget';
 import { StringWidget } from './src/string/string.widget';
+import { DateWidget } from './src/date/date.widget';
+
 
 const WIDGETS: any[] = [
     ObjectWidget,
     ArrayWidget,
     ButtonWidget,
     StringWidget,
+    DateWidget
 ];
 
 // endregion
@@ -51,14 +54,16 @@ import {
     NzCardModule,
     NzFormModule,
     NzInputModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDatePickerModule,
 } from 'ng-zorro-antd';
 const ZORROMODULES = [
     NzGridModule,
     NzCardModule,
     NzFormModule,
     NzInputModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDatePickerModule
 ];
 // endregion
 
