@@ -17,31 +17,42 @@ import { ExampleComponent } from './example/example.component';
 import { ValidatorComponent } from './validator/validator.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ExampleComponent,
-    ValidatorComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AceEditorModule,
-    RouterModule.forRoot([
-        { path: '', component: HomeComponent },
-        { path: 'example', component: ExampleComponent },
-        { path: 'validator', component: ValidatorComponent }
-    ], { useHash: true }),
-    NgZorroAntdModule.forRoot(),
-    SchemaFormModule,
-    NzSchemaFormModule.forRoot({
-    })
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        ExampleComponent,
+        ValidatorComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AceEditorModule,
+        RouterModule.forRoot([
+            { path: '', component: HomeComponent },
+            { path: 'example', component: ExampleComponent },
+            { path: 'validator', component: ValidatorComponent }
+        ], { useHash: true }),
+        NgZorroAntdModule.forRoot(),
+        SchemaFormModule,
+        NzSchemaFormModule.forRoot({
+            date: {
+                // serialize: (value: Date) => {
+                //     return value.getTime();
+                // },
+                // deserialize: (value) => {
+                //     if (!value)
+                //         return null;
+                //     return new Date(value);
+                // },
+                // format: 'YYYY-MM-DD'
+            }
+        })
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

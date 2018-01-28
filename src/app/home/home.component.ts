@@ -38,7 +38,44 @@ export class HomeComponent {
             birthday: {
                 type: 'string',
                 title: '生日',
-                widget: 'date'
+                widget: {
+                    id: 'date',
+                    format: 'YYYY/MM/DD'
+                }
+            },
+            date1: {
+                type: 'number',
+                title: '时间戳',
+                default: new Date().getTime(),
+                widget: {
+                    id: 'date',
+                    format: 'YYYY/MM/DD'
+                }
+            },
+            date2: {
+                type: 'string',
+                title: 'ISO日期',
+                default: new Date().toISOString(),
+                widget: {
+                    id: 'date'
+                }
+            },
+            date3: {
+                type: 'string',
+                title: 'ISO日期',
+                default: '2018/01/11',
+                widget: {
+                    id: 'date'
+                }
+            },
+            date4: {
+                type: 'string',
+                title: '年月日',
+                default: '2018/01/11',
+                widget: {
+                    id: 'date',
+                    format: 'YYYY/MM/DD'
+                }
             },
             remark1: {
                 type: 'string',

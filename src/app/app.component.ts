@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'app-root',
   template: `
   <nz-layout class="layout">

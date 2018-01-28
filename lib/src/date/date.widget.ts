@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ControlWidget } from '../widget';
+import { SchemaFormOptions } from '../../schema-form.options';
+import * as moment from 'moment';
 
 @Component({
     selector: 'nz-sf-date-widget',
@@ -20,37 +22,59 @@ import { ControlWidget } from '../widget';
 })
 export class DateWidget extends ControlWidget {
 
-
-    ngAfterViewInit(): void {
-        const control = this.control;
-        this.formProperty.valueChanges.subscribe((newValue) => {
-            if (control.value !== newValue) {
-                control.setValue(newValue, { emitEvent: false });
-            }
-        });
-        this.formProperty.errorsChanges.subscribe((errors) => {
-            if (this.schema.debug) console.warn('errorsChanges', this.formProperty.path, errors);
-
-            control.setErrors(errors, { emitEvent: true });
-            const messages = (errors || [])
-                .filter((e: any) => {
-                    return e.path && e.path.slice(1) === this.formProperty.path;
-                })
-                .map((e: any) => e.message);
-            this.errorMessages = messages.filter((m: any, i: any) => messages.indexOf(m) === i);
-        });
-        control.valueChanges.subscribe((newValue?: Date) => {
-
-            if (newValue) {
-                const value = newValue.toISOString();   // TODO 如果使用 原始日期类型则会触发类型验证错误。
-                this.formProperty.setValue(value, false);
-            } else {
-                this.formProperty.setValue(null, false);
-            }
-
-            if (this.schema.debug) console.warn('valueChanges', this.formProperty.path, this.formProperty);
-        });
+    constructor(
+        public options: SchemaFormOptions) {
+        super();
     }
 
+    serialize(value: any) {
+
+        // 如果值是空的则返回空字符串, 空字符串会触发 fallback 外层对象删除此属性。
+        if (!value)
+            return '';
+
+        // 如果是数字类型则直接返回时间戳
+        if (this.schema.type === 'number') {
+            return value.getTime();
+        }
+
+        // 如果schema 的widget 上存在 format 则使用
+        if (this.schema.widget && this.schema.widget.format)
+            return moment(value).format(this.schema.widget.format);
+
+        // 如果schema 上存在 format 则使用
+        if (this.schema.format)
+            return moment(value).format(this.schema.format);
+
+        const option = (this.options || { date: null }).date || {};
+
+        // 若存在 dateFormat 则使用 option 的format;
+        const dateFormat = option.format;
+        if (dateFormat)
+            return moment(value).format(dateFormat);
+
+        // 如果在 provider 设置了转化方法，则调用provider 的转化方法
+        const providerSerialize = option.serialize;
+        if (providerSerialize)
+            return providerSerialize(value);
+
+        // 默认采用 如果都没有设置返回 ISO 格式字符串
+        if (value instanceof Date) {
+            return value.toISOString();
+        } else {
+            return value
+        }
+    }
+
+    deserialize(value: string): any {
+        if (value) {
+            const option = (this.options || { date: null }).date || {};
+            const deserialize = option.deserialize;
+            if (deserialize)
+                return deserialize(value);
+            return new Date(value);
+        }
+        return null;
+    }
 
 }
