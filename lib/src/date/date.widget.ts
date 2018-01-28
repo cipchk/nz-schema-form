@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ControlWidget } from '../widget';
 import { SchemaFormOptions } from '../../schema-form.options';
 import * as moment from 'moment';
+
 @Component({
     selector: 'nz-sf-date-widget',
     template: `
