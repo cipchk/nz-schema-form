@@ -30,7 +30,7 @@ export class ControlWidget extends BaseWidget implements AfterViewInit {
         const control = this.control;
         this.formProperty.valueChanges.subscribe((newValue) => {
             if (control.value !== newValue) {
-                control.setValue(newValue, {emitEvent: false});
+                control.setValue(this.deserialize(newValue), { emitEvent: false });
             }
         });
         this.formProperty.errorsChanges.subscribe((errors) => {
@@ -44,8 +44,26 @@ export class ControlWidget extends BaseWidget implements AfterViewInit {
             this.errorMessages = messages.filter((m: any, i: any) => messages.indexOf(m) === i);
         });
         control.valueChanges.subscribe((newValue) => {
-            this.formProperty.setValue(newValue, false);
+            this.formProperty.setValue(this.serialize(newValue), false);
             if (this.schema.debug) console.warn('valueChanges', this.formProperty.path, this.formProperty);
         });
     }
+
+
+    /**
+     * 转化控件到数据的值, 如格式处理 date 类型转化成 YYYY-MM-DD 格式
+     * @param value
+     */
+    serialize(value: any) {
+        return value;
+    }
+
+    /**
+     * 解析数据传到控件的值
+     * @param value
+     */
+    deserialize(value: any) {
+        return value;
+    }
+
 }

@@ -31,9 +31,9 @@
     "release": "npm run version:bump && npm run release:prepare && npm publish --access=public .lib"
   },
   "peerDependencies": {
-      "z-schema": "^3.19.0",
-      "ng-zorro-antd": "^0.6.12",
-      "angular2-schema-form": "^1.2.1"
+    "z-schema": "^3.19.0",
+    "ng-zorro-antd": "^0.6.12",
+    "angular2-schema-form": "^1.2.1"
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",
@@ -47,6 +47,7 @@
     "@angular/router": "^5.0.0",
     "angular2-schema-form": "^1.2.1",
     "core-js": "^2.4.1",
+    "moment": "^2.20.1",
     "ng-zorro-antd": "^0.6.12",
     "ng2-ace-editor": "^0.3.4",
     "ngx-highlight-js": "^1.0.3",
