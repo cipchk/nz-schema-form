@@ -31,6 +31,43 @@ export class HomeComponent {
                 description: '3个字以上',
                 minLength: 3
             },
+            birthday: {
+                type: 'string',
+                title: '生日',
+                placeholder: '本项值仅保存日期文本',
+                widget: {
+                    id: 'date',
+                    format: 'YYYY-MM-DD'
+                }
+            },
+            date1: {
+                type: 'number',
+                title: '时间戳',
+                default: 1517159217913,
+                description: '本项值保存为时间戳',
+                widget: {
+                    id: 'date',
+                    format: 'YYYY/MM/DD'
+                }
+            },
+            date2: {
+                type: 'string',
+                title: 'ISO日期',
+                default: '2018-01-28T17:06:57.913Z',
+                description: '本项值保存为ISO时间格式',
+                widget: {
+                    id: 'date'
+                }
+            },
+            date3: {
+                type: 'string',
+                title: '无默认日期',
+                description: '无默认值,表单可重置为空',
+                widget: {
+                    id: 'date',
+                    format: 'YYYY/MM/DD'
+                }
+            }
             // age: {
             //     type: 'number',
             //     title: '年龄'
