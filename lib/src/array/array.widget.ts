@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ArrayLayoutWidget } from 'angular2-schema-form';
+import { ArrayLayoutWidget } from '../widget';
 
 @Component({
   selector: 'nz-sf-array',

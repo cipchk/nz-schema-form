@@ -31,66 +31,42 @@ export class HomeComponent {
                 description: '3个字以上',
                 minLength: 3
             },
-            age: {
-                type: 'number',
-                title: '年龄'
-            },
-            birthday: {
-                type: 'string',
-                title: '生日',
-                widget: 'date'
-            },
-            remark1: {
-                type: 'string',
-                title: '描述1'
-            },
-            remark2: {
-                type: 'string',
-                title: '描述2'
-            },
-            remark3: {
-                type: 'string',
-                title: '描述3'
-            },
-            remark4: {
-                type: 'string',
-                title: '描述4'
-            },
-            remark5: {
-                type: 'string',
-                title: '描述5'
-            },
-            remark6: {
-                type: 'string',
-                title: '描述6'
-            },
-            products: {
-                type: 'array',
-                title: '产品清单',
-                maxItems: 2,
-                items: {
-                    type: 'object',
-                    span_label: 5,
-                    span_control: 19,
-                    properties: {
-                        pn: {
-                            title: '产品名称',
-                            type: 'string'
-                        },
-                        num: {
-                            title: '件数',
-                            type: 'number',
-                            minimum: 1,
-                            maximum: 1000
-                        },
-                        price: {
-                            title: '金额',
-                            type: 'number'
-                        }
-                    },
-                    required: ['pn', 'num', 'price'],
-                },
-            }
+            // age: {
+            //     type: 'number',
+            //     title: '年龄'
+            // },
+            // birthday: {
+            //     type: 'string',
+            //     title: '生日',
+            //     widget: 'date'
+            // },
+            // products: {
+            //     type: 'array',
+            //     title: '产品清单',
+            //     maxItems: 2,
+            //     items: {
+            //         type: 'object',
+            //         span_label: 5,
+            //         span_control: 19,
+            //         properties: {
+            //             pn: {
+            //                 title: '产品名称',
+            //                 type: 'string'
+            //             },
+            //             num: {
+            //                 title: '件数',
+            //                 type: 'number',
+            //                 minimum: 1,
+            //                 maximum: 1000
+            //             },
+            //             price: {
+            //                 title: '金额',
+            //                 type: 'number'
+            //             }
+            //         },
+            //         required: ['pn', 'num', 'price'],
+            //     },
+            // }
         },
         required: ['email', 'name'],
         button: {

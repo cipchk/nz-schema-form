@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
-import { ObjectProperty } from 'angular2-schema-form/dist/model';
+import { ObjectProperty } from '../../../lib/src/model/objectproperty';
 
 @Component({
     selector: 'app-validator',

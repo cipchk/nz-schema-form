@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
-import { SchemaFormModule } from 'angular2-schema-form';
 import { NzSchemaFormModule } from 'nz-schema-form';
 
 import { AppComponent } from './app.component';
@@ -37,7 +36,6 @@ import { ValidatorComponent } from './validator/validator.component';
         { path: 'validator', component: ValidatorComponent }
     ], { useHash: true }),
     NgZorroAntdModule.forRoot(),
-    SchemaFormModule,
     NzSchemaFormModule.forRoot({
     })
   ],

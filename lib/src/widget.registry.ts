@@ -1,24 +1,30 @@
-import { WidgetRegistry } from 'angular2-schema-form';
+export class WidgetRegistry {
+    private widgets: { [type: string]: any } = {};
 
-import { ObjectWidget } from './object/object.widget';
-import { ArrayWidget } from './array/array.widget';
-import { ButtonWidget } from './button/button.widget';
-import { StringWidget } from './string/string.widget';
-import { DateWidget } from './date/date.widget';
+    private defaultWidget: any;
 
-export class NzWidgetRegistry extends WidgetRegistry {
-    constructor() {
-        super();
+    constructor() {}
 
-        this.register('object', ObjectWidget);
-        this.register('array', ArrayWidget);
-        this.register('button', ButtonWidget);
+    setDefaultWidget(widget: any) {
+        this.defaultWidget = widget;
+    }
 
-        this.register('string', StringWidget);
-        this.register('date', DateWidget);
+    getDefaultWidget() {
+        return this.defaultWidget;
+    }
 
-        // this.register('text', StringWidget);
+    hasWidget(type: string) {
+        return this.widgets.hasOwnProperty(type);
+    }
 
-        this.setDefaultWidget(StringWidget);
+    register(type: string, widget: any) {
+        this.widgets[type] = widget;
+    }
+
+    getWidgetType(type: string): any {
+        if (this.hasWidget(type)) {
+            return this.widgets[type];
+        }
+        return this.defaultWidget;
     }
 }

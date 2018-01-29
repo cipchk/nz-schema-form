@@ -1,10 +1,9 @@
 import { ChangeDetectorRef, Component, OnChanges, EventEmitter, Input, Output } from '@angular/core';
-
-import { SchemaValidatorFactory } from 'angular2-schema-form';
-import { WidgetFactory } from 'angular2-schema-form/dist/widgetfactory';
-import { TerminatorService } from 'angular2-schema-form/dist/terminator.service';
-import { Action, ActionRegistry, FormPropertyFactory, FormProperty, SchemaPreprocessor, ValidatorRegistry, Validator } from 'angular2-schema-form/dist/model';
+import { Action, ActionRegistry, FormPropertyFactory, FormProperty, SchemaPreprocessor, ValidatorRegistry, Validator } from './model';
 import { SFSchema } from './interface';
+import { WidgetFactory } from './widget.factory';
+import { SchemaValidatorFactory } from './schema.validator.factory';
+import { TerminatorService } from './terminator.service';
 
 export function useFactory(schemaValidatorFactory: any, validatorRegistry: any) {
     return new FormPropertyFactory(schemaValidatorFactory, validatorRegistry);
@@ -148,7 +147,7 @@ export class FormComponent implements OnChanges {
         }
     }
 
-    public reset() {
+    reset() {
         this.rootProperty.reset(null, true);
     }
 }

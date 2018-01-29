@@ -1,10 +1,11 @@
 import { Component, OnChanges, SimpleChanges, Input, OnInit, ViewChild, ViewContainerRef, ChangeDetectorRef, ComponentRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Widget } from 'angular2-schema-form';
-import { FormProperty, ActionRegistry } from 'angular2-schema-form/dist/model';
-import { WidgetFactory } from 'angular2-schema-form/dist/widgetfactory';
-import { TerminatorService } from 'angular2-schema-form/dist/terminator.service';
 import { SFSchema, SFButton, SFButtonItem } from './interface';
+import { FormProperty } from './model/formproperty';
+import { Widget } from './widget';
+import { ActionRegistry } from './model/actionregistry';
+import { WidgetFactory } from './widget.factory';
+import { TerminatorService } from './terminator.service';
 
 @Component({
     selector: 'nz-sf-item',
@@ -15,8 +16,8 @@ import { SFSchema, SFButton, SFButtonItem } from './interface';
             [nzSpan]="_grid.span" [nzOffset]="_grid.offset"
             [nzXs]="_grid.xs" [nzSm]="_grid.sm" [nzMd]="_grid.md"
             [nzLg]="_grid.lg" [nzXl]="_grid.xl">
-            <sf-form-element-action *ngFor="let i of btn.items"
-                [button]="i" [formProperty]="formProperty"></sf-form-element-action>
+            <nz-sf-action *ngFor="let i of btn.items"
+                [button]="i" [formProperty]="formProperty"></nz-sf-action>
         </div>
     </div>
     `
@@ -42,7 +43,7 @@ export class FormItemComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.parseButtons();
-        this.terminator.onDestroy.subscribe(destroy => {
+        this.terminator.onDestroy.subscribe((destroy: any) => {
             if (destroy) {
                 this.ref.destroy();
             }

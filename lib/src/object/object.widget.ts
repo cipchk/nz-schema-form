@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ObjectLayoutWidget } from 'angular2-schema-form';
+import { ObjectLayoutWidget } from '../widget';
 
 @Component({
   selector: 'nz-sf-object',

@@ -6,18 +6,23 @@ const globals = {
     '@angular/common': 'ng.common',
     '@angular/platform-browser': 'ng.platformBrowser',
     '@angular/router': 'ng.router',
-    '@angular/forms': 'ng.forms',
     '@angular/common/http': 'ng.common.http',
+    '@angular/forms': 'ng.forms',
 
+    'rxjs/BehaviorSubject': 'Rx',
+    'rxjs/Observable': 'Rx',
     'rxjs/Subject': 'Rx',
     'rxjs/Subscription': 'Rx',
     'rxjs/operators': 'Rx.Observable.prototype',
+    'rxjs/observable/of': 'Rx.Observable',
+    'rxjs/observable/zip': 'Rx.Observable',
+    'rxjs/observable/fromEvent': 'Rx.Observable',
+    'rxjs/observable/FromEventObservable': 'Rx.Observable',
+    'rxjs/observable/combineLatest': 'Rx.Observable',
 
     'ng-zorro-antd': 'ngZorro.antd',
-    'angular2-schema-form': 'angular2-schema-form',
-    'angular2-schema-form/dist/model': 'angular2-schema-form',
-    'angular2-schema-form/dist/widgetfactory': 'angular2-schema-form',
-    'angular2-schema-form/dist/terminator.service': 'angular2-schema-form'
+    'moment': 'moment',
+    'z-schema': 'z-schema'
 };
 
 module.exports = {
@@ -31,6 +36,7 @@ module.exports = {
         globals: globals
     },
     plugins: [
+        replace({ "import * as moment": "import moment" }),
         resolve({
             jsnext: true,
             main: true

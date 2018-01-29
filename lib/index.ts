@@ -1,27 +1,22 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SchemaValidatorFactory, WidgetRegistry, ZSchemaValidatorFactory, SchemaFormModule } from 'angular2-schema-form';
 
 import { SchemaFormOptions } from './schema-form.options';
-import { NzWidgetRegistry } from './src/widget.registry';
+import { NzWidgetRegistry } from './src/nz-widget.registry';
+import { WidgetRegistry } from './src/widget.registry';
+import { SchemaValidatorFactory, ZSchemaValidatorFactory } from './src/schema.validator.factory';
 
 // region: components
 
 import { FormComponent } from './src/form.component';
+import { FormItemComponent } from './src/form-item.component';
+import { FormActionComponent } from './src/form-item-action.component';
 
 const COMPONENTS = [
     FormComponent,
-];
-
-// endregion
-
-// region: inner components
-
-import { FormItemComponent } from './src/form-item.component';
-
-const INNERCOMPONENTS = [
     FormItemComponent,
+    FormActionComponent,
 ];
 
 // endregion
@@ -34,7 +29,6 @@ import { ButtonWidget } from './src/button/button.widget';
 import { StringWidget } from './src/string/string.widget';
 import { DateWidget } from './src/date/date.widget';
 
-
 const WIDGETS: any[] = [
     ObjectWidget,
     ArrayWidget,
@@ -45,8 +39,14 @@ const WIDGETS: any[] = [
 
 // endregion
 
-// export
+// region: export
+
+export { FormComponent } from './src/form.component';
+export { FormItemComponent } from './src/form-item.component';
+export { FormActionComponent } from './src/form-item-action.component';
 export * from './src';
+
+// endregion
 
 // region: ng-zorro-antd
 import {
@@ -69,12 +69,12 @@ const ZORROMODULES = [
 
 @NgModule({
     imports: [
-        CommonModule, FormsModule, ReactiveFormsModule, SchemaFormModule,
+        CommonModule, FormsModule, ReactiveFormsModule,
         ...ZORROMODULES
     ],
-    declarations: [ ...COMPONENTS, ...INNERCOMPONENTS, ...WIDGETS ],
+    declarations: [ ...COMPONENTS, ...WIDGETS ],
     entryComponents: WIDGETS,
-    exports: [ ...COMPONENTS ]
+    exports: [ ...COMPONENTS, ...WIDGETS ]
 })
 export class NzSchemaFormModule {
     public static forRoot(options: SchemaFormOptions): ModuleWithProviders {

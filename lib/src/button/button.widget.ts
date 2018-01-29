@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormProperty } from 'angular2-schema-form/dist/model';
+import { FormProperty } from '../model';
 import { SFButtonItem } from '../interface';
 
 @Component({
