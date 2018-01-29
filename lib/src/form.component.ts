@@ -120,7 +120,7 @@ export class FormComponent implements OnChanges {
         }
 
         if (this.schema && (changes.model || changes.schema)) {
-            this.rootProperty.reset(this.model, false);
+            this.rootProperty._reset(this.model, false);
             this.cdr.detectChanges();
         }
     }
@@ -148,6 +148,6 @@ export class FormComponent implements OnChanges {
     }
 
     reset() {
-        this.rootProperty.reset(null, true);
+        this.rootProperty._reset(null, true);
     }
 }

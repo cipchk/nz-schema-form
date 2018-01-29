@@ -17,6 +17,7 @@ export abstract class FormProperty {
     private _root: PropertyGroup;
     private _parent: PropertyGroup;
     private _path: string;
+    _widget: any;
 
     constructor(schemaValidatorFactory: SchemaValidatorFactory, private validatorRegistry: ValidatorRegistry, public schema: any, parent: PropertyGroup, path: string) {
         this.schemaValidator = schemaValidatorFactory.createValidatorFn(this.schema);
@@ -68,7 +69,12 @@ export abstract class FormProperty {
 
     abstract setValue(value: any, onlySelf: boolean): any;
 
-    abstract reset(value: any, onlySelf: boolean): any;
+    abstract _reset(value: any, onlySelf: boolean): any;
+
+    /** 重置表单 */
+    reset(value: any, onlySelf: boolean = true): any {
+        return null;
+    }
 
     updateValueAndValidity(onlySelf = false, emitEvent = true) {
         this._updateValue();
@@ -208,6 +214,16 @@ export abstract class FormProperty {
 
 export abstract class PropertyGroup extends FormProperty {
     properties: any = null;
+
+    reset(value: any, onlySelf: boolean = true): any {
+        const ret = this._reset(value, onlySelf);
+        this.forEachChild((property: any, propertyId: string) => {
+          if (property.visible && property._widget && property._widget.control) {
+            property._widget.control.markAsPristine();
+          }
+        });
+        return ret;
+    }
 
     getProperty(path: string) {
         let subPathIdx = path.indexOf('/');

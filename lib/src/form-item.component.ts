@@ -83,6 +83,7 @@ export class FormItemComponent implements OnInit, OnChanges {
         this.widget.name = id;
         this.widget.id = id;
         this.widget.control = this.control;
+        this.formProperty._widget = widget;
     }
 
     ngOnChanges(changes: SimpleChanges): void {

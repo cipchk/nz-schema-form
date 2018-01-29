@@ -44,7 +44,7 @@ describe('Atomic properties', () => {
         ''
       );
 
-      atomicPropertyWithDefault.reset();
+      atomicPropertyWithDefault._reset();
 
       expect(atomicPropertyWithDefault.value).toBe(THE_DEFAULT_VALUE);
     });
@@ -53,7 +53,7 @@ describe('Atomic properties', () => {
       let fallback = Symbol();
       spyOn(atomicProperty, 'fallbackValue').and.returnValue(fallback);
 
-      atomicProperty.reset();
+      atomicProperty._reset();
 
       expect(atomicProperty.value).toBe(fallback);
     });
@@ -72,7 +72,7 @@ describe('Atomic properties', () => {
         ''
       );
 
-      property.reset();
+      property._reset();
 
       expect(property.value).toBe(null);
     });

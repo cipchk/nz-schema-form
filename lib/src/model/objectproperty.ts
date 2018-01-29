@@ -26,7 +26,7 @@ export class ObjectProperty extends PropertyGroup {
     this.updateValueAndValidity(onlySelf, true);
   }
 
-  reset(value: any, onlySelf = true) {
+  _reset(value: any, onlySelf = true) {
     value = value || this.schema.default || {};
     this.resetProperties(value);
     this.updateValueAndValidity(onlySelf, true);
@@ -35,7 +35,7 @@ export class ObjectProperty extends PropertyGroup {
   resetProperties(value: any) {
     for (const propertyId in this.schema.properties) {
       if (this.schema.properties.hasOwnProperty(propertyId)) {
-        this.properties[propertyId].reset(value[propertyId], true);
+        this.properties[propertyId]._reset(value[propertyId], true);
       }
     }
   }
@@ -64,7 +64,7 @@ export class ObjectProperty extends PropertyGroup {
     super._runValidation();
 
     if (this._errors) {
-      this._errors.forEach(error => {
+      this._errors.forEach((error: any) => {
         const prop = this.searchProperty(error.path.slice(1));
         if (prop) {
           prop.extendErrors(error);
@@ -74,8 +74,8 @@ export class ObjectProperty extends PropertyGroup {
   }
 
   private reduceValue(): void {
-    const value = {};
-    this.forEachChild((property, propertyId: string) => {
+    const value: any = {};
+    this.forEachChild((property: any, propertyId: string) => {
       if (property.visible && property._hasValue()) {
         value[propertyId] = property.value;
       }

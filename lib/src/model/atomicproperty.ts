@@ -2,12 +2,12 @@ import {FormProperty} from './formproperty';
 
 export abstract class AtomicProperty extends FormProperty {
 
-  setValue(value, onlySelf = false) {
+  setValue(value: any, onlySelf = false) {
     this._value = value;
     this.updateValueAndValidity(onlySelf, true);
   }
 
-  reset(value: any = null, onlySelf = true) {
+  _reset(value: any = null, onlySelf = true) {
     this.resetValue(value);
     this.updateValueAndValidity(onlySelf, true);
   }

@@ -64,7 +64,7 @@ export class FormPropertyFactory {
   }
 
   private initializeRoot(rootProperty: PropertyGroup) {
-    rootProperty.reset(null, true);
+    rootProperty._reset(null, true);
     rootProperty._bindVisibility();
   }
 }

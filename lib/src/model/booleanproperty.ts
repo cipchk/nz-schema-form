@@ -2,7 +2,7 @@ import { AtomicProperty } from './atomicproperty';
 
 export class BooleanProperty extends AtomicProperty {
 
-  fallbackValue() {
+  fallbackValue(): any {
     return null;
   }
 }

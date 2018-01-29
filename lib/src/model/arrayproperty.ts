@@ -16,7 +16,7 @@ export class ArrayProperty extends PropertyGroup {
 
   addItem(value: any = null): FormProperty {
     let newProperty = this.addProperty();
-    newProperty.reset(value, false);
+    newProperty._reset(value, false);
     return newProperty;
   }
 
@@ -46,7 +46,7 @@ export class ArrayProperty extends PropertyGroup {
   }
 
   private reduceValue(): void {
-    const value = [];
+    const value: any[] = [];
     this.forEachChild((property, _) => {
       if (property.visible && property._hasValue()) {
         value.push(property.value);
@@ -55,7 +55,7 @@ export class ArrayProperty extends PropertyGroup {
     this._value = value;
   }
 
-  reset(value: any, onlySelf = true) {
+  _reset(value: any, onlySelf = true) {
     value = value || this.schema.default || [];
     this.properties = [];
     this.resetProperties(value);
@@ -71,7 +71,7 @@ export class ArrayProperty extends PropertyGroup {
     for (let idx in value) {
       if (value.hasOwnProperty(idx)) {
         let property = this.addProperty();
-        property.reset(value[idx], true);
+        property._reset(value[idx], true);
       }
     }
   }
