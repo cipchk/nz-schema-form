@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SchemaFormOptions } from './schema-form.options';
-import { NzWidgetRegistry } from './src/nz-widget.registry';
+import { NzWidgetRegistry } from './src/widgets/nz-widget.registry';
 import { WidgetRegistry } from './src/widget.registry';
 import { SchemaValidatorFactory, ZSchemaValidatorFactory } from './src/schema.validator.factory';
 
 // region: components
 
-import { FormComponent } from './src/form.component';
-import { FormItemComponent } from './src/form-item.component';
-import { FormActionComponent } from './src/form-item-action.component';
+import {
+    FormComponent,
+    FormItemComponent,
+    FormActionComponent,
+} from './src';
 
 const COMPONENTS = [
     FormComponent,
@@ -23,11 +25,13 @@ const COMPONENTS = [
 
 // region: widgets
 
-import { ObjectWidget } from './src/object/object.widget';
-import { ArrayWidget } from './src/array/array.widget';
-import { ButtonWidget } from './src/button/button.widget';
-import { StringWidget } from './src/string/string.widget';
-import { DateWidget } from './src/date/date.widget';
+import {
+    ObjectWidget,
+    ArrayWidget,
+    ButtonWidget,
+    StringWidget,
+    DateWidget
+} from './src/widgets';
 
 const WIDGETS: any[] = [
     ObjectWidget,
@@ -44,7 +48,8 @@ const WIDGETS: any[] = [
 export { FormComponent } from './src/form.component';
 export { FormItemComponent } from './src/form-item.component';
 export { FormActionComponent } from './src/form-item-action.component';
-export * from './src';
+export * from './src/widgets';
+export * from './src/schema';
 
 // endregion
 

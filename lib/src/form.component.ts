@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnChanges, EventEmitter, Input, Output } from '@angular/core';
 import { Action, ActionRegistry, FormPropertyFactory, FormProperty, SchemaPreprocessor, ValidatorRegistry, Validator } from './model';
-import { SFSchema } from './interface';
+import { SFSchema } from './schema';
 import { WidgetFactory } from './widget.factory';
 import { SchemaValidatorFactory } from './schema.validator.factory';
 import { TerminatorService } from './terminator.service';

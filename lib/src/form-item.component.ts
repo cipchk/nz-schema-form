@@ -1,6 +1,7 @@
 import { Component, OnChanges, SimpleChanges, Input, OnInit, ViewChild, ViewContainerRef, ChangeDetectorRef, ComponentRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SFSchema, SFButton, SFButtonItem } from './interface';
+import { SFSchema } from './schema';
+import { SFButton, SFButtonItem } from './schema/button';
 import { FormProperty } from './model/formproperty';
 import { Widget } from './widget';
 import { ActionRegistry } from './model/actionregistry';

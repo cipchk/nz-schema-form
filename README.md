@@ -1,4 +1,8 @@
-# nz-schema-form [![NPM version](https://img.shields.io/npm/v/nz-schema-form.svg)](https://www.npmjs.com/package/nz-schema-form)
+# nz-schema-form
+
+[![Build Status](https://travis-ci.org/cipchk/nz-schema-form.svg?branch=master)](https://travis-ci.org/cipchk/nz-schema-form)
+[![Dependency Status](https://david-dm.org/cipchk/nz-schema-form/status.svg)](https://david-dm.org/cipchk/nz-schema-form)
+[![NPM version](https://img.shields.io/npm/v/nz-schema-form.svg)](https://www.npmjs.com/package/nz-schema-form)
 
 [ng-zorro-antd](https://ng.ant.design/) form generation based on JSON Schema.
 
@@ -16,21 +20,21 @@ By data type, all the available widgets contains listed below:
 
 | widget | zorro component | assigned | testing | status |
 | ------ | --------------- | -------- | ------ | ------ |
-| `object` | - | - | - | - |
-| `array` | - | - | - | - |
-| `string` | - | - | - | - |
+| `object` | - | cipchk | - | - |
+| `array` | - | cipchk | - | - |
+| `string` | - | cipchk | - | - |
+| `button` | `nz-button` | cipchk | - | - |
 | `boolean` | `nz-switch` | - | - | - |
 | `integer` | `nz-input-number` | - | - | - |
-| `button` | `nz-button` | - | - | - |
 | `textarea` | `nz-input` | - | - | - |
 | `checkbox` | `nz-checkbox` | - | - | - |
 | `radio` | `nz-radio` | - | - | - |
-| `date` | `nz-datepicker` | - | - | - |
-| `date-range` | `nz-rangepicker` | - | - | - |
-| `time` | `nz-timepicker` | - | - | - |
-| `rate` | `nz-rate` | - | - | - |
-| `select` | `nz-select` | - | - | - |
-| `range` | `nz-slider` | - | - | - |
+| `date` | `nz-datepicker` | viking | - | - |
+| `date-range` | `nz-rangepicker` | viking | - | - |
+| `time` | `nz-timepicker` | viking | - | - |
+| `rate` | `nz-rate` | viking | - | - |
+| `select` | `nz-select` | viking | - | - |
+| `range` | `nz-slider` | viking | - | - |
 | `file` | `nz-upload` | - | - | - |
 | `cascader` | `nz-cascader` | - | - | - |
 | `transfer` | `nz-transfer` | - | - | - |

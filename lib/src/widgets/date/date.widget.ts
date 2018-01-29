@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ControlWidget } from '../widget';
+import { ControlWidget } from '../../widget';
 
 @Component({
     selector: 'nz-sf-date-widget',

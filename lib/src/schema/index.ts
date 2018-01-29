@@ -1,3 +1,8 @@
+import { SFHorizontalLayoutSchema } from './horizontal-layout';
+import { SFArraySchema } from './array';
+import { SFRenderSchema } from './render';
+import { SFActiveSchema } from './active';
+import { SFButton } from './button';
 
 export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRenderSchema, SFActiveSchema {
     ////////////任何实例类型/////////////
@@ -113,6 +118,7 @@ export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRen
     order?: string[];
     /**
      * 自定义表单元素组合
+     * TODO: ng-zorro-antd 本身并不支持 fieldsets 定义，因此不考虑该字段的实现
      */
     // fieldsets?: SFFieldsetsSchema[];
     ////////////注释类型/////////////
@@ -168,136 +174,4 @@ export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRen
      * 限 `type=textarea` 时有效
      */
     autosize?: boolean | Object;
-}
-
-export interface SFHorizontalLayoutSchema {
-    /**
-     * `label` 栅格占位格数，默认：`5`
-     * - `0` 时相当于 `display: none`
-     * - 限 `horizontal` 水平布局有效
-     */
-    span_label?: number;
-
-    /**
-     * `control` 栅格占位格数，默认：`19`
-     * - `0` 时相当于 `display: none`
-     * - 限 `horizontal` 水平布局有效
-     */
-    span_control?: number;
-
-    /**
-     * `control` 栅格左侧的间隔格数，间隔内不可以有栅格
-     * - 限 `horizontal` 水平布局有效
-     */
-    offset_control?: number;
-}
-
-export interface SFArraySchema {
-    /**
-     * 添加按钮文本
-     *
-     * 限定表格渲染时有效
-     */
-    addText?: string;
-    /**
-     * 移除按钮文本
-     *
-     * 限定表格渲染时有效
-     */
-    removeText?: string;
-}
-
-export interface SFRenderSchema {
-    /**
-     * 自定义类，等同 `[ngClass]` 值
-     */
-    class?: string | string[];
-    /**
-     * 自定义样式，等同 `[ngStyle]` 值
-     */
-    style?: {[key: string]: string};
-    /**
-     * 响应式属性
-     */
-    grid?: SFGrid;
-}
-
-export interface SFActiveSchema {
-    /**
-     * 是否禁用状态
-     */
-    disabled?: boolean;
-    /**
-     * 元素组件大小
-     * @default 'large'
-     */
-    size?: 'default' | 'large' | 'small';
-}
-
-export interface SFButton extends SFRenderSchema {
-    /**
-     * 按钮组
-     */
-    items: SFButtonItem[];
-}
-
-export interface SFButtonItem extends SFActiveSchema {
-    [key: string]: any;
-
-    id: string;
-
-    /**
-     * 按钮文本
-     */
-    label: string;
-
-    /**
-     * 是否提交按钮
-     */
-    submit?: boolean;
-
-    /**
-     * 回调携带参数
-     */
-    parameters?: any;
-
-    /**
-     * 按钮类型
-     */
-    type?: 'primary' | 'default' | 'dashed' | 'danger';
-}
-
-export interface SFGridSize {
-    span?: number;
-    order?: number;
-    offset?: number;
-    push?: number;
-    pull?: number;
-}
-
-export interface SFGrid {
-    /**
-     * 栅格间隔
-     */
-    gutter?: number;
-    /**
-     * 栅格占位格数，为 `0` 时相当于 `display: none`
-     */
-    span?: number;
-    /**
-     * 栅格左侧的间隔格数，间隔内不可以有栅格
-     */
-    offset?: number;
-    xs?: number | SFGridSize;
-    sm?: number | SFGridSize;
-    md?: number | SFGridSize;
-    lg?: number | SFGridSize;
-    xl?: number | SFGridSize;
-    xxl?: number | SFGridSize;
-}
-
-export interface SFFieldsetsSchema {
-    title?: string;
-
-    fields: string[];
 }

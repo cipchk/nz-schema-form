@@ -1,4 +1,4 @@
-import { WidgetRegistry } from './widget.registry';
+import { WidgetRegistry } from '../widget.registry';
 
 import { ObjectWidget } from './object/object.widget';
 import { ArrayWidget } from './array/array.widget';

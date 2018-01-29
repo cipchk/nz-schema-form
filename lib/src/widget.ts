@@ -1,7 +1,7 @@
 import { AfterViewInit, HostBinding } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ArrayProperty, FormProperty, ObjectProperty } from './model';
-import { SFSchema } from './interface';
+import { SFSchema } from './schema';
 
 export abstract class Widget<T extends FormProperty> {
     formProperty: T;

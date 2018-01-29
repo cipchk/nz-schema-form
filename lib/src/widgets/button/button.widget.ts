@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormProperty } from '../model';
-import { SFButtonItem } from '../interface';
+import { FormProperty } from '../../model';
+import { SFButtonItem } from '../../schema/button';
 
 @Component({
     selector: 'nz-sf-button-widget',
