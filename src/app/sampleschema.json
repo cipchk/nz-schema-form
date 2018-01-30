@@ -52,17 +52,19 @@
             }
         }
     },
-    "required": ["email", "name"],
-    "buttons": [
-        {
-            "label": "Send",
-            "id": "send",
-            "submit": true,
-            "offset": 4
-        },
-        {
-            "label": "Reset",
-            "id": "reset"
-        }
-    ]
+    "button": {
+        "style": { "text-align": "center" },
+        "items": [
+            {
+                "label": "Send",
+                "id": "send",
+                "submit": true,
+                "offset": 4
+            },
+            {
+                "label": "Reset",
+                "id": "reset"
+            }
+        ]
+    }
 }
