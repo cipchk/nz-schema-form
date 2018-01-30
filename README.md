@@ -25,9 +25,9 @@ By data type, all the available widgets contains listed below:
 | `string` | - | cipchk | - | - |
 | `button` | `nz-button` | cipchk | - | - |
 | `boolean` | `nz-switch` | cipchk | - | - |
-| `integer` | `nz-input-number` | - | - | - |
+| `integer` | `nz-input-number` | cipchk | - | - |
 | `textarea` | `nz-input` | cipchk | - | - |
-| `checkbox` | `nz-checkbox` | - | - | - |
+| `checkbox` | `nz-checkbox` | cipchk | - | - |
 | `radio` | `nz-radio` | - | - | - |
 | `date` | `nz-datepicker` | viking | - | - |
 | `date-range` | `nz-rangepicker` | viking | - | - |

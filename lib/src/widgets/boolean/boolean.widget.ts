@@ -7,17 +7,23 @@ import { ControlWidget } from '../../widget';
     <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
         <label nz-form-item-required [nzRequired]="required" [attr.for]="id">{{ schema.title }}</label>
     </div>
-    <div nz-form-control nz-col
-        [nzSpan]="schema.span_control"
-        [nzOffset]="schema.span_label"
-        [nzOffset]="schema.offset_control">
-        <label nz-checkbox
-            [formControl]="control">
-            <span [innerHTML]="schema.description"></span>
-        </label>
+    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
+        <nz-switch [formControl]="control"
+            [nzDisabled]="schema.disabled"
+            [nzSize]="size">
+            <span checked [innerHTML]="checked"></span>
+            <span unchecked [innerHTML]="unchecked"></span>
+        </nz-switch>
         <div nz-form-extra *ngIf="schema.extra" [innerHTML]="schema.extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
 export class BooleanWidget extends ControlWidget {
+    get checked() {
+        return this.widgetData[`checked`] || '';
+    }
+
+    get unchecked() {
+        return this.widgetData[`unchecked`] || '';
+    }
 }

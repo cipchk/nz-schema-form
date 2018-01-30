@@ -38,10 +38,17 @@ export class HomeComponent {
                     min: 18
                 }
             },
+            yesOrNot: {
+                type: 'boolean',
+                title: '允许售卖',
+                default: true
+            },
             agree: {
                 type: 'boolean',
                 description: `I have read the <a href="https://github.com/cipchk/nz-schema-form" target="_blank">agreement</a>`,
-                default: true
+                widget: {
+                    id: `checkbox`
+                }
             },
             birthday: {
                 type: 'string',

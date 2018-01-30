@@ -33,7 +33,8 @@ import {
     DateWidget,
     TextareaWidget,
     BooleanWidget,
-    NumberWidget
+    NumberWidget,
+    CheckboxWidget
 } from './src/widgets';
 
 const WIDGETS: any[] = [
@@ -44,7 +45,8 @@ const WIDGETS: any[] = [
     DateWidget,
     TextareaWidget,
     BooleanWidget,
-    NumberWidget
+    NumberWidget,
+    CheckboxWidget
 ];
 
 // endregion
@@ -68,7 +70,8 @@ import {
     NzButtonModule,
     NzDatePickerModule,
     NzCheckboxModule,
-    NzInputNumberModule
+    NzInputNumberModule,
+    NzSwitchModule
 } from 'ng-zorro-antd';
 const ZORROMODULES = [
     NzGridModule,
@@ -78,7 +81,8 @@ const ZORROMODULES = [
     NzButtonModule,
     NzDatePickerModule,
     NzCheckboxModule,
-    NzInputNumberModule
+    NzInputNumberModule,
+    NzSwitchModule
 ];
 // endregion
 
