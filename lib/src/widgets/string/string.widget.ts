@@ -17,7 +17,7 @@ import { WidgetData } from './../../schema/types';
             [attr.readonly]="(schema.widget.id!=='color') && schema.readOnly?true:null"
             [attr.id]="id"
             [attr.type]="type"
-            [attr.placeholder]="schema.description"
+            [attr.placeholder]="description"
             [attr.maxLength]="schema.maxLength || null"
             [attr.minLength]="schema.minLength || null"
             [attr.disabled]="(schema.widget.id=='color' && schema.disabled)?true:null"

@@ -14,7 +14,7 @@ import { ControlWidget } from '../../widget';
             nzType="textarea"
             [nzReadonly]="schema.readOnly"
             [nzDisabled]="schema.disabled"
-            [nzPlaceHolder]="schema.description"
+            [nzPlaceHolder]="description"
             [nzSize]="size"
             [nzAutosize]="autosize"
             [nzRows]="rows"></nz-input>

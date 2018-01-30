@@ -9,7 +9,7 @@ import { ControlWidget } from '../../widget';
     </div>
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
         <nz-input-number [formControl]="control"
-            [nzPlaceHolder]="schema.description || ''"
+            [nzPlaceHolder]="description"
             [nzDisabled]="schema.disabled"
             [nzSize]="size"
             [nzMin]="min"

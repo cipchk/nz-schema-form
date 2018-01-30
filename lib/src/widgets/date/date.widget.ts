@@ -11,7 +11,7 @@ import { SchemaFormOptions } from '../../../schema-form.options';
     </div>
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
 
-        <nz-datepicker [nzFormat]="schema.widget.format || 'YYYY-MM-DD'" [nzSize]="schema.widget.size" [nzDisabled]="schema.readOnly" [formControl]="control" [nzPlaceHolder]="schema.placeholder"></nz-datepicker>
+        <nz-datepicker [nzFormat]="schema.widget.format || 'YYYY-MM-DD'" [nzSize]="schema.widget.size" [nzDisabled]="schema.readOnly" [formControl]="control" [nzPlaceHolder]="description"></nz-datepicker>
         <div nz-form-explain *ngIf="schema.description" [innerHTML]="schema.description"></div>
     </div>`,
     styles: [`

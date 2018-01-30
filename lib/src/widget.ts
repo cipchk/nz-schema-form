@@ -44,6 +44,10 @@ export class BaseWidget extends Widget<FormProperty> {
         return (this.schema.widget as WidgetData) || {};
     }
 
+    get description(): string {
+        return this.schema.description || '';
+    }
+
     required: boolean;
 }
 
