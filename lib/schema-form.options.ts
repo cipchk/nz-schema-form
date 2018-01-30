@@ -20,9 +20,14 @@ export interface SchemaFormOptions {
      * 自定义通用错误信息
      */
     errors?: { [ key: string ]: string }
+    /**
+     * 日期小部件配置
+     */
+    date?: any;
 }
 
 export const DEFAULT: SchemaFormOptions = {
     errors: ERRORSDEFAULT,
-    onlyVisual: false
+    onlyVisual: false,
+    date: {}
 };

@@ -22,11 +22,6 @@ import { SchemaFormOptions } from '../../../schema-form.options';
 })
 export class DateWidget extends ControlWidget {
 
-    constructor(
-        public options: SchemaFormOptions) {
-        super();
-    }
-
     serialize(value: any) {
 
         // 如果值是空的则返回空字符串, 空字符串会触发 fallback 外层对象删除此属性。
@@ -46,7 +41,7 @@ export class DateWidget extends ControlWidget {
         if (this.schema.format)
             return moment(value).format(this.schema.format);
 
-        const option = (this.options || { date: null }).date || {};
+        const option = this.options.date || {};
 
         // 若存在 dateFormat 则使用 option 的format;
         const dateFormat = option.format;

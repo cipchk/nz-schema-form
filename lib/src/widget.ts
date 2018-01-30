@@ -1,7 +1,8 @@
-import { AfterViewInit, HostBinding } from '@angular/core';
+import { AfterViewInit, HostBinding, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ArrayProperty, FormProperty, ObjectProperty } from './model';
 import { SFSchema } from './schema';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
 
 export abstract class Widget<T extends FormProperty> {
     formProperty: T;
@@ -18,6 +19,11 @@ export abstract class Widget<T extends FormProperty> {
  * 小部件基类，一般用于无须校难通知视觉小部件
  */
 export class BaseWidget extends Widget<FormProperty> {
+
+    constructor(@Inject(NZ_SF_OPTIONS_TOKEN) protected options: SchemaFormOptions) {
+        super();
+    }
+
     get size() {
         return this.schema.size || 'large';
     }
