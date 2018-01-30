@@ -80,13 +80,18 @@ export class FormItemComponent implements OnInit, OnChanges {
         this.widget = widget;
         let id = '_sf-' + FormItemComponent.counter++;
 
+        const schema = this.formProperty.schema;
         this.widget.formProperty = this.formProperty;
-        this.widget.schema = this.formProperty.schema;
+        this.widget.schema = schema;
         this.widget.name = id;
         this.widget.id = id;
         this.widget.control = this.control;
         this.formProperty._widget = widget;
-        this.widget.onlyVisual = typeof this.formProperty.schema.onlyVisual == null ? this.options.onlyVisual : this.formProperty.schema.onlyVisual;
+        if (this.formProperty.parent) {
+            const key = this.formProperty.path.substr(this.formProperty.path.lastIndexOf('/') + 1);
+            this.widget.required = ((this.formProperty.parent.schema.required || []) as string[]).indexOf(key) !== -1;
+        }
+        this.widget.onlyVisual = typeof schema.onlyVisual == null ? this.options.onlyVisual : schema.onlyVisual;
     }
 
     ngOnChanges(changes: SimpleChanges): void {

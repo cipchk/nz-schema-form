@@ -7,7 +7,7 @@ import { ControlWidget } from '../../widget';
   <input *ngIf="type==='hidden'; else notHiddenFieldBlock" [attr.name]="name" type="hidden" [formControl]="control">
   <ng-template #notHiddenFieldBlock>
     <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
-        <label nz-form-item-required [nzRequired]="schema.required" [attr.for]="id">{{ schema.title }}</label>
+        <label nz-form-item-required [nzRequired]="required" [attr.for]="id">{{ schema.title }}</label>
     </div>
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
         <input nz-input

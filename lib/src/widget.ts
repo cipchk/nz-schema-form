@@ -12,6 +12,7 @@ export abstract class Widget<T extends FormProperty> {
     id: string = '';
     name: string = '';
     schema: any = {};
+    required: boolean;
     onlyVisual: boolean;
 }
 
@@ -37,6 +38,8 @@ export class BaseWidget extends Widget<FormProperty> {
     get style() {
         return (this.schema as SFSchema).style || '';
     }
+
+    required: boolean;
 }
 
 /**
