@@ -32,7 +32,11 @@ export class HomeComponent {
             },
             age: {
                 type: 'number',
-                title: '年龄'
+                title: '年龄',
+                widget: {
+                    id: 'number',
+                    min: 18
+                }
             },
             agree: {
                 type: 'boolean',
