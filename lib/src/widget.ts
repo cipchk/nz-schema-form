@@ -12,8 +12,15 @@ export abstract class Widget<T extends FormProperty> {
     id: string = '';
     name: string = '';
     schema: SFSchema = {};
+
+    /** 获取 `widget` 数据 */
+    get widgetData(): WidgetData {
+        return (this.schema.widget as WidgetData) || {};
+    }
+
     required: boolean;
     onlyVisual: boolean;
+    showDescription: boolean;
 }
 
 /**
@@ -39,13 +46,16 @@ export class BaseWidget extends Widget<FormProperty> {
         return (this.schema as SFSchema).style || '';
     }
 
-    /** 获取 `widget` 数据 */
-    get widgetData(): WidgetData {
-        return (this.schema.widget as WidgetData) || {};
-    }
-
     get description(): string {
         return this.schema.description || '';
+    }
+
+    get placeholder(): string {
+        return this.widgetData.placeholder || '';
+    }
+
+    get extra(): string {
+        return this.widgetData.extra || '';
     }
 
     required: boolean;

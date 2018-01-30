@@ -22,6 +22,7 @@ export class HomeComponent {
                 title: '邮箱',
                 format: 'email',
                 description: '请输入邮箱，最多20个字符',
+                showDescription: true,
                 maxLength: 20
             },
             name: {
@@ -123,14 +124,17 @@ export class HomeComponent {
             email: {
                 type: 'string',
                 title: '邮箱',
-                placeholder: '邮箱'
+                widget: {
+                    placeholder: '邮箱'
+                }
             },
             name: {
                 type: 'number',
                 pattern: '^[A-Z]',
                 title: '姓名',
-                placeholder: '请输入姓名',
-                description: '必须3个字以上'
+                widget: {
+                    placeholder: '请输入姓名'
+                }
             },
             age: {
                 type: 'number',
@@ -178,13 +182,17 @@ export class HomeComponent {
             name: {
                 type: 'string',
                 title: '用户名',
-                placeholder: '请输入用户名',
+                widget: {
+                    placeholder: '请输入用户名'
+                },
                 minLength: 3
             },
             password: {
                 type: 'string',
                 title: '密码',
-                placeholder: '请输入密码',
+                widget: {
+                    placeholder: '请输入密码'
+                },
                 minLength: 6
             }
         },

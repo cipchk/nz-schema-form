@@ -7,12 +7,24 @@ import { SchemaFormOptions } from '../../../schema-form.options';
     selector: 'nz-sf-date-widget',
     template: `
     <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
-        <label nz-form-item-required [nzRequired]="required" [attr.for]="id">{{ schema.title }}</label>
+        <label nz-form-item-required [nzRequired]="required" [attr.for]="id">
+            <span>
+                {{ schema.title }}
+                <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
+                    <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+                </nz-tooltip>
+            </span>
+        </label>
     </div>
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
-
-        <nz-datepicker [nzFormat]="schema.widget.format || 'YYYY-MM-DD'" [nzSize]="schema.widget.size" [nzDisabled]="schema.readOnly" [formControl]="control" [nzPlaceHolder]="description"></nz-datepicker>
-        <div nz-form-explain *ngIf="schema.description" [innerHTML]="schema.description"></div>
+        <nz-datepicker
+            [nzFormat]="format"
+            [nzSize]="size"
+            [nzDisabled]="schema.readOnly"
+            [formControl]="control"
+            [nzPlaceHolder]="placeholder"></nz-datepicker>
+        <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
+        <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`,
     styles: [`
         nz-datepicker {
@@ -21,6 +33,10 @@ import { SchemaFormOptions } from '../../../schema-form.options';
     `]
 })
 export class DateWidget extends ControlWidget {
+
+    get format() {
+        return this.widgetData.format || 'YYYY-MM-DD';
+    }
 
     serialize(value: any) {
 

@@ -17,6 +17,10 @@ export interface SchemaFormOptions {
      */
     onlyVisual?: boolean;
     /**
+     * 是否展示 `description`，默认：`false`
+     */
+    showDescription?: boolean;
+    /**
      * 自定义通用错误信息
      */
     errors?: { [ key: string ]: string }
@@ -29,5 +33,6 @@ export interface SchemaFormOptions {
 export const DEFAULT: SchemaFormOptions = {
     errors: ERRORSDEFAULT,
     onlyVisual: false,
+    showDescription: false,
     date: {}
 };

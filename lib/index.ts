@@ -74,7 +74,8 @@ import {
     NzCheckboxModule,
     NzInputNumberModule,
     NzSwitchModule,
-    NzUploadModule
+    NzUploadModule,
+    NzToolTipModule
 } from 'ng-zorro-antd';
 const ZORROMODULES = [
     NzGridModule,
@@ -86,7 +87,8 @@ const ZORROMODULES = [
     NzCheckboxModule,
     NzInputNumberModule,
     NzSwitchModule,
-    NzUploadModule
+    NzUploadModule,
+    NzToolTipModule
 ];
 // endregion
 

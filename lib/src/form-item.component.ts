@@ -92,6 +92,7 @@ export class FormItemComponent implements OnInit, OnChanges {
             this.widget.required = ((this.formProperty.parent.schema.required || []) as string[]).indexOf(key) !== -1;
         }
         this.widget.onlyVisual = typeof schema.onlyVisual == null ? this.options.onlyVisual : schema.onlyVisual;
+        this.widget.showDescription = typeof schema.showDescription == null ? this.options.showDescription : schema.showDescription;
     }
 
     ngOnChanges(changes: SimpleChanges): void {

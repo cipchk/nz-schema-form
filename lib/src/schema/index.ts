@@ -1,6 +1,5 @@
 import { ErrorSchema } from './errors';
 import { SFHorizontalLayoutSchema } from './horizontal-layout';
-import { SFArraySchema } from './array';
 import { SFRenderSchema } from './render';
 import { SFActiveSchema } from './active';
 import { SFButton } from './button';
@@ -8,7 +7,7 @@ import { WidgetData } from './types';
 
 export * from './types';
 
-export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFArraySchema, SFRenderSchema, SFActiveSchema {
+export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRenderSchema, SFActiveSchema {
     ////////////任何实例类型/////////////
     /**
      * 调试模式
@@ -133,17 +132,13 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFArray
      */
     description?: string;
     /**
+     * 是否展示 `description`，默认：`false`
+     */
+    showDescription?: boolean;
+    /**
      * 默认值
      */
     default?: any;
-    /**
-     * 文字框中显示提示信息
-     */
-    placeholder?: string;
-    /**
-     * 用于显示表单额外提示信息
-     */
-    extra?: string;
     ////////////其他/////////////
     /**
      * 按钮信息
@@ -174,11 +169,4 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFArray
      * 是否只读状态
      */
     readOnly?: boolean;
-    ////////////渲染（非json schema标准部分）/////////////
-    /**
-     * 自适应内容高度，可设置为 true|false 或对象：`{ minRows: 2, maxRows: 6 }`
-     *
-     * 限 `type=textarea` 时有效
-     */
-    autosize?: boolean | Object;
 }
