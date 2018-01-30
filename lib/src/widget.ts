@@ -11,6 +11,7 @@ export abstract class Widget<T extends FormProperty> {
     id: string = '';
     name: string = '';
     schema: any = {};
+    onlyVisual: boolean;
 }
 
 /**
@@ -36,6 +37,15 @@ export class BaseWidget extends Widget<FormProperty> {
  * 小部件基类，带数据校验通知
  */
 export class ControlWidget extends BaseWidget implements AfterViewInit {
+
+    get hasError(): boolean {
+        return (this.control.dirty || this.control.touched) && this.errorMessages && this.errorMessages.length > 0;
+    }
+
+    get errorMessage(): string {
+        return this.errorMessages[0];
+    }
+
     ngAfterViewInit(): void {
         const control = this.control;
         this.formProperty.valueChanges.subscribe(newValue => {
@@ -47,9 +57,7 @@ export class ControlWidget extends BaseWidget implements AfterViewInit {
             if (this.schema.debug) console.warn('errorsChanges', this.formProperty.path, errors);
             control.setErrors(errors, { emitEvent: true });
             const messages = (errors || [])
-                .filter((e: any) => {
-                    return e.path && e.path.slice(1) === this.formProperty.path;
-                })
+                .sort((a: any, b: any) => b.path.length - a.path.length)
                 .map((e: any) => e.message);
             this.errorMessages = messages.filter((m: any, i: any) => messages.indexOf(m) === i);
         });

@@ -1,15 +1,15 @@
 import {isBlank} from './utils';
 
-function formatMessage(message, path) {
+function formatMessage(message: any, path: any) {
   return `Parsing error on ${path}: ${message}`;
 }
 
-function schemaError(message, path): void {
+function schemaError(message: any, path: any): void {
   let mesg = formatMessage(message, path);
   throw new Error(mesg);
 }
 
-function schemaWarning(message, path): void {
+function schemaWarning(message: any, path: any): void {
   let mesg = formatMessage(message, path);
   throw new Error(mesg);
 }
@@ -28,7 +28,7 @@ export class SchemaPreprocessor {
     SchemaPreprocessor.recursiveCheck(jsonSchema, path);
   }
 
-  private static checkProperties(jsonSchema, path: string) {
+  private static checkProperties(jsonSchema: any, path: string) {
     if (isBlank(jsonSchema.properties)) {
       jsonSchema.properties = {};
       schemaWarning('Provided json schema does not contain a \'properties\' entry. Output schema will be empty', path);
@@ -46,9 +46,9 @@ export class SchemaPreprocessor {
     SchemaPreprocessor.checkFieldsUsage(jsonSchema, path);
   }
 
-  private static checkFieldsUsage(jsonSchema, path: string) {
+  private static checkFieldsUsage(jsonSchema: any, path: string) {
     let fieldsId: string[] = Object.keys(jsonSchema.properties);
-    let usedFields = {};
+    let usedFields: any = {};
     for (let fieldset of jsonSchema.fieldsets) {
       for (let fieldId of fieldset.fields) {
         if (usedFields[fieldId] === undefined) {
@@ -79,12 +79,12 @@ export class SchemaPreprocessor {
     }
   }
 
-  private static createFieldsets(jsonSchema) {
+  private static createFieldsets(jsonSchema: any) {
     jsonSchema.order = Object.keys(jsonSchema.properties);
     SchemaPreprocessor.replaceOrderByFieldsets(jsonSchema);
   }
 
-  private static replaceOrderByFieldsets(jsonSchema) {
+  private static replaceOrderByFieldsets(jsonSchema: any) {
     jsonSchema.fieldsets = [{
       id: 'fieldset-default',
       title: jsonSchema.title || '',
@@ -105,13 +105,13 @@ export class SchemaPreprocessor {
     fieldSchema.widget = widget;
   }
 
-  private static checkItems(jsonSchema, path) {
+  private static checkItems(jsonSchema: any, path: string) {
     if (jsonSchema.items === undefined) {
       schemaError('No \'items\' property in array', path);
     }
   }
 
-  private static recursiveCheck(jsonSchema, path: string) {
+  private static recursiveCheck(jsonSchema: any, path: string) {
     if (jsonSchema.type === 'object') {
       for (let fieldId in jsonSchema.properties) {
         if (jsonSchema.properties.hasOwnProperty(fieldId)) {
@@ -133,7 +133,7 @@ export class SchemaPreprocessor {
     }
   }
 
-  private static removeRecursiveRefProperties(jsonSchema, definitionPath) {
+  private static removeRecursiveRefProperties(jsonSchema: any, definitionPath: any) {
     // to avoid infinite loop
     if (jsonSchema.type === 'object') {
       for (let fieldId in jsonSchema.properties) {

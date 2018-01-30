@@ -4,6 +4,8 @@ import { map, distinctUntilChanged } from 'rxjs/operators';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 import { SchemaValidatorFactory } from '../schema.validator.factory';
 import { ValidatorRegistry } from './validatorregistry';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../../schema-form.options';
+import { ErrorData } from './../schema/errors';
 
 export abstract class FormProperty {
     schemaValidator: Function;
@@ -19,7 +21,14 @@ export abstract class FormProperty {
     private _path: string;
     _widget: any;
 
-    constructor(schemaValidatorFactory: SchemaValidatorFactory, private validatorRegistry: ValidatorRegistry, public schema: any, parent: PropertyGroup, path: string) {
+    constructor(
+        schemaValidatorFactory: SchemaValidatorFactory,
+        private validatorRegistry: ValidatorRegistry,
+        public schema: any,
+        parent: PropertyGroup,
+        path: string,
+        private options: SchemaFormOptions
+    ) {
         this.schemaValidator = schemaValidatorFactory.createValidatorFn(this.schema);
 
         this._parent = parent;
@@ -130,6 +139,27 @@ export abstract class FormProperty {
     }
 
     private setErrors(errors: any) {
+        if (errors && !this.options.onlyVisual) {
+            errors = errors.map((err: any) => {
+                let message = (this.schema.errors || {})[err.code] || this.options.errors[err.code] || ``;
+                const args: ErrorData = {
+                    title: this.schema.title,
+                    code: err.code,
+                    path: err.path,
+                    description: err.description,
+                    message: err.message
+                };
+                err.params.forEach((v: any, i: number) => args[`param.${i}`] = v);
+                if (message && typeof message === 'function') message = message(args) as string;
+                if (message) {
+                    if (~message.indexOf('{')) {
+                        message = message.replace(/{([\.a-z0-9]+)}/, (v: string, key: string) => args[key] || '');
+                    }
+                    err.message = message;
+                }
+                return err;
+            });
+        }
         this._errors = errors;
         this._errorsChanges.next(errors);
     }
@@ -220,6 +250,7 @@ export abstract class PropertyGroup extends FormProperty {
         this.forEachChild((property: any, propertyId: string) => {
           if (property.visible && property._widget && property._widget.control) {
             property._widget.control.markAsPristine();
+            property._widget.errorMessages = null;
           }
         });
         return ret;

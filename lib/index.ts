@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SchemaFormOptions } from './schema-form.options';
+import { SchemaFormOptions, NZ_SF_USER_OPTIONS_TOKEN, NZ_SF_OPTIONS_TOKEN, DEFAULT } from './schema-form.options';
 import { NzWidgetRegistry } from './src/widgets/nz-widget.registry';
 import { WidgetRegistry } from './src/widget.registry';
 import { SchemaValidatorFactory, ZSchemaValidatorFactory } from './src/schema.validator.factory';
@@ -72,6 +72,10 @@ const ZORROMODULES = [
 ];
 // endregion
 
+export function optionsFactory(options: SchemaFormOptions) {
+    return Object.assign(DEFAULT, options);
+}
+
 @NgModule({
     imports: [
         CommonModule, FormsModule, ReactiveFormsModule,
@@ -86,7 +90,8 @@ export class NzSchemaFormModule {
         return {
             ngModule: NzSchemaFormModule,
             providers: [
-                { provide: SchemaFormOptions, useValue: options },
+                { provide: NZ_SF_USER_OPTIONS_TOKEN, useValue: options },
+                { provide: NZ_SF_OPTIONS_TOKEN, useFactory: optionsFactory, deps: [NZ_SF_USER_OPTIONS_TOKEN] },
                 { provide: WidgetRegistry, useClass: NzWidgetRegistry },
                 { provide: SchemaValidatorFactory, useClass: ZSchemaValidatorFactory }
             ]

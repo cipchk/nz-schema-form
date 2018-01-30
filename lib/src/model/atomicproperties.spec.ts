@@ -30,7 +30,7 @@ describe('Atomic properties', () => {
     let atomicProperty: AtomicProperty;
 
     beforeEach(() => {
-      atomicProperty = new AtomicPropertyImpl(A_SCHEMA_VALIDATOR_FACTORY, A_VALIDATOR_REGISTRY, THE_PROPERTY_SCHEMA, null, '');
+      atomicProperty = new AtomicPropertyImpl(A_SCHEMA_VALIDATOR_FACTORY, A_VALIDATOR_REGISTRY, THE_PROPERTY_SCHEMA, null, '', {});
     });
 
     it('reset with no argument and default value in schema should use the default value', () => {
@@ -41,7 +41,8 @@ describe('Atomic properties', () => {
         A_VALIDATOR_REGISTRY,
         A_SCHEMA_WITH_DEFAULT,
         null,
-        ''
+        '',
+        {}
       );
 
       atomicPropertyWithDefault._reset();
@@ -69,7 +70,8 @@ describe('Atomic properties', () => {
         A_VALIDATOR_REGISTRY,
         AN_INT_PROPERTY_SCHEMA_WITHOUT_MINIMUM,
         null,
-        ''
+        '',
+        {}
       );
 
       property._reset();

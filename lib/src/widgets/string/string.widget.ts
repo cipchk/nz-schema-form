@@ -23,7 +23,8 @@ import { ControlWidget } from '../../widget';
             [nzSize]="size">
         <input *ngIf="(schema.widget.id==='color' && schema.readOnly)"
             [attr.name]="name" type="hidden" [formControl]="control">
-        <div nz-form-explain *ngIf="schema.description" [innerHTML]="schema.description"></div>
+        <div nz-form-extra *ngIf="schema.extra" [innerHTML]="schema.extra"></div>
+        <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>
   </ng-template>`
 })

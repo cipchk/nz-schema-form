@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, Input, OnInit, ViewChild, ViewContainerRef, ChangeDetectorRef, ComponentRef } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, OnInit, ViewChild, ViewContainerRef, ChangeDetectorRef, ComponentRef, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SFSchema } from './schema';
 import { SFButton, SFButtonItem } from './schema/button';
@@ -7,6 +7,7 @@ import { Widget } from './widget';
 import { ActionRegistry } from './model/actionregistry';
 import { WidgetFactory } from './widget.factory';
 import { TerminatorService } from './terminator.service';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
 
 @Component({
     selector: 'nz-sf-item',
@@ -39,7 +40,8 @@ export class FormItemComponent implements OnInit, OnChanges {
         private actionRegistry: ActionRegistry,
         private widgetFactory: WidgetFactory = null,
         private terminator: TerminatorService,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        @Inject(NZ_SF_OPTIONS_TOKEN) private options: SchemaFormOptions
     ) {}
 
     ngOnInit() {
@@ -84,6 +86,7 @@ export class FormItemComponent implements OnInit, OnChanges {
         this.widget.id = id;
         this.widget.control = this.control;
         this.formProperty._widget = widget;
+        this.widget.onlyVisual = typeof this.formProperty.schema.onlyVisual == null ? this.options.onlyVisual : this.formProperty.schema.onlyVisual;
     }
 
     ngOnChanges(changes: SimpleChanges): void {

@@ -45,7 +45,8 @@ describe('FormProperty', () => {
       THE_VALIDATOR_REGISTRY,
       THE_PARENT_PROPERTY_SCHEMA,
       null,
-      ''
+      '',
+      {}
     );
     spyOn(propertyGroup, 'updateValueAndValidity');
     formProperty = new FormPropertyImpl(
@@ -53,7 +54,8 @@ describe('FormProperty', () => {
       THE_VALIDATOR_REGISTRY,
       THE_PROPERTY_SCHEMA,
       propertyGroup,
-      ''
+      '',
+      {}
     );
   });
 
@@ -87,7 +89,8 @@ describe('FormProperty', () => {
         THE_VALIDATOR_REGISTRY,
         THE_PROPERTY_SCHEMA,
         propertyGroup,
-        ''
+        '',
+        {}
       );
       let updateValue = (() => { orphanFormProperty.updateValueAndValidity(); });
 

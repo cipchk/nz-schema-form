@@ -1,10 +1,11 @@
+import { ErrorSchema } from './errors';
 import { SFHorizontalLayoutSchema } from './horizontal-layout';
 import { SFArraySchema } from './array';
 import { SFRenderSchema } from './render';
 import { SFActiveSchema } from './active';
 import { SFButton } from './button';
 
-export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRenderSchema, SFActiveSchema {
+export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFArraySchema, SFRenderSchema, SFActiveSchema {
     ////////////任何实例类型/////////////
     /**
      * 调试模式
@@ -36,7 +37,7 @@ export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRen
      *
      * 一般用于类型 `number` `slider`
      */
-    exclusiveMinimum?: number;
+    exclusiveMinimum?: boolean;
     /**
      * 最大值
      *
@@ -48,7 +49,7 @@ export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRen
      *
      * 一般用于类型 `number` `slider`
      */
-    exclusiveMaximum?: number;
+    exclusiveMaximum?: boolean;
     /**
      * 倍数
      *
@@ -138,6 +139,10 @@ export interface SFSchema extends SFHorizontalLayoutSchema, SFArraySchema, SFRen
      * 文字框中显示提示信息
      */
     placeholder?: string;
+    /**
+     * 用于显示表单额外提示信息
+     */
+    extra?: string;
     ////////////其他/////////////
     /**
      * 按钮信息

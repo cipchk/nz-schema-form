@@ -11,7 +11,7 @@ describe('ObjectProperty', () => {
 
   let A_VALIDATOR_REGISTRY = new ValidatorRegistry();
   let A_SCHEMA_VALIDATOR_FACTORY = new ZSchemaValidatorFactory(null);
-  let A_FORM_PROPERTY_FACTORY = new FormPropertyFactory(A_SCHEMA_VALIDATOR_FACTORY, A_VALIDATOR_REGISTRY);
+  let A_FORM_PROPERTY_FACTORY = new FormPropertyFactory(A_SCHEMA_VALIDATOR_FACTORY, A_VALIDATOR_REGISTRY, {});
 
 
   let THE_OBJECT_SCHEMA = {
@@ -33,7 +33,8 @@ describe('ObjectProperty', () => {
       A_VALIDATOR_REGISTRY,
       THE_OBJECT_SCHEMA,
       null,
-      ''
+      '',
+      {}
     );
   });
 

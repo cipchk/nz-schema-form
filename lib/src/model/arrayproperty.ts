@@ -2,6 +2,7 @@ import {FormProperty, PropertyGroup} from './formproperty';
 import {FormPropertyFactory} from './formpropertyfactory';
 import {SchemaValidatorFactory} from '../schema.validator.factory';
 import {ValidatorRegistry} from './validatorregistry';
+import { SchemaFormOptions } from '../../schema-form.options';
 
 export class ArrayProperty extends PropertyGroup {
 
@@ -10,8 +11,10 @@ export class ArrayProperty extends PropertyGroup {
               validatorRegistry: ValidatorRegistry,
               schema: any,
               parent: PropertyGroup,
-              path: string) {
-    super(schemaValidatorFactory, validatorRegistry, schema, parent, path);
+              path: string,
+              options: SchemaFormOptions
+            ) {
+    super(schemaValidatorFactory, validatorRegistry, schema, parent, path, options);
   }
 
   addItem(value: any = null): FormProperty {

@@ -4,9 +4,10 @@ import { SFSchema } from './schema';
 import { WidgetFactory } from './widget.factory';
 import { SchemaValidatorFactory } from './schema.validator.factory';
 import { TerminatorService } from './terminator.service';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
 
-export function useFactory(schemaValidatorFactory: any, validatorRegistry: any) {
-    return new FormPropertyFactory(schemaValidatorFactory, validatorRegistry);
+export function useFactory(schemaValidatorFactory: any, validatorRegistry: any, options: SchemaFormOptions) {
+    return new FormPropertyFactory(schemaValidatorFactory, validatorRegistry, options);
 }
 
 @Component({
@@ -24,7 +25,7 @@ export function useFactory(schemaValidatorFactory: any, validatorRegistry: any) 
         {
             provide: FormPropertyFactory,
             useFactory: useFactory,
-            deps: [SchemaValidatorFactory, ValidatorRegistry]
+            deps: [SchemaValidatorFactory, ValidatorRegistry, NZ_SF_OPTIONS_TOKEN]
         },
         TerminatorService
     ]
@@ -120,7 +121,7 @@ export class FormComponent implements OnChanges {
         }
 
         if (this.schema && (changes.model || changes.schema)) {
-            this.rootProperty._reset(this.model, false);
+            this.rootProperty.reset(this.model, false);
             this.cdr.detectChanges();
         }
     }

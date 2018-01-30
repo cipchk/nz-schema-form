@@ -1,6 +1,6 @@
 import { Inject, Optional } from '@angular/core';
 import * as ZSchema from 'z-schema';
-import { SchemaFormOptions } from '../schema-form.options';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
 
 export abstract class SchemaValidatorFactory {
     abstract createValidatorFn(schema: any): (value: any) => any;
@@ -11,7 +11,7 @@ export abstract class SchemaValidatorFactory {
 export class ZSchemaValidatorFactory extends SchemaValidatorFactory {
     protected zschema: any;
 
-    constructor(@Optional() @Inject(SchemaFormOptions) options: SchemaFormOptions) {
+    constructor(@Optional() @Inject(NZ_SF_OPTIONS_TOKEN) options: SchemaFormOptions) {
         super();
         this.zschema = new ZSchema((options && options.zSchemaOptions) || {});
     }
