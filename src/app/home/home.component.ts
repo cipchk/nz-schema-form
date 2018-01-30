@@ -21,14 +21,13 @@ export class HomeComponent {
                 type: 'string',
                 title: '邮箱',
                 format: 'email',
-                placeholder: '请输入邮箱，最多20个字符',
+                description: '请输入邮箱，最多20个字符',
                 maxLength: 20
             },
             name: {
                 type: 'string',
                 title: '姓名',
-                placeholder: '请输入姓名',
-                description: '3个字以上',
+                description: '请输入姓名，3个字以上',
                 minLength: 3
             },
             age: {
@@ -39,6 +38,15 @@ export class HomeComponent {
                 type: 'string',
                 title: '生日',
                 widget: 'date'
+            },
+            remark: {
+                type: 'string',
+                title: '描述',
+                widget: {
+                    id: 'textarea',
+                    autosize: false,
+                    rows: 10
+                }
             },
             products: {
                 type: 'array',

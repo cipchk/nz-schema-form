@@ -30,7 +30,8 @@ import {
     ArrayWidget,
     ButtonWidget,
     StringWidget,
-    DateWidget
+    DateWidget,
+    TextareaWidget
 } from './src/widgets';
 
 const WIDGETS: any[] = [
@@ -38,7 +39,8 @@ const WIDGETS: any[] = [
     ArrayWidget,
     ButtonWidget,
     StringWidget,
-    DateWidget
+    DateWidget,
+    TextareaWidget
 ];
 
 // endregion
