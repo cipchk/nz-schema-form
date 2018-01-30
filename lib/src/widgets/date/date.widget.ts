@@ -34,8 +34,8 @@ export class DateWidget extends ControlWidget {
         }
 
         // 如果schema 的widget 上存在 format 则使用
-        if (this.schema.widget && this.schema.widget.format)
-            return moment(value).format(this.schema.widget.format);
+        if (this.widgetData['format'])
+            return moment(value).format(this.widgetData['format']);
 
         // 如果schema 上存在 format 则使用
         if (this.schema.format)

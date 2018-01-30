@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ControlWidget } from '../../widget';
+import { WidgetData } from './../../schema/types';
 
 @Component({
     selector: 'nz-sf-string-widget',
@@ -14,9 +15,9 @@ import { ControlWidget } from '../../widget';
             [formControl]="control"
             [name]="name"
             [attr.readonly]="(schema.widget.id!=='color') && schema.readOnly?true:null"
-            [attr.type]="type"
             [attr.id]="id"
-            [attr.placeholder]="schema.placeholder"
+            [attr.type]="type"
+            [attr.placeholder]="schema.description"
             [attr.maxLength]="schema.maxLength || null"
             [attr.minLength]="schema.minLength || null"
             [attr.disabled]="(schema.widget.id=='color' && schema.disabled)?true:null"
@@ -30,7 +31,7 @@ import { ControlWidget } from '../../widget';
 })
 export class StringWidget extends ControlWidget {
     get type() {
-        const w = this.schema.widget;
-        return w && w.format ? w.format : !w || w.id === 'string' ? 'text' : w.id;
+        const w = this.widgetData;
+        return this.schema.format ? this.schema.format : !w || w.id === 'string' ? 'text' : w.id;
     }
 }

@@ -4,6 +4,9 @@ import { SFArraySchema } from './array';
 import { SFRenderSchema } from './render';
 import { SFActiveSchema } from './active';
 import { SFButton } from './button';
+import { WidgetData } from './types';
+
+export * from './types';
 
 export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFArraySchema, SFRenderSchema, SFActiveSchema {
     ////////////任何实例类型/////////////
@@ -12,15 +15,13 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFArray
      */
     debug?: boolean;
     /**
-     * 类型
-     * - **any**: object, array
-     * - **string**: string, text, textarea, search, url, email, password, select, radio
-     * - **number**: number, integer, range
-     * - **boolean**: boolean, checkbox
-     * - **date**: date, date-rang, time
-     * - **other**: rate, file, cascader, transfer
+     * 数据类型，支持 JavaScript 基础类型；注意项：
+     *
+     * - JSON 中 `date` 等同 `string` 类型
+     * - 指定 `format` 标准参数可以自动适配渲染小部件
+     * - 指定 `widget` 参数强制渲染小部件
      */
-    type?: string;
+    type?: 'number' | 'string' | 'boolean' | 'object' | 'array';
     /**
      * 枚举
      */
@@ -149,13 +150,14 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFArray
      */
     button?: SFButton;
     /**
-     * 指定采用什么小部件渲染
-     */
-    widget?: string | Object;
-    /**
-     * 文本格式化
+     * 数据格式
+     * @see http://json-schema.org/latest/json-schema-validation.html#rfc.section.7.3
      */
     format?: string;
+    /**
+     * 指定采用什么小部件渲染，所有小部件名可[查阅文档](https://travis-ci.org/cipchk/nz-schema-form)
+     */
+    widget?: WidgetData | string;
     /**
      * 指定条件时才显示，例如：
      *

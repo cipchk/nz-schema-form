@@ -1,7 +1,7 @@
 import { AfterViewInit, HostBinding, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ArrayProperty, FormProperty, ObjectProperty } from './model';
-import { SFSchema } from './schema';
+import { SFSchema, WidgetData } from './schema';
 import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
 
 export abstract class Widget<T extends FormProperty> {
@@ -11,7 +11,7 @@ export abstract class Widget<T extends FormProperty> {
 
     id: string = '';
     name: string = '';
-    schema: any = {};
+    schema: SFSchema = {};
     required: boolean;
     onlyVisual: boolean;
 }
@@ -37,6 +37,11 @@ export class BaseWidget extends Widget<FormProperty> {
     @HostBinding('style')
     get style() {
         return (this.schema as SFSchema).style || '';
+    }
+
+    /** 获取 `widget` 数据 */
+    get widgetData(): WidgetData {
+        return (this.schema.widget as WidgetData) || {};
     }
 
     required: boolean;

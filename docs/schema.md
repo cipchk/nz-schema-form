@@ -9,17 +9,28 @@ type: Basic
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
 debug | 会在控制台打印相关校验过程 | `boolean` | -
+type | 数据类型，支持 JavaScript 基础类型 | `number,string,boolean,object,array` | `object`
+
+**type注意事项**
+
+- JSON 中 `date` 等同 `string` 类型
+- 指定 `format` 标准参数可以自动适配渲染小部件
+- 指定 `widget` 参数强制渲染小部件
 
 ## 渲染Schema
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
-widget | 指定采用什么小部件渲染数据  | `string | Object` | -
+widget | 指定采用什么小部件渲染数据  | `string | WidgetData` | -
 title | 表单标题，等同 `label`  | `string` | -
 description | 表单描述  | `string` | -
 size | 控件大小  | `large,default,small` | `large`
 disabled | 是否禁用状态  | `boolean` | -
 default | 默认值  | `any` | -
+
+## 小部件Schema
+
+id | 小部件名称  | `string` | -
 
 ## 响应式Schema
 
