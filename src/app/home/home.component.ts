@@ -34,6 +34,11 @@ export class HomeComponent {
                 type: 'number',
                 title: '年龄'
             },
+            agree: {
+                type: 'boolean',
+                description: `I have read the <a href="https://github.com/cipchk/nz-schema-form" target="_blank">agreement</a>`,
+                default: true
+            },
             birthday: {
                 type: 'string',
                 title: '生日',

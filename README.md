@@ -24,7 +24,7 @@ By data type, all the available widgets contains listed below:
 | `array` | - | cipchk | - | - |
 | `string` | - | cipchk | - | - |
 | `button` | `nz-button` | cipchk | - | - |
-| `boolean` | `nz-switch` | - | - | - |
+| `boolean` | `nz-switch` | cipchk | - | - |
 | `integer` | `nz-input-number` | - | - | - |
 | `textarea` | `nz-input` | cipchk | - | - |
 | `checkbox` | `nz-checkbox` | - | - | - |

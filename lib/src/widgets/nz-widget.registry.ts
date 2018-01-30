@@ -6,6 +6,7 @@ import { ButtonWidget } from './button/button.widget';
 import { StringWidget } from './string/string.widget';
 import { DateWidget } from './date/date.widget';
 import { TextareaWidget } from './textarea/textarea.widget';
+import { BooleanWidget } from './boolean/boolean.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
     constructor() {
@@ -17,6 +18,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
 
         this.register('string', StringWidget);
         this.register('date', DateWidget);
+        this.register('boolean', BooleanWidget);
         this.register('textarea', TextareaWidget);
 
         // this.register('text', StringWidget);
