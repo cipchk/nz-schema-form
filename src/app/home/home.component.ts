@@ -64,6 +64,11 @@ export class HomeComponent {
                     rows: 10
                 }
             },
+            file: {
+                type: 'string',
+                title: '附件',
+                widget: 'file'
+            },
             products: {
                 type: 'array',
                 title: '产品清单',

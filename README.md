@@ -35,7 +35,7 @@ By data type, all the available widgets contains listed below:
 | `rate` | `nz-rate` | viking | - | - |
 | `select` | `nz-select` | viking | - | - |
 | `range` | `nz-slider` | viking | - | - |
-| `file` | `nz-upload` | - | - | - |
+| `file` | `nz-upload` | cipchk | - | - |
 | `cascader` | `nz-cascader` | - | - | - |
 | `transfer` | `nz-transfer` | - | - | - |
 

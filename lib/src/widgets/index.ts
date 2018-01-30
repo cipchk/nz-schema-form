@@ -7,3 +7,4 @@ export { TextareaWidget } from './textarea/textarea.widget';
 export { BooleanWidget } from './boolean/boolean.widget';
 export { NumberWidget } from './number/number.widget';
 export { CheckboxWidget } from './checkbox/checkbox.widget';
+export { FileWidget } from './file/file.widget';
