@@ -4,7 +4,12 @@ import { ERROR, ERRORSDEFAULT } from './src/schema/errors';
 
 export const NZ_SF_OPTIONS_TOKEN = new InjectionToken<SchemaFormOptions>('NZ_SF_OPTIONS_TOKEN');
 export const NZ_SF_USER_OPTIONS_TOKEN = new InjectionToken<SchemaFormOptions>('NZ_SF_USER_OPTIONS_TOKEN');
-
+/**
+ *
+ *
+ * @export
+ * @interface SchemaFormOptions
+ */
 export interface SchemaFormOptions {
     [key: string]: any;
     /**
@@ -35,6 +40,11 @@ export interface SchemaFormOptions {
      * 日期小部件配置
      */
     date?: any;
+
+    /**
+     * 时间小部件配置
+     */
+    time?:any
 }
 
 export const DEFAULT: SchemaFormOptions = {
@@ -42,5 +52,6 @@ export const DEFAULT: SchemaFormOptions = {
     ingoreTypeValidator: true,
     onlyVisual: false,
     showDescription: false,
-    date: {}
+    date: {},
+    time: {},
 };
