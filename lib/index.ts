@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -33,6 +33,7 @@ import {
     ButtonWidget,
     StringWidget,
     DateWidget,
+    TimeWidget,
     TextareaWidget,
     BooleanWidget,
     NumberWidget,
@@ -50,6 +51,7 @@ const WIDGETS: any[] = [
     ButtonWidget,
     StringWidget,
     DateWidget,
+    TimeWidget,
     TextareaWidget,
     BooleanWidget,
     NumberWidget,
@@ -81,6 +83,7 @@ import {
     NzInputModule,
     NzButtonModule,
     NzDatePickerModule,
+    NzTimePickerModule,
     NzCheckboxModule,
     NzInputNumberModule,
     NzSwitchModule,
@@ -97,6 +100,7 @@ const ZORROMODULES = [
     NzInputModule,
     NzButtonModule,
     NzDatePickerModule,
+    NzTimePickerModule,
     NzCheckboxModule,
     NzInputNumberModule,
     NzSwitchModule,
