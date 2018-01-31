@@ -22,6 +22,7 @@ import { SchemaFormOptions } from '../../../schema-form.options';
             [nzSize]="size"
             [nzDisabled]="schema.readOnly"
             [formControl]="control"
+            [nzShowTime]="showTime"
             [nzPlaceHolder]="placeholder"></nz-datepicker>
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
@@ -36,6 +37,10 @@ export class DateWidget extends ControlWidget {
 
     get format() {
         return this.widgetData.format || 'YYYY-MM-DD';
+    }
+
+    get showTime(){
+        return this.widgetData.showTime === true;
     }
 
     serialize(value: any) {
