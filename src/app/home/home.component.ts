@@ -75,6 +75,21 @@ export class HomeComponent {
                 title: '自定义内容',
                 widget: 'custom'
             },
+            geo: {
+                type: 'string',
+                title: '所在地',
+                widget: {
+                    id: 'cascader',
+                    placeholder: '请选择',
+                    load: (options: any) => {
+                        options.resolve([{
+                            value: 'zhonghuamen',
+                            label: 'Zhong Hua Men',
+                            isLeaf: true
+                        }]);
+                    }
+                }
+            },
             products: {
                 type: 'array',
                 title: '产品清单',
