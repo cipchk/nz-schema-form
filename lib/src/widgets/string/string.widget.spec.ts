@@ -2,10 +2,9 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NzInputModule } from 'ng-zorro-antd';
 import { NzSchemaFormModule } from '../../../index';
 
-describe('widgets: custom', () => {
+describe('widgets: string', () => {
     let fixture: ComponentFixture<TestComponent>;
     let context: TestComponent;
     let dl: DebugElement;
@@ -15,7 +14,6 @@ describe('widgets: custom', () => {
         TestBed.configureTestingModule({
             imports: [
                 CommonModule, FormsModule, ReactiveFormsModule,
-                NzInputModule,
                 NzSchemaFormModule.forRoot()
             ],
             declarations: [TestComponent]
@@ -29,29 +27,25 @@ describe('widgets: custom', () => {
 
     it('should be create widget', () => {
         expect(fixture).not.toBeUndefined();
-        expect(el.querySelectorAll('.ant-input-group-addon').length).toBe(2);
     });
 });
 
 @Component({
     template: `
-    <nz-sf [schema]="schema">
-        <ng-template nz-template="custom" let-control let-schema>
-            <nz-input [formControl]="control">
-                <ng-template #addOnBefore>http://</ng-template>
-                <ng-template #addOnAfter>.com</ng-template>
-            </nz-input>
-        </ng-template>
-    </nz-sf>
+    <nz-sf [schema]="schema" [model]="model"></nz-sf>
     `
 })
 class TestComponent {
+    model = { email: 'cipchk@qq.com' };
     schema = {
         properties: {
-            custom: {
+            email: {
                 type: 'string',
-                title: '自定义内容',
-                widget: 'custom'
+                title: '邮箱',
+                format: 'email',
+                description: '请输入邮箱，最多20个字符',
+                showDescription: true,
+                maxLength: 20
             }
         }
     }
