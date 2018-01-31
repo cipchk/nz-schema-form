@@ -135,6 +135,23 @@ export class HomeComponent {
                     },
                     required: ['pn', 'num', 'price'],
                 },
+            },
+            gender: {
+                type: 'string',
+                title: '描述',
+                default:"men",
+                widget: {
+                    id: 'radio',
+                    selectList: [
+                        {
+                            label: "Men",
+                            value: "men"
+                        }, {
+                            label: "Women",
+                            value: "women"
+                        }
+                    ]
+                }
             }
         },
         required: ['email', 'name'],

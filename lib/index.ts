@@ -32,6 +32,7 @@ import {
     ArrayWidget,
     ButtonWidget,
     StringWidget,
+    RadioWidget,
     DateWidget,
     TextareaWidget,
     BooleanWidget,
@@ -49,6 +50,7 @@ const WIDGETS: any[] = [
     ArrayWidget,
     ButtonWidget,
     StringWidget,
+    RadioWidget,
     DateWidget,
     TextareaWidget,
     BooleanWidget,
@@ -88,7 +90,8 @@ import {
     NzToolTipModule,
     NzCascaderModule,
     NzTransferModule,
-    NzSliderModule
+    NzSliderModule,
+    NzRadioModule
 } from 'ng-zorro-antd';
 const ZORROMODULES = [
     NzGridModule,
@@ -104,7 +107,8 @@ const ZORROMODULES = [
     NzToolTipModule,
     NzCascaderModule,
     NzTransferModule,
-    NzSliderModule
+    NzSliderModule,
+    NzRadioModule
 ];
 // endregion
 
