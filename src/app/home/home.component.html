@@ -1,3 +1,10 @@
 <h1>horizontal</h1>
-<nz-sf [schema]="schema" [model]="model" [actions]="actions" (onChange)="value=$event.value"></nz-sf>
+<nz-sf [schema]="schema" [model]="model" [actions]="actions" (onChange)="value=$event.value">
+    <ng-template nz-template="custom" let-control let-schema>
+        <nz-input [formControl]="control">
+            <ng-template #addOnBefore>http://</ng-template>
+            <ng-template #addOnAfter>.com</ng-template>
+        </nz-input>
+    </ng-template>
+</nz-sf>
 <p>{{value | json}}</p>

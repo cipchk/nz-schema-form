@@ -10,6 +10,7 @@ import { BooleanWidget } from './boolean/boolean.widget';
 import { NumberWidget } from './number/number.widget';
 import { CheckboxWidget } from './checkbox/checkbox.widget';
 import { FileWidget } from './file/file.widget';
+import { CustomWidget } from './custom/custom.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
     constructor() {
@@ -27,7 +28,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('textarea', TextareaWidget);
         this.register('file', FileWidget);
 
-        // this.register('text', StringWidget);
+        this.register('custom', CustomWidget);
 
         this.setDefaultWidget(StringWidget);
     }

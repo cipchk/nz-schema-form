@@ -38,6 +38,7 @@ By data type, all the available widgets contains listed below:
 | `file` | `nz-upload` | cipchk | - | - |
 | `cascader` | `nz-cascader` | - | - | - |
 | `transfer` | `nz-transfer` | - | - | - |
+| `custom` | - | cipchk | - | - |
 
 ## Installation instructions
 

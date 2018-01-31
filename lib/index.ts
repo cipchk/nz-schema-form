@@ -6,6 +6,7 @@ import { SchemaFormOptions, NZ_SF_USER_OPTIONS_TOKEN, NZ_SF_OPTIONS_TOKEN, DEFAU
 import { NzWidgetRegistry } from './src/widgets/nz-widget.registry';
 import { WidgetRegistry } from './src/widget.registry';
 import { SchemaValidatorFactory, ZSchemaValidatorFactory } from './src/schema.validator.factory';
+import { CustomTemplateDirective } from './src/widgets/custom/nz-template.directive';
 
 // region: components
 
@@ -19,6 +20,7 @@ const COMPONENTS = [
     FormComponent,
     FormItemComponent,
     FormActionComponent,
+    CustomTemplateDirective
 ];
 
 // endregion
@@ -35,7 +37,8 @@ import {
     BooleanWidget,
     NumberWidget,
     CheckboxWidget,
-    FileWidget
+    FileWidget,
+    CustomWidget
 } from './src/widgets';
 
 const WIDGETS: any[] = [
@@ -48,7 +51,8 @@ const WIDGETS: any[] = [
     BooleanWidget,
     NumberWidget,
     CheckboxWidget,
-    FileWidget
+    FileWidget,
+    CustomWidget
 ];
 
 // endregion
@@ -106,7 +110,7 @@ export function optionsFactory(options: SchemaFormOptions) {
     exports: [ ...COMPONENTS, ...WIDGETS ]
 })
 export class NzSchemaFormModule {
-    public static forRoot(options: SchemaFormOptions): ModuleWithProviders {
+    public static forRoot(options?: SchemaFormOptions): ModuleWithProviders {
         return {
             ngModule: NzSchemaFormModule,
             providers: [

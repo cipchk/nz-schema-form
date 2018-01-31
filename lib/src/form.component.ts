@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnChanges, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { Action, ActionRegistry, FormPropertyFactory, FormProperty, SchemaPreprocessor, ValidatorRegistry, Validator } from './model';
 import { SFSchema } from './schema';
 import { WidgetFactory } from './widget.factory';
@@ -146,6 +146,15 @@ export class FormComponent implements OnChanges {
                 }
             }
         }
+    }
+
+    _addTpl(path: string, templateRef: TemplateRef<any>) {
+        const property = this.rootProperty.searchProperty(path);
+        if (!property) {
+            console.warn(`未找到路径 ${path}`);
+            return ;
+        }
+        property.schema.__render = templateRef;
     }
 
     reset() {

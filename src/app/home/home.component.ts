@@ -70,6 +70,11 @@ export class HomeComponent {
                 title: '附件',
                 widget: 'file'
             },
+            custom: {
+                type: 'string',
+                title: '自定义内容',
+                widget: 'custom'
+            },
             products: {
                 type: 'array',
                 title: '产品清单',
