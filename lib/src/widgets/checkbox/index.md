@@ -1,6 +1,6 @@
 ---
 widget: checkbox
-title: 布尔类型
+title: 多选框
 ---
 
 一般用于是否同意协议。

@@ -8,6 +8,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
       <div class="logo">nz-schema-form</div>
       <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
         <li nz-menu-item routerLink="/">Home</li>
+        <li nz-menu-item routerLink="/document">Document</li>
         <li nz-menu-item routerLink="/example">Example</li>
         <li nz-menu-item routerLink="/validator">Validator</li>
         <li nz-menu-item><a href="//jsonschemalint.com" target="_blank" title="JSON Schema Lint">Lint</a></li>

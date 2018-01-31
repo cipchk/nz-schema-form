@@ -1,9 +1,9 @@
 ---
-widget: textarea
-title: 多行文本框
+widget: number
+title: 数字输入框
 ---
 
-一般用于多行字符串。
+使用 `nz-switch` 组件；通过鼠标或键盘，输入范围内的数值。
 
 ## `widget` 自定义属性
 

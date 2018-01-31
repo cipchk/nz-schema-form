@@ -1,6 +1,6 @@
 ---
 order: 5
-title: 通用Schema
+title: Schema
 type: Basic
 ---
 

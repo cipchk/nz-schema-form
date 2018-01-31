@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-md';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
@@ -14,13 +15,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ExampleComponent } from './example/example.component';
 import { ValidatorComponent } from './validator/validator.component';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ExampleComponent,
-    ValidatorComponent
+    ValidatorComponent,
+    DocumentComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +36,17 @@ import { ValidatorComponent } from './validator/validator.component';
     RouterModule.forRoot([
         { path: '', component: HomeComponent },
         { path: 'example', component: ExampleComponent },
-        { path: 'validator', component: ValidatorComponent }
+        { path: 'validator', component: ValidatorComponent },
+        { path: 'document', redirectTo: 'document/getting-started', pathMatch: 'full' },
+        {
+            path: 'document/:id',
+            component: DocumentComponent
+        }
     ], { useHash: true }),
     NgZorroAntdModule.forRoot(),
     NzSchemaFormModule.forRoot({
-    })
+    }),
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
