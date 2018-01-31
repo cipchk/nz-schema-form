@@ -4,12 +4,7 @@ import { ERROR, ERRORSDEFAULT } from './src/schema/errors';
 
 export const NZ_SF_OPTIONS_TOKEN = new InjectionToken<SchemaFormOptions>('NZ_SF_OPTIONS_TOKEN');
 export const NZ_SF_USER_OPTIONS_TOKEN = new InjectionToken<SchemaFormOptions>('NZ_SF_USER_OPTIONS_TOKEN');
-/**
- *
- *
- * @export
- * @interface SchemaFormOptions
- */
+
 export interface SchemaFormOptions {
     [key: string]: any;
     /**
