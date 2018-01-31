@@ -12,3 +12,4 @@ export { CustomWidget } from './custom/custom.widget';
 export { CascaderWidget } from './cascader/cascader.widget';
 export { TransferWidget } from './transfer/transfer.widget';
 export { RangeWidget } from './range/range.widget';
+export { TagWidget } from './tag/tag.widget';

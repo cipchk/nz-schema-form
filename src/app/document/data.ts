@@ -99,6 +99,11 @@ export const DATA = {
             content: getMd(require('!!raw-loader!../../../lib/src/widgets/transfer/index.md'))
         },
         {
+            id: 'tag',
+            title: '热门标签',
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets/tag/index.md'))
+        },
+        {
             id: 'custom',
             title: '自定义',
             content: getMd(require('!!raw-loader!../../../lib/src/widgets/custom/index.md'))

@@ -109,6 +109,19 @@ export class HomeComponent {
                     id: 'range'
                 }
             },
+            like: {
+                type: 'string',
+                title: '兴趣',
+                widget: {
+                    id: 'tag',
+                    tags: [
+                        { id: 1, title: '电影', checked: true },
+                        { id: 2, title: '书' },
+                        { id: 3, title: '旅行' },
+                        { id: 4, title: '美食', checked: true }
+                    ]
+                }
+            },
             products: {
                 type: 'array',
                 title: '产品清单',
