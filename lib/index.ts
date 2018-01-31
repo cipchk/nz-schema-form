@@ -39,7 +39,8 @@ import {
     CheckboxWidget,
     FileWidget,
     CascaderWidget,
-    CustomWidget
+    CustomWidget,
+    TransferWidget
 } from './src/widgets';
 
 const WIDGETS: any[] = [
@@ -54,7 +55,8 @@ const WIDGETS: any[] = [
     CheckboxWidget,
     FileWidget,
     CascaderWidget,
-    CustomWidget
+    CustomWidget,
+    TransferWidget
 ];
 
 // endregion
@@ -82,7 +84,8 @@ import {
     NzSwitchModule,
     NzUploadModule,
     NzToolTipModule,
-    NzCascaderModule
+    NzCascaderModule,
+    NzTransferModule
 } from 'ng-zorro-antd';
 const ZORROMODULES = [
     NzGridModule,
@@ -96,7 +99,8 @@ const ZORROMODULES = [
     NzSwitchModule,
     NzUploadModule,
     NzToolTipModule,
-    NzCascaderModule
+    NzCascaderModule,
+    NzTransferModule
 ];
 // endregion
 

@@ -90,6 +90,17 @@ export class HomeComponent {
                     }
                 }
             },
+            role: {
+                type: 'string',
+                title: '角色',
+                grid: { span: 16 },
+                widget: {
+                    id: 'transfer',
+                    dataSource: Array(10).fill({}).map((v: any, i: number) => {
+                        return { title: `content${i + 1}`, direction: i === 1 ? 'right' : '' };
+                    })
+                }
+            },
             products: {
                 type: 'array',
                 title: '产品清单',

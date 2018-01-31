@@ -12,6 +12,7 @@ import { CheckboxWidget } from './checkbox/checkbox.widget';
 import { FileWidget } from './file/file.widget';
 import { CascaderWidget } from './cascader/cascader.widget';
 import { CustomWidget } from './custom/custom.widget';
+import { TransferWidget } from './transfer/transfer.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
     constructor() {
@@ -29,6 +30,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('textarea', TextareaWidget);
         this.register('file', FileWidget);
         this.register('cascader', CascaderWidget);
+        this.register('transfer', TransferWidget);
 
         this.register('custom', CustomWidget);
 

@@ -10,3 +10,4 @@ export { CheckboxWidget } from './checkbox/checkbox.widget';
 export { FileWidget } from './file/file.widget';
 export { CustomWidget } from './custom/custom.widget';
 export { CascaderWidget } from './cascader/cascader.widget';
+export { TransferWidget } from './transfer/transfer.widget';
