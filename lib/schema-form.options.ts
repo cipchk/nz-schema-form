@@ -8,6 +8,13 @@ export const NZ_SF_USER_OPTIONS_TOKEN = new InjectionToken<SchemaFormOptions>('N
 export interface SchemaFormOptions {
     [key: string]: any;
     /**
+     * 是否忽略数据类型校验，默认：`true`
+     *
+     * - `false` 限定 Schema 中 `type` 类型，若产生的数据非 `type` 类型会视为错误
+     * - `true` 不限定 Schema 中 `type` 类型，若产生的数据非 `type` 类型会视为成功
+     */
+    ingoreTypeValidator?: boolean;
+    /**
      * z-schema 参数
      * @see https://github.com/zaggino/z-schema
      */
@@ -32,6 +39,7 @@ export interface SchemaFormOptions {
 
 export const DEFAULT: SchemaFormOptions = {
     errors: ERRORSDEFAULT,
+    ingoreTypeValidator: true,
     onlyVisual: false,
     showDescription: false,
     date: {}

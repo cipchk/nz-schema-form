@@ -11,7 +11,7 @@ export abstract class SchemaValidatorFactory {
 export class ZSchemaValidatorFactory extends SchemaValidatorFactory {
     protected zschema: any;
 
-    constructor(@Optional() @Inject(NZ_SF_OPTIONS_TOKEN) options: SchemaFormOptions) {
+    constructor(@Optional() @Inject(NZ_SF_OPTIONS_TOKEN) private options: SchemaFormOptions) {
         super();
         this.zschema = new ZSchema((options && options.zSchemaOptions) || {});
     }
@@ -24,6 +24,9 @@ export class ZSchemaValidatorFactory extends SchemaValidatorFactory {
 
             this.zschema.validate(value, schema);
             let err = this.zschema.getLastErrors();
+            if (this.options && this.options.ingoreTypeValidator && err) {
+                err = (err as any[]).filter(w => w.code !== 'INVALID_TYPE');
+            }
 
             this.denormalizeRequiredPropertyPaths(err);
 
