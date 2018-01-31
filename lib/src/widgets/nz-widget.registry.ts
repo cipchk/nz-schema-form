@@ -13,6 +13,7 @@ import { FileWidget } from './file/file.widget';
 import { CascaderWidget } from './cascader/cascader.widget';
 import { CustomWidget } from './custom/custom.widget';
 import { TransferWidget } from './transfer/transfer.widget';
+import { RangeWidget } from './range/range.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
     constructor() {
@@ -31,6 +32,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('file', FileWidget);
         this.register('cascader', CascaderWidget);
         this.register('transfer', TransferWidget);
+        this.register('range', RangeWidget);
 
         this.register('custom', CustomWidget);
 

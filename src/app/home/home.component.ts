@@ -101,6 +101,14 @@ export class HomeComponent {
                     })
                 }
             },
+            range: {
+                type: 'number',
+                title: '范围',
+                default: 10,
+                widget: {
+                    id: 'range'
+                }
+            },
             products: {
                 type: 'array',
                 title: '产品清单',
