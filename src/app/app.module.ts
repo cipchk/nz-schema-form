@@ -9,7 +9,12 @@ import { MarkdownModule } from 'ngx-md';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
-import { NzSchemaFormModule } from 'nz-schema-form';
+import { NzSchemaFormModule, WidgetRegistry } from 'nz-schema-form';
+import { NgxTinymceModule } from 'ngx-tinymce';
+import { TinymceWidget } from 'nz-schema-form/src/widgets-third/tinymce/tinymce.widget';
+import { UEditorModule } from 'ngx-ueditor';
+import { UEditorWidget } from 'nz-schema-form/src/widgets-third/ueditor/ueditor.widget';
+import { MyWidgetRegistry } from './my-widget-registry';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -21,7 +26,9 @@ import { DocumentComponent } from './document/document.component';
     AppComponent,
     HomeComponent,
     ValidatorComponent,
-    DocumentComponent
+    DocumentComponent,
+    TinymceWidget,
+    UEditorWidget
   ],
   imports: [
     BrowserModule,
@@ -44,9 +51,27 @@ import { DocumentComponent } from './document/document.component';
     NgZorroAntdModule.forRoot(),
     NzSchemaFormModule.forRoot({
     }),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    UEditorModule.forRoot({
+        // **注：** 建议使用本地路径；以下为了减少 ng-alain 脚手架的包体大小引用了CDN，可能会有部分功能受影响
+        // 指定ueditor.js路径目录
+        path: '//apps.bdimg.com/libs/ueditor/1.4.3.1/',
+        // 默认全局配置项
+        options: {
+            themePath: '//apps.bdimg.com/libs/ueditor/1.4.3.1/themes/'
+        }
+    }),
+    NgxTinymceModule.forRoot({
+        baseURL: '//cdn.bootcss.com/tinymce/4.7.4/'
+    })
   ],
-  providers: [],
+  providers: [
+    { provide: WidgetRegistry, useClass: MyWidgetRegistry }
+  ],
+  entryComponents: [
+    TinymceWidget,
+    UEditorWidget
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

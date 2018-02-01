@@ -50,6 +50,8 @@
     "ng2-ace-editor": "^0.3.4",
     "ngx-highlight-js": "^1.0.3",
     "ngx-md": "^3.1.0",
+    "ngx-tinymce": "^1.0.1",
+    "ngx-ueditor": "^1.1.0",
     "rxjs": "^5.5.2",
     "z-schema": "^3.19.0",
     "zone.js": "^0.8.14"

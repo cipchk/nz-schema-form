@@ -166,9 +166,17 @@ export class HomeComponent {
                         }
                     ]
                 }
+            },
+            intro: {
+                type: 'string',
+                title: '详情',
+                grid: { span: 24 },
+                widget: {
+                    id: 'tinymce'
+                }
             }
         },
-        required: ['email', 'name'],
+        required: ['email'],
         button: {
             grid: { span: 24 },
             style: { 'text-align': 'center' },

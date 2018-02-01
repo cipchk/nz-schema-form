@@ -24,7 +24,7 @@ import { ObjectLayoutWidget } from '../../widget';
         <ng-container *ngFor="let i of list">
             <ng-container *ngIf="i.property.visible">
                 <div nz-row nz-form-item>
-                    <nz-sf-item *ngIf="i.property.visible"  [formProperty]="i.property"></nz-sf-item>
+                    <nz-sf-item [formProperty]="i.property"></nz-sf-item>
                 </div>
             </ng-container>
         </ng-container>

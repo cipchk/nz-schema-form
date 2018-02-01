@@ -17,6 +17,11 @@ export const DATA = {
             content: getMd(require('!!raw-loader!../../../docs/schema.md'))
         },
         {
+            id: 'customize',
+            title: '自定义小部件',
+            content: getMd(require('!!raw-loader!../../../docs/customize.md'))
+        },
+        {
             id: 'error',
             title: '自定义错误格式',
             content: getMd(require('!!raw-loader!../../../docs/error.md'))
@@ -112,6 +117,18 @@ export const DATA = {
             id: 'custom',
             title: '自定义',
             content: getMd(require('!!raw-loader!../../../lib/src/widgets/custom/index.md'))
+        }
+    ],
+    third: [
+        {
+            id: 'tinymce',
+            title: 'Tinymce',
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/tinymce/index.md'))
+        },
+        {
+            id: 'ueditor',
+            title: 'UEditor',
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/ueditor/index.md'))
         }
     ]
 };
