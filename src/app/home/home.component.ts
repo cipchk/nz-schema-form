@@ -25,16 +25,6 @@ export class HomeComponent {
                 showDescription: true,
                 maxLength: 20
             },
-            rate: {
-                type: 'number',
-                title: '评价',
-                description: '请输入姓名，3个字以上',
-                default: 3,
-                widget: {
-                    id: 'rate',
-                    allowHalf: true
-                }
-            },
             name: {
                 type: 'string',
                 title: '姓名',
