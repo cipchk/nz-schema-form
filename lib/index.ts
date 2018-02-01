@@ -46,7 +46,8 @@ import {
     RangeWidget,
     TagWidget,
     RateWidget,
-    SelectWidget
+    SelectWidget,
+    DateRangeWidget,
 } from './src/widgets';
 
 const WIDGETS: any[] = [
@@ -68,7 +69,8 @@ const WIDGETS: any[] = [
     RangeWidget,
     TagWidget,
     RateWidget,
-    SelectWidget
+    SelectWidget,
+    DateRangeWidget,
 ];
 
 // endregion
