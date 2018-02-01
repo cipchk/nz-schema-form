@@ -1,1 +1,314 @@
 /* You can add global styles to this file, and also import other style files */
+
+body .ant-layout {
+    background: #fff;
+}
+
+markdown {
+    display: block;
+}
+
+.markdown {
+    padding: 24px;
+    min-height: 280px;
+    color: #314659;
+    font-size: 14px;
+    line-height: 2;
+    img {
+        max-width: calc(100% - 32px);
+    }
+    p > img {
+        margin: 34px 0;
+        box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
+    }
+    p,
+    pre {
+        margin: 1em 0;
+    }
+    h1 {
+        color: #0d1a26;
+        font-weight: 500;
+        margin-bottom: 20px;
+        margin-top: 8px;
+        font-family: Lato, 'Monospaced Number', 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        line-height: 38px;
+    }
+    h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #0d1a26;
+        font-family: Lato, 'Monospaced Number', 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        margin: 1.6em 0 0.6em;
+        font-weight: 500;
+        clear: both;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+    h4 {
+        font-size: 16px;
+    }
+    h5 {
+        font-size: 14px;
+    }
+    h6 {
+        font-size: 12px;
+    }
+
+    hr {
+        height: 1px;
+        border: 0;
+        background: #ebedf0;
+        margin: 72px 0;
+        clear: both;
+    }
+    ul > li {
+        list-style-type: circle;
+        margin-left: 20px;
+        padding-left: 4px;
+        &:empty {
+            display: none;
+        }
+    }
+    ol > li {
+        list-style-type: decimal;
+        margin-left: 20px;
+        padding-left: 4px;
+    }
+    ul > li > p,
+    ol > li > p {
+        margin: 0.2em 0;
+    }
+    code {
+        margin: 0 1px;
+        background: #f2f4f5;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+        border: 1px solid #eee;
+    }
+    pre {
+        border-radius: 2px;
+        background: #f2f4f5;
+        font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        code {
+            border: none;
+            background: #f2f4f5;
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            color: #314659;
+            overflow: auto;
+        }
+    }
+
+    strong,
+    b {
+        font-weight: 500;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: show;
+        border: 1px solid #ebedf0;
+        width: 100%;
+        margin: 8px 0 16px;
+        th {
+            white-space: nowrap;
+            color: #5c6b77;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.02);
+        }
+        th,
+        td {
+            border: 1px solid #ebedf0;
+            padding: 16px 24px;
+            text-align: left;
+        }
+    }
+    blockquote {
+        font-size: 90%;
+        color: #697b8c;
+        border-left: 4px solid #ebedf0;
+        padding-left: 0.8em;
+        margin: 1em 0;
+        p {
+            margin: 0;
+        }
+    }
+
+    /* PrismJS 1.10.0
+http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript+bash+git+http+json+markdown+typescript&plugins=line-numbers+highlight-keywords */
+    /**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+    code[class*='language-'],
+    pre[class*='language-'] {
+        color: #f8f8f2;
+        background: none;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
+    /* Code blocks */
+    pre[class*='language-'] {
+        padding: 1em;
+        margin: 0.5em 0;
+        overflow: auto;
+        border-radius: 0.3em;
+    }
+
+    :not(pre) > code[class*='language-'],
+    pre[class*='language-'] {
+        background: #272822;
+    }
+
+    /* Inline code */
+    :not(pre) > code[class*='language-'] {
+        padding: 0.1em;
+        border-radius: 0.3em;
+        white-space: normal;
+    }
+
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+        color: slategray;
+    }
+
+    .token.punctuation {
+        color: #f8f8f2;
+    }
+
+    .namespace {
+        opacity: 0.7;
+    }
+
+    .token.property,
+    .token.tag,
+    .token.constant,
+    .token.symbol,
+    .token.deleted {
+        color: #f92672;
+    }
+
+    .token.boolean,
+    .token.number {
+        color: #ae81ff;
+    }
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted {
+        color: #a6e22e;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string,
+    .token.variable {
+        color: #f8f8f2;
+    }
+
+    .token.atrule,
+    .token.attr-value,
+    .token.function {
+        color: #e6db74;
+    }
+
+    .token.keyword {
+        color: #66d9ef;
+    }
+
+    .token.regex,
+    .token.important {
+        color: #fd971f;
+    }
+
+    .token.important,
+    .token.bold {
+        font-weight: bold;
+    }
+    .token.italic {
+        font-style: italic;
+    }
+
+    .token.entity {
+        cursor: help;
+    }
+
+    pre.line-numbers {
+        position: relative;
+        padding-left: 3.8em;
+        counter-reset: linenumber;
+    }
+
+    pre.line-numbers > code {
+        position: relative;
+        white-space: inherit;
+    }
+
+    .line-numbers .line-numbers-rows {
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        font-size: 100%;
+        left: -3.8em;
+        width: 3em; /* works for line-numbers below 1000 lines */
+        letter-spacing: -1px;
+        border-right: 1px solid #999;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+    .line-numbers-rows > span:before {
+        content: counter(linenumber);
+        color: #999;
+        display: block;
+        padding-right: 0.8em;
+        text-align: right;
+    }
+}

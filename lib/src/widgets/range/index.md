@@ -1,9 +1,9 @@
 ---
-widget: transfer
-title: 穿梭框
+widget: range
+title: 滑动输入条
 ---
 
-双栏穿梭选择框。
+滑动型输入器，展示当前值和可选范围。
 
 ## `widget` 自定义属性
 

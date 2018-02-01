@@ -20,6 +20,7 @@ widget | 组件  | `string | object` | -
 ----|------|-----|------
 id | 组件名称  | `string` | `date`
 format | 日期格式  | `string` | - 
+showTime | 是否显示时间选择器 | `boolean` | `false`
 
 ## Provider Settings
 

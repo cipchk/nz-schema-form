@@ -6,7 +6,11 @@
 
 [ng-zorro-antd](https://ng.ant.design/) form generation based on JSON Schema.
 
-[DEMO](https://cipchk.github.io/nz-schema-form/) & [stackblitz](https://stackblitz.com/edit/nz-schema-form?file=app%2Fapp.component.ts)
+## Links
+
++ [Document 中文版](https://cipchk.github.io/nz-schema-form/#/document/getting-started)
++ [DEMO](https://cipchk.github.io/nz-schema-form/)
++ [stackblitz](https://stackblitz.com/edit/nz-schema-form?file=app%2Fapp.component.ts)
 
 ## TODO
 
@@ -38,38 +42,8 @@ By data type, all the available widgets contains listed below:
 | `file` | `nz-upload` | cipchk | - | - |
 | `cascader` | `nz-cascader` | cipchk | - | - |
 | `transfer` | `nz-transfer` | cipchk | - | - |
+| `tag` | `nz-checkable-tag` | cipchk | - | - |
 | `custom` | - | cipchk | - | - |
-
-## Installation instructions
-
-Install `nz-schema-form` from `npm`
-
-```bash
-npm install nz-schema-form --save
-```
-
-Import the `nz-schema-form` in to your root `AppModule`.
-
-```typescript
-import { NzSchemaFormModule } from 'nz-schema-form';
-
-@NgModule({
-    imports: [
-        NzSchemaFormModule.forRoot()
-    ]
-})
-export class AppModule { }
-```
-
-### Usage
-
-```ts
-```
-
-### How to use it with:
-
-+ `angular-cli` please refer to **Installation instructions**.
-+ `stackblitz` sample available [here](https://stackblitz.com/edit/nz-schema-form-setup?file=app%2Fapp.component.ts).
 
 ## Troubleshooting
 

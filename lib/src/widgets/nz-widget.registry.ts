@@ -15,6 +15,7 @@ import { CustomWidget } from './custom/custom.widget';
 import { TransferWidget } from './transfer/transfer.widget';
 import { RangeWidget } from './range/range.widget';
 import { RadioWidget } from './radio/radio.widget';
+import { TagWidget } from './tag/tag.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
     constructor() {
@@ -35,6 +36,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('cascader', CascaderWidget);
         this.register('transfer', TransferWidget);
         this.register('range', RangeWidget);
+        this.register('tag', TagWidget);
 
         this.register('custom', CustomWidget);
 
