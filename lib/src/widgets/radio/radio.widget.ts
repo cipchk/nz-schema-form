@@ -5,7 +5,7 @@ import { ControlWidget } from '../../widget';
     selector: 'nz-sf-radio-widget',
     template: `
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
-        <nz-radio-group [formControl]="control" >
+        <nz-radio-group [formControl]="control" [nzSize]="size">
             <label *ngFor="let option of selectList" 
                 nz-radio 
                 [nzValue]="option.value"
