@@ -285,5 +285,5 @@ export class HomeComponent {
     };
     inlineModel = { email: 'cipchk@qq.com', name: 'cipchk' };
 
-    constructor(private msg: NzMessageService) { }
+    constructor(private msg: NzMessageService) {}
 }
