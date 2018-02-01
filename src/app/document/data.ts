@@ -51,7 +51,7 @@ export const DATA = {
         {
             id: 'radio',
             title: '单选框',
-            // content: getMd(require('!!raw-loader!../../../lib/src/widgets/radio/index.md'))
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets/radio/index.md'))
         },
         {
             id: 'date',
@@ -66,7 +66,7 @@ export const DATA = {
         {
             id: 'time',
             title: '时间',
-            // content: getMd(require('!!raw-loader!../../../lib/src/widgets/time/index.md'))
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets/time/index.md'))
         },
         {
             id: 'rate',

@@ -82,11 +82,13 @@ export class HomeComponent {
                     id: 'cascader',
                     placeholder: '请选择',
                     load: (options: any) => {
-                        options.resolve([{
-                            value: 'zhonghuamen',
-                            label: 'Zhong Hua Men',
-                            isLeaf: true
-                        }]);
+                        options.resolve([
+                            {
+                                value: 'zhonghuamen',
+                                label: 'Zhong Hua Men',
+                                isLeaf: true
+                            }
+                        ]);
                     }
                 }
             },
@@ -96,9 +98,11 @@ export class HomeComponent {
                 grid: { span: 16 },
                 widget: {
                     id: 'transfer',
-                    dataSource: Array(10).fill({}).map((v: any, i: number) => {
-                        return { title: `content${i + 1}`, direction: i === 1 ? 'right' : '' };
-                    })
+                    dataSource: Array(10)
+                        .fill({})
+                        .map((v: any, i: number) => {
+                            return { title: `content${i + 1}`, direction: i === 1 ? 'right' : '' };
+                        })
                 }
             },
             range: {
@@ -114,12 +118,7 @@ export class HomeComponent {
                 title: '兴趣',
                 widget: {
                     id: 'tag',
-                    tags: [
-                        { id: 1, title: '电影', checked: true },
-                        { id: 2, title: '书' },
-                        { id: 3, title: '旅行' },
-                        { id: 4, title: '美食', checked: true }
-                    ]
+                    tags: [{ id: 1, title: '电影', checked: true }, { id: 2, title: '书' }, { id: 3, title: '旅行' }, { id: 4, title: '美食', checked: true }]
                 }
             },
             products: {
@@ -146,23 +145,24 @@ export class HomeComponent {
                             type: 'number'
                         }
                     },
-                    required: ['pn', 'num', 'price'],
-                },
+                    required: ['pn', 'num', 'price']
+                }
             },
             gender: {
                 type: 'string',
-                title: '描述',
-                default:"men",
+                title: '性别',
+                default: 'men',
                 widget: {
                     id: 'radio',
-                    style:"button",
+                    style: 'button',
                     selectList: [
                         {
-                            label: "Men",
-                            value: "men"
-                        }, {
-                            label: "Women",
-                            value: "women"
+                            label: 'Men',
+                            value: 'men'
+                        },
+                        {
+                            label: 'Women',
+                            value: 'women'
                         }
                     ]
                 }
@@ -172,10 +172,7 @@ export class HomeComponent {
         button: {
             grid: { span: 24 },
             style: { 'text-align': 'center' },
-            items: [
-                { label: '登录', id: 'send', submit: true },
-                { label: '重置', id: 'reset' }
-            ]
+            items: [{ label: '登录', id: 'send', submit: true }, { label: '重置', id: 'reset' }]
         }
     };
     model = { email: 'cipchk@qq.com' };
@@ -237,10 +234,7 @@ export class HomeComponent {
             }
         },
         button: {
-            items: [
-                { label: 'Send', id: 'send', submit: true },
-                { label: 'Reset', id: 'reset' }
-            ]
+            items: [{ label: 'Send', id: 'send', submit: true }, { label: 'Reset', id: 'reset' }]
         },
         required: ['email']
     };
@@ -268,13 +262,10 @@ export class HomeComponent {
         },
         required: ['name', 'password'],
         button: {
-            items: [
-                { label: '登录', id: 'send', submit: true },
-                { label: '重置', id: 'reset' }
-            ]
+            items: [{ label: '登录', id: 'send', submit: true }, { label: '重置', id: 'reset' }]
         }
     };
     inlineModel = { email: 'cipchk@qq.com', name: 'cipchk' };
 
-    constructor(private msg: NzMessageService) { }
+    constructor(private msg: NzMessageService) {}
 }
