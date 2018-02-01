@@ -27,7 +27,7 @@ import { SchemaFormOptions } from '../../../schema-form.options';
             [nzDisabledHours]="true"
             [nzDisabledMinutes]="disabledMinutes"
             [nzDisabledSeconds]="disabledSeconds"
-            [nzHideDisabledOptions]="nzHideDisabledOptions"></nz-timepicker>
+            [nzHideDisabledOptions]="hideDisabledOptions"></nz-timepicker>
 
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
