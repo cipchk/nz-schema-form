@@ -1,6 +1,6 @@
 {
   "name": "nz-schema-form",
-  "version": "0.0.0-alpha.3",
+  "version": "0.0.0-alpha.4",
   "license": "MIT",
   "description": "ng-zorro-antd form generation based on JSON Schema",
   "main": "./bundles/index.js",
