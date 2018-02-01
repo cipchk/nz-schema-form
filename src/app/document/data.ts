@@ -29,6 +29,11 @@ export const DATA = {
             content: getMd(require('!!raw-loader!../../../lib/src/widgets/string/index.md'))
         },
         {
+            id: 'button',
+            title: '按钮',
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets/button/index.md'))
+        },
+        {
             id: 'boolean',
             title: '布尔值',
             content: getMd(require('!!raw-loader!../../../lib/src/widgets/boolean/index.md'))

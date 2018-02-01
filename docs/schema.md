@@ -21,18 +21,28 @@ type | 数据类型，支持 JavaScript 基础类型 | `number,string,boolean,ob
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
-widget | 指定采用什么小部件渲染数据  | `string | WidgetData` | -
+widget | 指定采用什么小部件渲染数据  | `string,WidgetData` | -
 title | 表单标题，等同 `label`  | `string` | -
 description | 表单描述  | `string` | -
+showDescription | 是否展示 `description`  | `boolean` | `false`
+default | 默认值  | `any` | -
 size | 控件大小  | `large,default,small` | `large`
 disabled | 是否禁用状态  | `boolean` | -
-default | 默认值  | `any` | -
+class | 自定义类，等同 `[ngClass]` 值  | `string,string[]` | -
+style | 自定义样式，等同 `[ngStyle]` 值  | `object` | -
+grid | 响应式属性  | `SFGrid` | -
 
 ## 小部件Schema
 
+参数 | 说明 | 类型 | 默认值
+----|------|-----|------
 id | 小部件名称  | `string` | -
+placeholder | 文字框中显示提示信息  | `string` | -
+extra | 用于显示表单额外提示信息  | `string` | -
 
-## 响应式Schema
+> 每一个小部件会有相应UI参数，请参考相应小部件文档。
+
+## `SFGrid` 响应式Schema
 
 `grid` 属性等同完整的 [Grid栅格系统](https://ng.ant.design/#/components/grid)，透过 `grid` 可以决定表单如何渲染。
 
