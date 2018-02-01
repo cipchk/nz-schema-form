@@ -142,6 +142,7 @@ export class HomeComponent {
                 default:"men",
                 widget: {
                     id: 'radio',
+                    style:"button",
                     selectList: [
                         {
                             label: "Men",
