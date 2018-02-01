@@ -21,6 +21,7 @@ import { ControlWidget } from '../../widget';
 
         <nz-rate
         [formControl]="control"
+        [nzDisabled]="schema.readOnly"
         [nzCount]="count"
         [nzAllowHalf]="allowHalf"></nz-rate>
 
