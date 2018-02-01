@@ -35,6 +35,11 @@ export interface SchemaFormOptions {
      * 日期小部件配置
      */
     date?: any;
+
+    /**
+     * 时间小部件配置
+     */
+    time?:any
 }
 
 export const DEFAULT: SchemaFormOptions = {
@@ -42,5 +47,6 @@ export const DEFAULT: SchemaFormOptions = {
     ingoreTypeValidator: true,
     onlyVisual: false,
     showDescription: false,
-    date: {}
+    date: {},
+    time: {},
 };
