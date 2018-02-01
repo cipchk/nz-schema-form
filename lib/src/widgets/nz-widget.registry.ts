@@ -12,11 +12,12 @@ import { NumberWidget } from './number/number.widget';
 import { CheckboxWidget } from './checkbox/checkbox.widget';
 import { FileWidget } from './file/file.widget';
 import { CascaderWidget } from './cascader/cascader.widget';
-import { CustomWidget } from './custom/custom.widget'; 
+import { CustomWidget } from './custom/custom.widget';
 import { TransferWidget } from './transfer/transfer.widget';
 import { RangeWidget } from './range/range.widget';
 import { RadioWidget } from './radio/radio.widget';
 import { TagWidget } from './tag/tag.widget';
+import { SelectWidget } from './select/select.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
     constructor() {
@@ -39,6 +40,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('transfer', TransferWidget);
         this.register('range', RangeWidget);
         this.register('tag', TagWidget);
+        this.register('select', SelectWidget);
 
         this.register('custom', CustomWidget);
 

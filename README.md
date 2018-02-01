@@ -37,7 +37,7 @@ By data type, all the available widgets contains listed below:
 | `date-range` | `nz-rangepicker` | viking | - | - |
 | `time` | `nz-timepicker` | viking | - | - |
 | `rate` | `nz-rate` | viking | - | - |
-| `select` | `nz-select` | viking | - | - |
+| `select` | `nz-select` | cipchk | - | - |
 | `range` | `nz-slider` | cipchk | - | - |
 | `file` | `nz-upload` | cipchk | - | - |
 | `cascader` | `nz-cascader` | cipchk | - | - |

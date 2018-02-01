@@ -44,7 +44,8 @@ import {
     CustomWidget,
     TransferWidget,
     RangeWidget,
-    TagWidget
+    TagWidget,
+    SelectWidget
 } from './src/widgets';
 
 const WIDGETS: any[] = [
@@ -64,7 +65,8 @@ const WIDGETS: any[] = [
     CustomWidget,
     TransferWidget,
     RangeWidget,
-    TagWidget
+    TagWidget,
+    SelectWidget
 ];
 
 // endregion
@@ -100,7 +102,8 @@ import {
     NzTransferModule,
     NzSliderModule,
     NzRadioModule,
-    NzTagModule
+    NzTagModule,
+    NzSelectModule
 } from 'ng-zorro-antd';
 const ZORROMODULES = [
     NzGridModule,
@@ -119,7 +122,8 @@ const ZORROMODULES = [
     NzTransferModule,
     NzSliderModule,
     NzRadioModule,
-    NzTagModule
+    NzTagModule,
+    NzSelectModule
 ];
 // endregion
 
