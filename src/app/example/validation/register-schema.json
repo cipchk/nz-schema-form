@@ -1,0 +1,46 @@
+{
+    "debug": true,
+    "properties": {
+        "email": {
+            "type": "string",
+            "title": "邮箱",
+            "format": "email",
+            "widget": {
+                "placeholder": "请输入用户名，且3位以上"
+            },
+            "minLength": 3
+        },
+        "password": {
+            "type": "string",
+            "title": "密码",
+            "widget": {
+                "type": "password",
+                "placeholder": "请输入密码，且6位以上"
+            },
+            "minLength": 6
+        },
+        "repassword": {
+            "type": "string",
+            "title": "确认密码",
+            "widget": {
+                "type": "password",
+                "placeholder": "请输入密码，且6位以上"
+            },
+            "minLength": 6
+        }
+    },
+    "required": ["email", "password", "repassword"],
+    "button": {
+        "items": [
+            {
+                "label": "注册",
+                "id": "send",
+                "submit": true
+            },
+            {
+                "label": "重置",
+                "id": "reset"
+            }
+        ]
+    }
+}

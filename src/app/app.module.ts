@@ -13,7 +13,6 @@ import { NzSchemaFormModule } from 'nz-schema-form';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ExampleComponent } from './example/example.component';
 import { ValidatorComponent } from './validator/validator.component';
 import { DocumentComponent } from './document/document.component';
 
@@ -21,7 +20,6 @@ import { DocumentComponent } from './document/document.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ExampleComponent,
     ValidatorComponent,
     DocumentComponent
   ],
@@ -35,7 +33,7 @@ import { DocumentComponent } from './document/document.component';
     AceEditorModule,
     RouterModule.forRoot([
         { path: '', component: HomeComponent },
-        { path: 'example', component: ExampleComponent },
+        { path: 'example', loadChildren: './example/example.module#ExampleModule' },
         { path: 'validator', component: ValidatorComponent },
         { path: 'document', redirectTo: 'document/getting-started', pathMatch: 'full' },
         {

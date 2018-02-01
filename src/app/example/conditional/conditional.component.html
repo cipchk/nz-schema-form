@@ -1,0 +1,9 @@
+<h1>条件表单</h1>
+<p>通过配置 Schema 的 <code>visibleIf</code> 属性根据条件表达式显示表单，例如：根据不同登录方式渲染不同表单</p>
+<nz-sf
+    [schema]="DATA.schema"
+    [model]="DATA.model"
+    [actions]="actions"
+    (onChange)="DATA.value=$event.value"></nz-sf>
+{{ DATA.value | json }}
+<markdown [data]="demo"></markdown>

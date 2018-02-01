@@ -19,21 +19,21 @@
             [(text)]="schemaStr"
             [mode]="'json'"
             [theme]="'monokai'"
-            [options]="aceOptions"
+            [options]="{fontSize: '16px'}"
             style="min-height: 350px; width:100%; overflow: auto;"></div>
         <h1>Model</h1>
         <div ace-editor
             [(text)]="modelStr"
             [mode]="'json'"
             [theme]="'monokai'"
-            [options]="aceOptions"
+            [options]="{fontSize: '16px'}"
             style="min-height: 100px; width:100%; overflow: auto;"></div>
         <h1>Actions</h1>
         <div ace-editor
             [(text)]="actionsStr"
             [mode]="'json'"
             [theme]="'monokai'"
-            [options]="aceOptions"
+            [options]="{fontSize: '16px'}"
             [readOnly]="true"
             style="min-height: 100px; width:100%; overflow: auto;"></div>
     </div>

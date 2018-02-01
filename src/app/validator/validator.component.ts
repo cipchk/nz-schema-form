@@ -7,10 +7,6 @@ import { ObjectProperty } from '../../../lib/src/model/objectproperty';
     templateUrl: './validator.component.html'
 })
 export class ValidatorComponent implements OnInit {
-    aceOptions: any = {
-        fontSize: '16px'
-    };
-
     schemaStr: any;
     modelStr: any;
     actionsStr = `actions = {
@@ -36,8 +32,8 @@ export class ValidatorComponent implements OnInit {
     value: any;
 
     constructor(private msg: NzMessageService) {
-        this.schemaStr = require('!!raw-loader!../sampleschema.json');
-        this.modelStr = require('!!raw-loader!../samplemodel.json');
+        this.schemaStr = require('!!raw-loader!../schema/sampleschema.json');
+        this.modelStr = require('!!raw-loader!../schema/samplemodel.json');
     }
 
     ngOnInit(): void {

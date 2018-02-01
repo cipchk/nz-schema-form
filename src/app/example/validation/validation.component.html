@@ -1,0 +1,10 @@
+<h1>自定义校验</h1>
+<p>JSON Schema 实现了大部分常规校验，但依然通过传递 <code>validators</code> 参数自定义校验，例如：密码与确认密码的校验。</p>
+<p><strong>注：</strong>目前并不支持异步校验。</p>
+<nz-sf
+    [schema]="DATA.register.schema"
+    [model]="DATA.register.model"
+    [validators]="validators"
+    [actions]="actions"
+    (onChange)="DATA.register.value=$event.value"></nz-sf>
+<markdown [data]="demo"></markdown>

@@ -1,0 +1,11 @@
+<nz-layout>
+    <nz-sider [nzWidth]="200">
+        <ul nz-menu [nzMode]="'inline'" style="height:100%">
+            <li nz-menu-item [routerLink]="'/example/basic'" routerLinkActive="ant-menu-item-selected">基础</li>
+            <li nz-menu-item [routerLink]="'/example/validation'" routerLinkActive="ant-menu-item-selected">自定义校验</li>
+            <li nz-menu-item [routerLink]="'/example/conditional'" routerLinkActive="ant-menu-item-selected">条件表单</li>
+            <li nz-menu-item [routerLink]="'/example/sort'" routerLinkActive="ant-menu-item-selected">调整顺序</li>
+        </ul>
+    </nz-sider>
+    <nz-content class="markdown"><router-outlet></router-outlet></nz-content>
+</nz-layout>

@@ -1,0 +1,8 @@
+<h1>调整顺序</h1>
+<p>通过配置 Schema 的 <code>order</code> 数组属性可以按需求改变表单渲染顺序。<strong>注：</strong> 若指定顺序则必须包含所有属性。</p>
+<nz-sf
+    [schema]="DATA.schema"
+    [model]="DATA.model"
+    (onChange)="DATA.value=$event.value"></nz-sf>
+{{ DATA.value | json }}
+<markdown [data]="demo"></markdown>
