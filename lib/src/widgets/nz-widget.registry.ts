@@ -17,6 +17,7 @@ import { TransferWidget } from './transfer/transfer.widget';
 import { RangeWidget } from './range/range.widget';
 import { RadioWidget } from './radio/radio.widget';
 import { TagWidget } from './tag/tag.widget';
+import { RateWidget } from './rate/rate.widget';
 import { SelectWidget } from './select/select.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
@@ -40,6 +41,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('transfer', TransferWidget);
         this.register('range', RangeWidget);
         this.register('tag', TagWidget);
+        this.register('rate', RateWidget);
         this.register('select', SelectWidget);
 
         this.register('custom', CustomWidget);
