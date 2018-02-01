@@ -9,7 +9,7 @@ import { ControlWidget } from '../../widget';
             <label *ngFor="let option of selectList" 
                 nz-radio 
                 [nzValue]="option.value"
-                [nzDisabled]="schema.disabled">
+                [nzDisabled]="schema.disabled||(option.disabled||false)">
                 <span [innerHTML]="option.label"></span>
             </label>
         </nz-radio-group>

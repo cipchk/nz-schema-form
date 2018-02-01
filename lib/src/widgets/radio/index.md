@@ -15,6 +15,7 @@ selectList | 选项列表  | `SelectItem[]` | `[]`
 ----|------|-----|------
 label | 选项标签内容  | `string` | `-`
 value | 选项值  | `string` | `-`
+disabled | 当前选项是否不可选  | `boolean` | `false`
 
 
 ## Demo
@@ -29,10 +30,12 @@ value | 选项值  | `string` | `-`
           "selectList": [
               {
                   "label": "Men",
-                  "value": "men"
+                  "value": "men",
+                  "disabled":true
               }, {
                   "label": "Women",
-                  "value": "women"
+                  "value": "women",
+                  "disabled":false
               }
           ]
       }
