@@ -56,6 +56,20 @@ export class HomeComponent {
                 title: '生日',
                 widget: 'date'
             },
+            type: {
+                type: 'string',
+                title: '类型',
+                default: 'tom',
+                widget: {
+                    id: 'select',
+                    allowClear: true,
+                    data: [
+                        { value: 'jack', label: 'Jack' },
+                        { value: 'lucy', label: 'Lucy' },
+                        { value: 'tom', label: 'Tom' }
+                    ]
+                }
+            },
             remark: {
                 type: 'string',
                 title: '描述',
