@@ -32,7 +32,7 @@ By data type, all the available widgets contains listed below:
 | `integer` | `nz-input-number` | cipchk | - | - |
 | `textarea` | `nz-input` | cipchk | - | - |
 | `checkbox` | `nz-checkbox` | cipchk | - | - |
-| `radio` | `nz-radio` | - | - | - |
+| `radio` | `nz-radio` | canaan | - | - |
 | `date` | `nz-datepicker` | viking | - | - |
 | `date-range` | `nz-rangepicker` | viking | - | - |
 | `time` | `nz-timepicker` | viking | - | - |

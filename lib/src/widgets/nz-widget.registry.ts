@@ -11,9 +11,10 @@ import { NumberWidget } from './number/number.widget';
 import { CheckboxWidget } from './checkbox/checkbox.widget';
 import { FileWidget } from './file/file.widget';
 import { CascaderWidget } from './cascader/cascader.widget';
-import { CustomWidget } from './custom/custom.widget';
+import { CustomWidget } from './custom/custom.widget'; 
 import { TransferWidget } from './transfer/transfer.widget';
 import { RangeWidget } from './range/range.widget';
+import { RadioWidget } from './radio/radio.widget';
 import { TagWidget } from './tag/tag.widget';
 
 export class NzWidgetRegistry extends WidgetRegistry {
@@ -25,6 +26,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('button', ButtonWidget);
 
         this.register('string', StringWidget);
+        this.register('radio',RadioWidget)
         this.register('date', DateWidget);
         this.register('boolean', BooleanWidget);
         this.register('number', NumberWidget);
