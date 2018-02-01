@@ -39,6 +39,7 @@ import { WidgetData } from './../../schema/types';
 export class StringWidget extends ControlWidget {
     get type() {
         const w = this.widgetData;
-        return this.schema.format ? this.schema.format : !w || w.id === 'string' ? 'text' : w.id;
+        if (w.type) return w.type;
+        return !w || w.id === 'string' ? 'text' : w.id;
     }
 }

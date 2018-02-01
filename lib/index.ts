@@ -13,7 +13,7 @@ import { CustomTemplateDirective } from './src/widgets/custom/nz-template.direct
 import {
     FormComponent,
     FormItemComponent,
-    FormActionComponent,
+    FormActionComponent
 } from './src';
 
 const COMPONENTS = [
@@ -76,6 +76,7 @@ export { FormItemComponent } from './src/form-item.component';
 export { FormActionComponent } from './src/form-item-action.component';
 export * from './src/widgets';
 export * from './src/schema';
+export * from './src/model';
 
 // endregion
 

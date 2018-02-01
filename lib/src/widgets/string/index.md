@@ -10,6 +10,7 @@ inherit: true
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
+type | 等同 input 的 `type` 值，例如：`password`  | `string` | -
 placeholder | 在文字框中显示提示讯息  | `string` | -
 maxLength | 表单最大长度  | `number` | -
 minLength | 表单最小长度  | `number` | -

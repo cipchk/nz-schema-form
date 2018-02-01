@@ -67,7 +67,7 @@ export class BaseWidget extends Widget<FormProperty> {
 export class ControlWidget extends BaseWidget implements AfterViewInit {
 
     get hasError(): boolean {
-        return (this.control.dirty || this.control.touched) && this.errorMessages && this.errorMessages.length > 0;
+        return !this.control.pristine && (this.control.dirty || this.control.touched) && this.errorMessages && this.errorMessages.length > 0;
     }
 
     get errorMessage(): string {

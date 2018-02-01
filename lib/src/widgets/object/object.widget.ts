@@ -1,40 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ObjectLayoutWidget } from '../../widget';
 
 @Component({
   selector: 'nz-sf-object',
   template: `
-    <ng-container *ngFor="let i of formProperty.schema.fieldsets">
-        <ng-container *ngIf="grid; else noGrid">
-            <div nz-row [nzGutter]="grid.gutter">
-                <div *ngFor="let fid of i.fields" nz-col
-                    [nzSpan]="getGrid(fid).span" [nzOffset]="getGrid(fid).offset"
-                    [nzXs]="getGrid(fid).xs" [nzSm]="getGrid(fid).sm" [nzMd]="getGrid(fid).md"
-                    [nzLg]="getGrid(fid).lg" [nzXl]="getGrid(fid).xl">
-                    <div nz-row nz-form-item [ngClass]="{'array-field': isArray(fid)}">
-                        <nz-sf-item *ngIf="formProperty.visible" [formProperty]="formProperty.getProperty(fid)"></nz-sf-item>
+    <ng-container *ngIf="grid; else noGrid">
+        <div nz-row [nzGutter]="grid.gutter">
+            <ng-container *ngFor="let i of list">
+                <ng-container *ngIf="i.property.visible">
+                    <div nz-col
+                        [nzSpan]="i.grid.span" [nzOffset]="i.grid.offset"
+                        [nzXs]="i.grid.xs" [nzSm]="i.grid.sm" [nzMd]="i.grid.md"
+                        [nzLg]="i.grid.lg" [nzXl]="i.grid.xl">
+                        <div nz-row nz-form-item [ngClass]="{'array-field': i.isArray}">
+                            <nz-sf-item [formProperty]="i.property"></nz-sf-item>
+                        </div>
                     </div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-template #noGrid>
+        <ng-container *ngFor="let i of list">
+            <ng-container *ngIf="i.property.visible">
+                <div nz-row nz-form-item>
+                    <nz-sf-item *ngIf="i.property.visible"  [formProperty]="i.property"></nz-sf-item>
                 </div>
-            </div>
+            </ng-container>
         </ng-container>
-        <ng-template #noGrid>
-            <div *ngFor="let fid of i.fields" nz-row nz-form-item>
-                <nz-sf-item *ngIf="formProperty.visible" [formProperty]="formProperty.getProperty(fid)"></nz-sf-item>
-            </div>
-        </ng-template>
-    </ng-container>`
+    </ng-template>
+    `
 })
-export class ObjectWidget extends ObjectLayoutWidget {
+export class ObjectWidget extends ObjectLayoutWidget implements OnInit {
+    list: any[] = [];
     // TODO: no yet ` [nzXXl]="grid.xxl"`
     get grid() {
         return this.formProperty.schema.grid;
     }
 
-    getGrid(fieldId: string) {
-        return this.formProperty.getProperty(fieldId).schema.grid || this.grid;
-    }
-
-    isArray(fieldId: string) {
-        return this.formProperty.getProperty(fieldId).schema.type === 'array';
+    ngOnInit(): void {
+        const list: any[] = [];
+        for (const i of this.formProperty.schema.fieldsets) {
+            for (const fid of i.fields) {
+                const property = this.formProperty.getProperty(fid);
+                const item = {
+                    property,
+                    grid: property.schema.grid || this.grid || {},
+                    isArray: property.schema.type === 'array'
+                };
+                list.push(item);
+            }
+        }
+        this.list = list;
     }
 }

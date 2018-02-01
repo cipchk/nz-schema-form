@@ -50,8 +50,6 @@ export class FormComponent implements OnChanges {
 
     @Output() onErrorChange = new EventEmitter<{ value: any[] }>();
 
-    @Output() onErrorsChange = new EventEmitter<{ value: any }>();
-
     rootProperty: FormProperty = null;
 
     constructor(private formPropertyFactory: FormPropertyFactory, private actionRegistry: ActionRegistry, private validatorRegistry: ValidatorRegistry, private cdr: ChangeDetectorRef, private terminator: TerminatorService) {}
@@ -62,18 +60,31 @@ export class FormComponent implements OnChanges {
         Object.keys(schema.properties).forEach(key => {
             const p = schema.properties[key];
             if (isHorizontal) {
-                if (!p.span_label && schema.span_label) p.span_label = schema.span_label;
-                if (!p.span_control && schema.span_control) p.span_control = schema.span_control;
-                if (!p.offset_control && schema.offset_control) p.offset_control = schema.offset_control;
+                if (!p.span_label) p.span_label = typeof schema.span_label === 'undefined' ? 5 : schema.span_label;
+                if (!p.span_control) p.span_control = typeof schema.span_control === 'undefined' ? 19 : schema.span_control;
+                if (!p.offset_control) p.offset_control = typeof schema.offset_control === 'undefined' ? null : schema.offset_control;
             } else {
                 p.span_label = null;
                 p.span_control = null;
                 p.offset_control = null;
             }
+
             if (p.items && p.type === 'array') {
                 this.coverProperty(p.items);
             }
         });
+    }
+
+    private coverButtonProperty(schema: SFSchema) {
+        if (!schema.button) return;
+        if (this.layout === 'horizontal' && !schema.button.grid) {
+            const keys = Object.keys(schema.properties);
+            if (keys.length > 0) {
+                schema.button.grid = {
+                    offset: schema.properties[keys[0]].span_label
+                };
+            }
+        }
     }
 
     ngOnChanges(changes: any) {
@@ -92,6 +103,7 @@ export class FormComponent implements OnChanges {
         if (this.schema && changes.schema) {
 
             this.coverProperty(this.schema);
+            this.coverButtonProperty(this.schema);
             if (this.schema.debug) {
                 console.warn('schema', this.schema);
             }

@@ -117,6 +117,16 @@ export abstract class FormProperty {
         let customValidator = this.validatorRegistry.get(this.path);
         if (customValidator) {
             let customErrors = customValidator(this.value, this, this.findRoot());
+            // fix error format
+            if (customErrors) {
+                customErrors = Array.isArray(customErrors) ? customErrors : [ customErrors ];
+                customErrors.forEach((err, idx: number) => {
+                    if (!err.message) throw new Error(`自定义校验器必须至少返回一个 'message' 属性，用于表示错误文本`);
+                    err.path = this._path;
+                    if (!err.code) err.code = `CUSTOM-ERROR-${idx}`;
+                    if (!err.params) err.params = [ this._path, this._value ];
+                });
+            }
             errors = this.mergeErrors(errors, customErrors);
         }
         if (errors.length === 0) {
