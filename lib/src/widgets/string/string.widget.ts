@@ -21,13 +21,12 @@ import { WidgetData } from './../../schema/types';
         <input nz-input
             [formControl]="control"
             [name]="name"
-            [attr.readonly]="(schema.widget.id!=='color') && schema.readOnly?true:null"
             [attr.id]="id"
             [attr.type]="type"
             [attr.placeholder]="placeholder"
             [attr.maxLength]="schema.maxLength || null"
             [attr.minLength]="schema.minLength || null"
-            [attr.disabled]="(schema.widget.id=='color' && schema.disabled)?true:null"
+            [attr.disabled]="(schema.widget.id=='color' && schema.readOnly)?true:null"
             [nzSize]="size">
         <input *ngIf="(schema.widget.id==='color' && schema.readOnly)"
             [attr.name]="name" type="hidden" [formControl]="control">

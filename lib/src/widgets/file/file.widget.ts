@@ -20,7 +20,7 @@ import { Subscription } from 'rxjs/Subscription';
         <nz-upload
             [nzFileList]="fileList"
             (nzFileListChange)="change()"
-            [nzDisabled]="schema.disabled"
+            [nzDisabled]="schema.readOnly"
             [nzAction]="action"
             [nzAccept]="accept"
             [nzLimit]="limit"

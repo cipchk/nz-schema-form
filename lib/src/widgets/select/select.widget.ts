@@ -24,7 +24,7 @@ import { Subscription } from 'rxjs/Subscription';
                 [formControl]="control"
                 [ngStyle]="i.style"
                 [nzSize]="size"
-                [nzDisabled]="schema.disabled"
+                [nzDisabled]="schema.readOnly"
                 [nzMode]="i.mode"
                 [nzFilter]="i.filter"
                 [nzKeepUnListOptions]="i.keepUnListOptions"
@@ -45,7 +45,7 @@ import { Subscription } from 'rxjs/Subscription';
                 [formControl]="control"
                 [ngStyle]="i.style"
                 [nzSize]="size"
-                [nzDisabled]="schema.disabled"
+                [nzDisabled]="schema.readOnly"
                 [nzFilter]="i.filter"
                 [nzAllowClear]="i.allowClear"
                 [nzPlaceHolder]="placeholder"
@@ -65,7 +65,7 @@ import { Subscription } from 'rxjs/Subscription';
                 [formControl]="control"
                 [ngStyle]="i.style"
                 [nzSize]="size"
-                [nzDisabled]="schema.disabled"
+                [nzDisabled]="schema.readOnly"
                 nzTags
                 nzShowSearch
                 [nzAllowClear]="i.allowClear"

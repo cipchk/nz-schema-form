@@ -26,7 +26,7 @@ import { ControlWidget } from '../../widget';
             [nzMarks]="marks"
             [nzDots]="widgetData.dots"
             [nzIncluded]="included"
-            [nzDisabled]="schema.disabled"
+            [nzDisabled]="schema.readOnly"
             [nzVertical]="widgetData.vertical"
             [nzTipFormatter]="_formatter"
             (nzOnAfterChange)="_afterChange($event)">

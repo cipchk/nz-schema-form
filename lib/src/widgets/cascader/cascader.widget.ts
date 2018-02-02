@@ -20,7 +20,7 @@ import { ControlWidget } from '../../widget';
         <nz-cascader
             [formControl]="control"
             [nzSize]="size"
-            [nzDisabled]="schema.disabled"
+            [nzDisabled]="schema.readOnly"
             [nzPlaceHolder]="placeholder"
             [nzShowSearch]="showSearch"
             [nzAllowClear]="allowClear"

@@ -16,7 +16,7 @@ import { ControlWidget } from '../../widget';
     </div>
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
         <nz-switch [formControl]="control"
-            [nzDisabled]="schema.disabled"
+            [nzDisabled]="schema.readOnly"
             [nzSize]="size">
             <span checked [innerHTML]="checked"></span>
             <span unchecked [innerHTML]="unchecked"></span>
