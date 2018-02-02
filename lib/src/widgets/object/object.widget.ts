@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ObjectLayoutWidget } from '../../widget';
 
 @Component({
@@ -29,12 +29,17 @@ import { ObjectLayoutWidget } from '../../widget';
             </ng-container>
         </ng-container>
     </ng-template>
-    `
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ObjectWidget extends ObjectLayoutWidget implements OnInit {
     // TODO: no yet ` [nzXXl]="grid.xxl"`
     list: any[] = [];
     grid: any;
+
+    constructor(private cd: ChangeDetectorRef) {
+        super();
+    }
 
     ngOnInit(): void {
         this.grid = this.formProperty.schema.grid;
@@ -51,5 +56,6 @@ export class ObjectWidget extends ObjectLayoutWidget implements OnInit {
             }
         }
         this.list = list;
+        this.cd.detectChanges();
     }
 }
