@@ -9,7 +9,7 @@ title: 单选组
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
-style | radio的样式  | `'default|button'` | `'default'`
+style | radio的样式  | `default, button` | `'default'`
 selectList | 选项列表  | `SelectItem[]` | `[]`
 
 ### `SelectItem` 属性

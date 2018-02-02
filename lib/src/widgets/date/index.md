@@ -12,7 +12,7 @@ inherit: true
 ----|------|-----|------
 placeholder | 在文字框中显示提示讯息  | `string` | -
 readOnly | 是否只读状态  | `boolean` | -
-widget | 组件  | `string | object` | - 
+widget | 组件  | `string,object` | - 
 
 ## Widget Params
 
