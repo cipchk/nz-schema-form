@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 import * as moment from 'moment';
-import { SchemaFormOptions } from '../../../schema-form.options';
 
 @Component({
     selector: 'nz-sf-date-range-widget',
@@ -16,42 +15,33 @@ import { SchemaFormOptions } from '../../../schema-form.options';
             </span>
         </label>
     </div>
-    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
+    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
 
-            <nz-rangepicker
-             [formControl]="control"
-             [nzFormat]="format"
-             [nzSize]="size"
-             [nzDisabled]="schema.readOnly"
-             [nzShowTime]="showTime"
-             [nzPlaceholder]="[start, end]">
-             </nz-rangepicker>
+        <nz-rangepicker
+            [formControl]="control"
+            [nzFormat]="format"
+            [nzSize]="size"
+            [nzDisabled]="schema.readOnly"
+            [nzShowTime]="showTime"
+            [nzPlaceholder]="[start, end]">
+        </nz-rangepicker>
 
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
-    </div>`,
-    styles: [`
-        nz-datepicker {
-            width:100%;
-        }
-    `]
+    </div>`
 })
-export class DateRangeWidget extends ControlWidget {
+export class DateRangeWidget extends ControlWidget implements OnInit {
 
-    get format() {
-        return this.widgetData.format || 'YYYY-MM-DD';
-    }
+    format: string;
+    showTime: boolean;
+    start: string;
+    end: string;
 
-    get showTime() {
-        return this.widgetData.showTime === true;
-    }
-
-    get start() {
-        return this.widgetData.start || 'start';
-    }
-
-    get end() {
-        return this.widgetData.end || 'end';
+    ngOnInit(): void {
+        this.format = this.widgetData.format || 'YYYY-MM-DD';
+        this.showTime = this.widgetData.showTime === true;
+        this.start = this.widgetData.start || 'start';
+        this.end = this.widgetData.end || 'end';
     }
 
     serialize(value: any) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 
 @Component({
@@ -35,32 +35,23 @@ import { ControlWidget } from '../../widget';
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
-export class RangeWidget extends ControlWidget {
+export class RangeWidget extends ControlWidget implements OnInit {
 
-    // region: fiedls
+    min: number;
+    max: number;
+    step: number;
+    marks: any;
+    included: boolean;
 
-    get min() {
-        return this.widgetData.min || 0;
+    ngOnInit(): void {
+        this.min = this.widgetData.min || 0;
+        this.max = this.widgetData.max || 100;
+        this.step = this.widgetData.step || 1;
+        this.marks = this.widgetData.marks || null;
+
+        const included = this.widgetData.included;
+        this.included = typeof included === 'undefined' ? true : included;
     }
-
-    get max() {
-        return this.widgetData.max || 100;
-    }
-
-    get step() {
-        return this.widgetData.step || 1;
-    }
-
-    get marks() {
-        return this.widgetData.marks || null;
-    }
-
-    get included() {
-        const val = this.widgetData.included;
-        return typeof val === 'undefined' ? true : val;
-    }
-
-    // endregion
 
     _formatter = (value: any) => {
         if (this.widgetData.formatter) return this.widgetData.formatter(value);

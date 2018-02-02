@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 import * as moment from 'moment';
-import { SchemaFormOptions } from '../../../schema-form.options';
 
 @Component({
     selector: 'nz-sf-date-widget',
@@ -16,7 +15,7 @@ import { SchemaFormOptions } from '../../../schema-form.options';
             </span>
         </label>
     </div>
-    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
+    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
         <nz-datepicker
             [nzFormat]="format"
             [nzSize]="size"
@@ -26,21 +25,16 @@ import { SchemaFormOptions } from '../../../schema-form.options';
             [nzPlaceHolder]="placeholder"></nz-datepicker>
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
-    </div>`,
-    styles: [`
-        nz-datepicker {
-            width:100%;
-        }
-    `]
+    </div>`
 })
-export class DateWidget extends ControlWidget {
+export class DateWidget extends ControlWidget implements OnInit {
 
-    get format() {
-        return this.widgetData.format || 'YYYY-MM-DD';
-    }
+    format: string;
+    showTime: boolean;
 
-    get showTime(){
-        return this.widgetData.showTime === true;
+    ngOnInit(): void {
+        this.format = this.widgetData.format || 'YYYY-MM-DD';
+        this.showTime = this.widgetData.showTime === true;
     }
 
     serialize(value: any) {

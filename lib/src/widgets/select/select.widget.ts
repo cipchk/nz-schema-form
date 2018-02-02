@@ -87,7 +87,6 @@ import { Subscription } from 'rxjs/Subscription';
     </div>`
 })
 export class SelectWidget extends ControlWidget implements OnInit, OnDestroy {
-    selectedMultipleOption;
     i: any;
     type = 0;
     data: any[] = [];

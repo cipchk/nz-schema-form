@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 
 @Component({
@@ -28,12 +28,11 @@ import { ControlWidget } from '../../widget';
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
-export class TextareaWidget extends ControlWidget {
-    get autosize() {
-        return this.widgetData[`autosize`] || true;
-    }
-
-    get rows() {
-        return this.widgetData[`rows`] || null;
+export class TextareaWidget extends ControlWidget implements OnInit {
+    autosize: any;
+    rows: any;
+    ngOnInit(): void {
+        this.autosize = this.widgetData.autosize || true;
+        this.rows = this.widgetData.rows || null;
     }
 }

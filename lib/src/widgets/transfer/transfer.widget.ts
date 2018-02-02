@@ -23,13 +23,13 @@ import { ControlWidget } from '../../widget';
             [nzDataSource]="_dataSource"
             [nzTitles]="titles"
             [nzOperations]="operations"
-            [nzListStyle]="listStyle"
+            [nzListStyle]="widgetData.listStyle"
             [nzItemUnit]="itemUnit"
             [nzItemsUnit]="itemsUnit"
-            [nzShowSearch]="showSearch"
-            [nzFilterOption]="filterOption"
-            [nzSearchPlaceholder]="searchPlaceholder"
-            [nzNotFoundContent]="notFoundContent"
+            [nzShowSearch]="widgetData.showSearch"
+            [nzFilterOption]="widgetData.filterOption"
+            [nzSearchPlaceholder]="widgetData.searchPlaceholder"
+            [nzNotFoundContent]="widgetData.notFoundContent"
             [canMove]="_canMove"
             (nzChange)="_change($event)"
             (nzSearchChange)="_searchChange($event)"
@@ -42,9 +42,17 @@ import { ControlWidget } from '../../widget';
 export class TransferWidget extends ControlWidget implements OnInit {
 
     _dataSource: any[] = [];
+    titles: string[];
+    operations: string[];
+    itemUnit: string;
+    itemsUnit: string;
     private _data: any[] = [];
 
     ngOnInit(): void {
+        this.titles = this.widgetData.titles || ['', ''];
+        this.operations = this.widgetData.operations || ['', ''];
+        this.itemUnit = this.widgetData.itemUnit || '项目';
+        this.itemsUnit = this.widgetData.itemsUnit || '项目';
         this._dataSource = this.widgetData.dataSource || [];
         this._data = this._dataSource.filter(w => w.direction === 'right');
         this.updateValue();
@@ -53,46 +61,6 @@ export class TransferWidget extends ControlWidget implements OnInit {
     private updateValue() {
         this.formProperty.setValue(this._data, false);
     }
-
-    // region: fiedls
-
-    get titles() {
-        return this.widgetData.titles || ['', ''];
-    }
-
-    get operations() {
-        return this.widgetData.operations || ['', ''];
-    }
-
-    get listStyle() {
-        return this.widgetData.listStyle;
-    }
-
-    get itemUnit() {
-        return this.widgetData.itemUnit || '项目';
-    }
-
-    get itemsUnit() {
-        return this.widgetData.itemsUnit || '项目';
-    }
-
-    get showSearch() {
-        return this.widgetData.showSearch;
-    }
-
-    get filterOption() {
-        return this.widgetData.filterOption;
-    }
-
-    get searchPlaceholder() {
-        return this.widgetData.searchPlaceholder;
-    }
-
-    get notFoundContent() {
-        return this.widgetData.notFoundContent;
-    }
-
-    // endregion
 
     _canMove = (arg: any): Observable<any[]> => {
         return this.widgetData.canMove ? this.widgetData.canMove(arg) : of(arg.list);

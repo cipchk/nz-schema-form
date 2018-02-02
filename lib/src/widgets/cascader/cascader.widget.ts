@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 
 @Component({
@@ -22,21 +22,21 @@ import { ControlWidget } from '../../widget';
             [nzSize]="size"
             [nzDisabled]="schema.readOnly"
             [nzPlaceHolder]="placeholder"
-            [nzShowSearch]="showSearch"
-            [nzAllowClear]="allowClear"
+            [nzShowSearch]="widgetData.showSearch"
+            [nzAllowClear]="widgetData.allowClear"
             [nzClearText]="clearText"
             [nzShowArrow]="showArrow"
-            [nzPopupClassName]="popupClassName"
-            [nzColumnClassName]="columnClassName"
-            [nzOptions]="data"
-            [nzEnableCache]="enableCache"
-            [nzExpandTrigger]="expandTrigger"
-            [nzChangeOnSelect]="changeOnSelect"
-            [nzChangeOn]="changeOn"
+            [nzPopupClassName]="widgetData.popupClassName"
+            [nzColumnClassName]="widgetData.columnClassName"
+            [nzOptions]="widgetData.data"
+            [nzEnableCache]="widgetData.enableCache"
+            [nzExpandTrigger]="widgetData.expandTrigger"
+            [nzChangeOnSelect]="widgetData.changeOnSelect"
+            [nzChangeOn]="widgetData.changeOn"
             [nzTriggerAction]="triggerAction"
-            [nzDisplayRender]="displayRender"
-            [nzValueProperty]="valueProperty"
-            [nzLabelProperty]="labelProperty"
+            [nzDisplayRender]="widgetData.displayRender"
+            [nzValueProperty]="widgetData.valueProperty"
+            [nzLabelProperty]="widgetData.labelProperty"
             (nzVisibleChange)="_visibleChange($event)"
             (nzChange)="_change($event)"
             (nzSelectionChange)="_selectionChange($event)"
@@ -48,112 +48,39 @@ import { ControlWidget } from '../../widget';
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
-export class CascaderWidget extends ControlWidget {
-    get showSearch() {
-        return this.widgetData.showSearch;
-    }
+export class CascaderWidget extends ControlWidget implements OnInit {
 
-    get allowClear() {
-        return this.widgetData.allowClear;
-    }
+    clearText: string;
+    showArrow: boolean;
+    triggerAction: string[];
 
-    get clearText() {
-        return this.widgetData.clearText || '清除';
-    }
-
-    get showArrow() {
-        return this.widgetData.showArrow || true;
-    }
-
-    get popupClassName() {
-        return this.widgetData.popupClassName;
-    }
-
-    get columnClassName() {
-        return this.widgetData.columnClassName;
-    }
-
-    get data() {
-        return this.widgetData.data;
-    }
-
-    get enableCache() {
-        return this.widgetData.enableCache;
-    }
-
-    get expandTrigger() {
-        return this.widgetData.expandTrigger;
-    }
-
-    get changeOnSelect() {
-        return this.widgetData.changeOnSelect;
-    }
-
-    get changeOn() {
-        return this.widgetData.changeOn;
-    }
-
-    get triggerAction() {
-        return this.widgetData.triggerAction || ['click'];
-    }
-
-    get displayRender() {
-        return this.widgetData.displayRender;
-    }
-
-    get valueProperty() {
-        return this.widgetData.valueProperty;
-    }
-
-    get labelProperty() {
-        return this.widgetData.labelProperty;
-    }
-
-    get visibleChange() {
-        return this.widgetData.visibleChange;
+    ngOnInit(): void {
+        this.clearText = this.widgetData.clearText || '清除';
+        this.showArrow = this.widgetData.showArrow || true;
+        this.triggerAction = this.widgetData.triggerAction || ['click'];
     }
 
     _visibleChange(options: any) {
-        if (this.visibleChange) this.visibleChange(options);
-    }
-
-    get change() {
-        return this.widgetData.change;
+        if (this.widgetData.visibleChange) this.widgetData.visibleChange(options);
     }
 
     _change(options: any) {
-        if (this.change) this.change(options);
-    }
-
-    get selectionChange() {
-        return this.widgetData.selectionChange;
+        if (this.widgetData.change) this.widgetData.change(options);
     }
 
     _selectionChange(options: any) {
-        if (this.selectionChange) this.selectionChange(options);
-    }
-
-    get select() {
-        return this.widgetData.select;
+        if (this.widgetData.selectionChange) this.widgetData.selectionChange(options);
     }
 
     _select(options: any) {
-        if (this.select) this.select(options);
-    }
-
-    get load() {
-        return this.widgetData.load;
+        if (this.widgetData.select) this.widgetData.select(options);
     }
 
     _load(options: any) {
-        if (this.load) this.load(options);
-    }
-
-    get clear() {
-        return this.widgetData.clear;
+        if (this.widgetData.load) this.widgetData.load(options);
     }
 
     _clear(options: any) {
-        if (this.clear) this.clear(options);
+        if (this.widgetData.clear) this.widgetData.clear(options);
     }
 }

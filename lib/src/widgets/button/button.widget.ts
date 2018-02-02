@@ -21,14 +21,12 @@ export class ButtonWidget implements OnInit, OnDestroy {
     type: string = null;
     disabled = false;
     disabled$: Subscription;
-
-    get size() {
-        return this.button.size || 'large';
-    }
+    size: string;
 
     constructor(private formComp: FormComponent) {}
 
     ngOnInit(): void {
+        this.size = this.button.size || 'large';
         this.disabled = this.button.submit;
         this.type = this.button.type ? this.button.type : this.button.submit ? 'primary' : null;
         if (this.button.submit === true && this.formProperty.forEachChildRecursive) {

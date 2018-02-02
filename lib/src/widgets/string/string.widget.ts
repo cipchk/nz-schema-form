@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 import { WidgetData } from './../../schema/types';
 
@@ -35,10 +35,12 @@ import { WidgetData } from './../../schema/types';
     </div>
   </ng-template>`
 })
-export class StringWidget extends ControlWidget {
-    get type() {
+export class StringWidget extends ControlWidget implements OnInit {
+    type: string;
+
+    ngOnInit(): void {
         const w = this.widgetData;
         if (w.type) return w.type;
-        return !w || w.id === 'string' ? 'text' : w.id;
+        this.type = !w || w.id === 'string' ? 'text' : w.id;
     }
 }

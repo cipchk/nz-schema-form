@@ -32,13 +32,12 @@ import { ObjectLayoutWidget } from '../../widget';
     `
 })
 export class ObjectWidget extends ObjectLayoutWidget implements OnInit {
-    list: any[] = [];
     // TODO: no yet ` [nzXXl]="grid.xxl"`
-    get grid() {
-        return this.formProperty.schema.grid;
-    }
+    list: any[] = [];
+    grid: any;
 
     ngOnInit(): void {
+        this.grid = this.formProperty.schema.grid;
         const list: any[] = [];
         for (const i of this.formProperty.schema.fieldsets) {
             for (const fid of i.fields) {

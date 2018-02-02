@@ -24,7 +24,7 @@ import { Subscription } from 'rxjs/Subscription';
             [nzAction]="action"
             [nzAccept]="accept"
             [nzLimit]="limit"
-            [nzSize]="size"
+            [nzSize]="fsize"
             [nzFileType]="fileType"
             [nzHeaders]="headers"
             [nzListType]="listType"
@@ -42,55 +42,40 @@ import { Subscription } from 'rxjs/Subscription';
     </div>`
 })
 export class FileWidget extends ControlWidget implements OnInit, OnDestroy {
-    get buttonText() {
-        return this.widgetData[`buttonText`] || '点击上传';
-    }
-
-    get action() {
-        return this.widgetData[`action`] || '';
-    }
-
-    get accept() {
-        return this.widgetData[`accept`] || '';
-    }
-
-    get limit() {
-        return this.widgetData[`limit`] || 0;
-    }
-
-    get size() {
-        return this.widgetData[`size`] || 0;
-    }
-
-    get fileType() {
-        return this.widgetData[`fileType`] || '';
-    }
-
-    get headers() {
-        return this.widgetData[`headers`] || null;
-    }
-
-    get listType() {
-        return this.widgetData[`listType`] || 'text';
-    }
-
-    get multiple() {
-        return this.widgetData[`multiple`] || false;
-    }
-
-    get argName() {
-        return this.widgetData[`argName`] || 'file';
-    }
-
-    get showUploadList() {
-        return this.widgetData[`showUploadList`] || true;
-    }
-
-    get withCredentials() {
-        return this.widgetData[`withCredentials`] || false;
-    }
 
     fileList: UploadFile[] = [];
+    buttonText: string;
+    action: string;
+    accept: string;
+    limit = 0;
+    fsize = 0;
+    fileType: string;
+    headers: {};
+    listType: string;
+    multiple: boolean;
+    argName: string;
+    showUploadList: boolean;
+    withCredentials: boolean;
+    private value$: Subscription;
+
+    ngOnInit() {
+        this.buttonText = this.widgetData.buttonText || '点击上传';
+        this.action = this.widgetData.action || '';
+        this.accept = this.widgetData.accept || '';
+        this.limit = this.widgetData.limit == null ? 0 : +this.widgetData.limit;
+        this.fsize = this.widgetData.size == null ? 0 : +this.widgetData.size;
+        this.fileType = this.widgetData.fileType || '';
+        this.headers = this.widgetData.headers || null;
+        this.listType = this.widgetData.listType || 'text';
+        this.multiple = this.widgetData.multiple || false;
+        this.argName = this.widgetData.argName || 'file';
+        this.showUploadList = this.widgetData.showUploadList || true;
+        this.withCredentials = this.widgetData.withCredentials || false;
+
+        this.value$ = this.formProperty.valueChanges.subscribe((val) => {
+            if (typeof val === 'string') this.fileList = [];
+        });
+    }
 
     change() {
         this.fileList = this.fileList.filter(w => !w.status || w.status !== 'removed');
@@ -101,13 +86,6 @@ export class FileWidget extends ControlWidget implements OnInit, OnDestroy {
         this.fileList.push(file);
         this.change();
         return false;
-    }
-
-    private value$: Subscription;
-    ngOnInit() {
-        this.value$ = this.formProperty.valueChanges.subscribe((val) => {
-            if (typeof val === 'string') this.fileList = [];
-        });
     }
 
     ngOnDestroy(): void {

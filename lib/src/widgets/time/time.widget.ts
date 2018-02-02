@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 import * as moment from 'moment';
 import { SchemaFormOptions } from '../../../schema-form.options';
@@ -18,43 +18,30 @@ import { SchemaFormOptions } from '../../../schema-form.options';
     </div>
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
 
-            <nz-timepicker
+        <nz-timepicker
             [formControl]="control"
             [nzSize]="size"
             [nzPlaceHolder]="placeholder"
             [nzDisabled]="schema.readOnly"
             [nzFormat]="format"
-            [nzDisabledHours]="true"
-            [nzDisabledMinutes]="disabledMinutes"
-            [nzDisabledSeconds]="disabledSeconds"
+            [nzDisabledHours]="widgetData.disabledHours"
+            [nzDisabledMinutes]="widgetData.disabledMinutes"
+            [nzDisabledSeconds]="widgetData.disabledSeconds"
             [nzHideDisabledOptions]="hideDisabledOptions"></nz-timepicker>
 
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
-export class TimeWidget extends ControlWidget {
+export class TimeWidget extends ControlWidget implements OnInit {
 
-    get format() {
-        return this.widgetData.format || 'HH:mm:ss';
+    format: string;
+    hideDisabledOptions: boolean;
+
+    ngOnInit(): void {
+        this.format = this.widgetData.format || 'HH:mm:ss';
+        this.hideDisabledOptions = this.widgetData.hideDisabledOptions === true;
     }
-
-    get disabledHours() {
-        return this.widgetData.disabledHours;
-    }
-
-    get disabledMinutes() {
-        return this.widgetData.disabledMinutes;
-    }
-
-    get disabledSeconds() {
-        return this.widgetData.disabledSeconds;
-    }
-
-    get hideDisabledOptions() {
-        return this.widgetData.hideDisabledOptions === true;
-    }
-
 
     // TODO should extend date widget, but need refactor
     serialize(value: any) {

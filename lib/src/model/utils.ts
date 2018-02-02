@@ -1,7 +1,7 @@
-export function isPresent(o) {
+export function isPresent(o: any) {
   return o !== null && o !== undefined;
 }
 
-export function isBlank(o) {
+export function isBlank(o: any) {
   return o === null || o === undefined;
 }

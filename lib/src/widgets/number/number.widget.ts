@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControlWidget } from '../../widget';
 
 @Component({
@@ -29,28 +29,20 @@ import { ControlWidget } from '../../widget';
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
-export class NumberWidget extends ControlWidget {
-    get min() {
-        return this.widgetData[`min`] || -Infinity;
-    }
+export class NumberWidget extends ControlWidget implements OnInit {
+    min: number;
+    max: number;
+    step: number;
+    allowClear: boolean;
+    formatter = (value: any) => value;
+    parser = (value: any) => value;
 
-    get max() {
-        return this.widgetData[`max`] || Infinity;
-    }
-
-    get step() {
-        return this.widgetData[`step`] || 1;
-    }
-
-    get allowClear() {
-        return this.widgetData[`allowClear`] || false;
-    }
-
-    get formatter() {
-        return this.widgetData[`formatter`] || ((value: any) => value);
-    }
-
-    get parser() {
-        return this.widgetData[`parser`] || ((value: any) => value);
+    ngOnInit(): void {
+        this.min = this.widgetData.min || -Infinity;
+        this.max = this.widgetData.max || Infinity;
+        this.step = this.widgetData.step || 1;
+        this.allowClear = this.widgetData.allowClear || false;
+        if (this.widgetData.formatter) this.formatter = this.widgetData.formatter;
+        if (this.widgetData.parser) this.parser = this.widgetData.parser;
     }
 }

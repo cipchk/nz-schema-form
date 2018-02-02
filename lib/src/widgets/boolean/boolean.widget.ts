@@ -18,19 +18,12 @@ import { ControlWidget } from '../../widget';
         <nz-switch [formControl]="control"
             [nzDisabled]="schema.readOnly"
             [nzSize]="size">
-            <span checked [innerHTML]="checked"></span>
-            <span unchecked [innerHTML]="unchecked"></span>
+            <span checked [innerHTML]="widgetData.checked"></span>
+            <span unchecked [innerHTML]="widgetData.unchecked"></span>
         </nz-switch>
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
 export class BooleanWidget extends ControlWidget {
-    get checked() {
-        return this.widgetData[`checked`] || '';
-    }
-
-    get unchecked() {
-        return this.widgetData[`unchecked`] || '';
-    }
 }

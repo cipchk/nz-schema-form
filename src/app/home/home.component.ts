@@ -52,7 +52,7 @@ export class HomeComponent {
                 }
             },
             birthday: {
-                type: 'string',
+                type: 'number',
                 title: '生日',
                 widget: 'date'
             },

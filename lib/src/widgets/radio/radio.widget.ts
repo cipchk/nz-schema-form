@@ -43,8 +43,10 @@ import { ControlWidget } from '../../widget';
 })
 export class RadioWidget extends ControlWidget implements OnInit {
     data: any[] = [];
+    defaultStyle: boolean;
 
     ngOnInit(): void {
+        this.defaultStyle = (this.widgetData.style || 'default') === 'default';
         const list: any[] = this.widgetData.selectList || [];
         if (this.schema.readOnly === true) {
             this.data = list.map(i => i.disabled = true);
@@ -53,7 +55,4 @@ export class RadioWidget extends ControlWidget implements OnInit {
         }
     }
 
-    get defaultStyle() {
-        return (this.widgetData.style || 'default') === 'default';
-    }
 }

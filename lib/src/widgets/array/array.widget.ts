@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArrayLayoutWidget } from '../../widget';
 
 @Component({
-  selector: 'nz-sf-array',
-  template: `
+    selector: 'nz-sf-array',
+    template: `
   <div nz-form-item nz-row>
       <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
           <label>{{ schema.title }}</label>
@@ -23,25 +23,25 @@ import { ArrayLayoutWidget } from '../../widget';
       </div>
   </div>`
 })
-export class ArrayWidget extends ArrayLayoutWidget {
+export class ArrayWidget extends ArrayLayoutWidget implements OnInit {
 
-    get addTitle() {
-        return this.widgetData.addTitle || '添加';
+    addTitle: string;
+    removeTitle: string;
+
+    ngOnInit(): void {
+        this.addTitle = this.widgetData.addTitle || '添加';
+        this.removeTitle = this.widgetData.removeTitle || '移除';
     }
 
-    get removeTitle() {
-        return this.widgetData.removeTitle || '移除';
+    addItem() {
+        this.formProperty.addItem();
     }
 
-  addItem() {
-    this.formProperty.addItem();
-  }
+    removeItem(index: number) {
+        this.formProperty.removeItem(index);
+    }
 
-  removeItem(index: number) {
-    this.formProperty.removeItem(index);
-  }
-
-  trackByIndex(index: number, item: any) {
-    return index;
-  }
+    trackByIndex(index: number, item: any) {
+        return index;
+    }
 }
