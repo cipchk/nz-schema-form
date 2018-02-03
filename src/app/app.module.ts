@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-md';
 import { AceEditorModule } from 'ng2-ace-editor';
@@ -20,6 +20,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ValidatorComponent } from './validator/validator.component';
 import { DocumentComponent } from './document/document.component';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { DocumentComponent } from './document/document.component';
             path: 'document/:id',
             component: DocumentComponent
         }
-    ], { useHash: true }),
+    ], environment.production ? { useHash: true, preloadingStrategy: PreloadAllModules } : { useHash: true }),
     NgZorroAntdModule.forRoot(),
     NzSchemaFormModule.forRoot({
     }),

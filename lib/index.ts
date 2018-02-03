@@ -7,6 +7,7 @@ import { NzWidgetRegistry } from './src/widgets/nz-widget.registry';
 import { WidgetRegistry } from './src/widget.registry';
 import { SchemaValidatorFactory, ZSchemaValidatorFactory } from './src/schema.validator.factory';
 import { CustomTemplateDirective } from './src/widgets/custom/nz-template.directive';
+import { FixedLabelDirective } from './src/widgets/fixed-label.directive';
 
 // region: components
 
@@ -20,7 +21,8 @@ const COMPONENTS = [
     FormComponent,
     FormItemComponent,
     FormActionComponent,
-    CustomTemplateDirective
+    CustomTemplateDirective,
+    FixedLabelDirective
 ];
 
 // endregion

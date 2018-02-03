@@ -6,6 +6,7 @@ import { ExampleBasicComponent } from './basic/basic.component';
 import { ExampleValidationComponent } from './validation/validation.component';
 import { ExampleConditionalComponent } from './conditional/conditional.component';
 import { ExampleSortComponent } from './sort/sort.component';
+import { ExampleFixedComponent } from './fixed/fixed.component';
 
 const routes: Routes = [
     {
@@ -16,7 +17,8 @@ const routes: Routes = [
             { path: 'basic', component: ExampleBasicComponent },
             { path: 'validation', component: ExampleValidationComponent },
             { path: 'conditional', component: ExampleConditionalComponent },
-            { path: 'sort', component: ExampleSortComponent }
+            { path: 'sort', component: ExampleSortComponent },
+            { path: 'fixed', component: ExampleFixedComponent }
         ]
     }
 ];

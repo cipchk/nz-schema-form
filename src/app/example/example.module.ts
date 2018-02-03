@@ -9,6 +9,7 @@ import { ExampleBasicComponent } from './basic/basic.component';
 import { ExampleValidationComponent } from './validation/validation.component';
 import { ExampleConditionalComponent } from './conditional/conditional.component';
 import { ExampleSortComponent } from './sort/sort.component';
+import { ExampleFixedComponent } from './fixed/fixed.component';
 
 @NgModule({
     imports: [ SharedModule, ExampleRoutingModule ],
@@ -17,7 +18,8 @@ import { ExampleSortComponent } from './sort/sort.component';
         ExampleBasicComponent,
         ExampleValidationComponent,
         ExampleConditionalComponent,
-        ExampleSortComponent
+        ExampleSortComponent,
+        ExampleFixedComponent
     ]
 })
 export class ExampleModule { }

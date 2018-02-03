@@ -65,3 +65,5 @@ xxl | 保留字段，`0.7.0` 后支持  | `number, Object` | -
 ----|------|-----|------
 span_label | `label` 所占栅格数  | `number` | 5
 span_control | 表单控件所占栅格数  | `number` | 19
+offset_control | `control` 栅格左侧的间隔格数，间隔内不可以有栅格  | `number` | -
+span_label_fixed | `label` 固定宽度  | `number` | -

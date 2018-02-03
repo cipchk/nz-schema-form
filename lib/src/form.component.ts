@@ -60,9 +60,13 @@ export class FormComponent implements OnChanges {
         Object.keys(schema.properties).forEach(key => {
             const p = schema.properties[key];
             if (isHorizontal) {
-                if (!p.span_label) p.span_label = typeof schema.span_label === 'undefined' ? 5 : schema.span_label;
-                if (!p.span_control) p.span_control = typeof schema.span_control === 'undefined' ? 19 : schema.span_control;
-                if (!p.offset_control) p.offset_control = typeof schema.offset_control === 'undefined' ? null : schema.offset_control;
+                if (schema.span_label_fixed) {
+                    if (!p.span_label_fixed) p.span_label_fixed = schema.span_label_fixed;
+                } else {
+                    if (!p.span_label) p.span_label = typeof schema.span_label === 'undefined' ? 5 : schema.span_label;
+                    if (!p.span_control) p.span_control = typeof schema.span_control === 'undefined' ? 19 : schema.span_control;
+                    if (!p.offset_control) p.offset_control = typeof schema.offset_control === 'undefined' ? null : schema.offset_control;
+                }
             } else {
                 p.span_label = null;
                 p.span_control = null;

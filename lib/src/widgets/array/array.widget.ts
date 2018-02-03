@@ -4,11 +4,17 @@ import { ArrayLayoutWidget } from '../../widget';
 @Component({
     selector: 'nz-sf-array',
     template: `
-  <div nz-form-item nz-row>
-      <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
-          <label>{{ schema.title }}</label>
-      </div>
-      <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
+    <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
+        <label nz-form-item-required [nzRequired]="required" [attr.for]="id">
+            <span>
+                {{ schema.title }}
+                <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
+                    <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+                </nz-tooltip>
+            </span>
+        </label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
         <button nz-button nzType="primary"
             [disabled]="schema.maxItems && $any(formProperty).properties.length >= schema.maxItems"
             (click)="addItem()" [innerHTML]="addTitle"></button>
@@ -20,8 +26,7 @@ import { ArrayLayoutWidget } from '../../widget';
                 </ng-template>
             </nz-card>
         </div>
-      </div>
-  </div>`
+    </div>`
 })
 export class ArrayWidget extends ArrayLayoutWidget implements OnInit {
 

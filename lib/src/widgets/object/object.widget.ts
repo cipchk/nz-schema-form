@@ -12,8 +12,8 @@ import { ObjectLayoutWidget } from '../../widget';
                         [nzSpan]="i.grid.span" [nzOffset]="i.grid.offset"
                         [nzXs]="i.grid.xs" [nzSm]="i.grid.sm" [nzMd]="i.grid.md"
                         [nzLg]="i.grid.lg" [nzXl]="i.grid.xl">
-                        <div nz-row nz-form-item [ngClass]="{'array-field': i.isArray}">
-                            <nz-sf-item [formProperty]="i.property"></nz-sf-item>
+                        <div nz-row nz-form-item>
+                            <nz-sf-item [formProperty]="i.property" [fixed-label]="i.span_label_fixed"></nz-sf-item>
                         </div>
                     </div>
                 </ng-container>
@@ -24,7 +24,7 @@ import { ObjectLayoutWidget } from '../../widget';
         <ng-container *ngFor="let i of list">
             <ng-container *ngIf="i.property.visible">
                 <div nz-row nz-form-item>
-                    <nz-sf-item [formProperty]="i.property"></nz-sf-item>
+                    <nz-sf-item [formProperty]="i.property" [fixed-label]="i.span_label_fixed"></nz-sf-item>
                 </div>
             </ng-container>
         </ng-container>
@@ -50,7 +50,7 @@ export class ObjectWidget extends ObjectLayoutWidget implements OnInit {
                 const item = {
                     property,
                     grid: property.schema.grid || this.grid || {},
-                    isArray: property.schema.type === 'array'
+                    span_label_fixed: property.schema.span_label_fixed
                 };
                 list.push(item);
             }

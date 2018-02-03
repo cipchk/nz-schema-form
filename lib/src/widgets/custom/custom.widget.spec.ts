@@ -29,7 +29,7 @@ describe('widgets: custom', () => {
 
     it('should be create widget', () => {
         expect(fixture).not.toBeUndefined();
-        expect(el.querySelectorAll('.ant-input-group-addon').length).toBe(2);
+        expect(el.querySelectorAll('nz-sf-custom-widget').length).toBe(1);
     });
 });
 

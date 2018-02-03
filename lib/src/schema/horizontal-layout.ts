@@ -18,4 +18,10 @@ export interface SFHorizontalLayoutSchema {
      * - 限 `horizontal` 水平布局有效
      */
     offset_control?: number;
+
+    /**
+     * `label` 固定宽度
+     * - 限 `horizontal` 水平布局有效
+     */
+    span_label_fixed?: number;
 }

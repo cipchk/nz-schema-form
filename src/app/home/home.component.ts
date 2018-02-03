@@ -11,8 +11,7 @@ export class HomeComponent {
     value: any;
     schema: SFSchema = {
         debug: true,
-        span_label: 5,
-        span_control: 19,
+        span_label_fixed: 100,
         grid: {
             span: 8
         },
@@ -106,23 +105,30 @@ export class HomeComponent {
                     }
                 }
             },
-            role: {
+            gender: {
                 type: 'string',
-                title: '角色',
-                grid: { span: 16 },
+                title: '性别',
+                default: 'men',
                 widget: {
-                    id: 'transfer',
-                    dataSource: Array(10)
-                        .fill({})
-                        .map((v: any, i: number) => {
-                            return { title: `content${i + 1}`, direction: i === 1 ? 'right' : '' };
-                        })
+                    id: 'radio',
+                    style: 'button',
+                    selectList: [
+                        {
+                            label: 'Men',
+                            value: 'men'
+                        },
+                        {
+                            label: 'Women',
+                            value: 'women'
+                        }
+                    ]
                 }
             },
             range: {
                 type: 'number',
                 title: '范围',
                 default: 10,
+                grid: { span: 16 },
                 widget: {
                     id: 'range'
                 }
@@ -135,10 +141,24 @@ export class HomeComponent {
                     tags: [{ id: 1, title: '电影', checked: true }, { id: 2, title: '书' }, { id: 3, title: '旅行' }, { id: 4, title: '美食', checked: true }]
                 }
             },
+            role: {
+                type: 'string',
+                title: '角色',
+                grid: { span: 24 },
+                widget: {
+                    id: 'transfer',
+                    dataSource: Array(10)
+                        .fill({})
+                        .map((v: any, i: number) => {
+                            return { title: `content${i + 1}`, direction: i === 1 ? 'right' : '' };
+                        })
+                }
+            },
             products: {
                 type: 'array',
                 title: '产品清单',
                 maxItems: 2,
+                grid: { span: 24 },
                 items: {
                     type: 'object',
                     span_label: 5,
@@ -160,25 +180,6 @@ export class HomeComponent {
                         }
                     },
                     required: ['pn', 'num', 'price']
-                }
-            },
-            gender: {
-                type: 'string',
-                title: '性别',
-                default: 'men',
-                widget: {
-                    id: 'radio',
-                    style: 'button',
-                    selectList: [
-                        {
-                            label: 'Men',
-                            value: 'men'
-                        },
-                        {
-                            label: 'Women',
-                            value: 'women'
-                        }
-                    ]
                 }
             },
             intro: {
