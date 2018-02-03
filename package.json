@@ -1,8 +1,8 @@
 {
   "name": "nz-schema-form",
-  "version": "0.0.0-alpha.5",
+  "version": "0.0.1-beta.1",
   "license": "MIT",
-  "description": "ng-zorro-antd form generation based on JSON Schema",
+  "description": "ng-zorro-antd form generation based on JSON-Schema",
   "main": "./bundles/index.js",
   "author": "cipchk",
   "homepage": "https://cipchk.github.io/nz-schema-form/",

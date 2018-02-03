@@ -1,4 +1,3 @@
-
 ---
 widget: date-range
 title: 日期范围选择器
@@ -13,8 +12,7 @@ inherit: true
 ----|------|-----|------
 placeholder | 在文字框中显示提示讯息  | `string` | -
 readOnly | 是否只读状态  | `boolean` | -
-widget | 组件  | `string | object` | - 
-
+widget | 组件  | `string，object` | - 
 
 ## Widget Params
 
@@ -31,7 +29,6 @@ end |  结束placeholder | `string`| `end`
 **各种格式的配置**
 
 ```json
-
 {
 	"dateRange": {
 		"type": "string",

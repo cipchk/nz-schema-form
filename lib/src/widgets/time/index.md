@@ -7,11 +7,8 @@ inherit: true
 默认小部件，一般用于时间选择。
 
 ## type 
-类型支持
 
-string | number 
-
-若选择 number 类型则默认为时间戳。
+类型支持 `string`、`number`，若选择 number 类型则默认为时间戳。
 
 ## Schema
 
@@ -31,7 +28,6 @@ disabledHours | 禁用小时  | `string` | -
 disabledMinutes | 禁用分钟  | `string` | - 
 disabledSeconds | 禁用秒钟  | `string` | - 
 hideDisabledOptions | 隐藏禁用项目  | `string` | -  
-
 
 ## Provider Settings
 
@@ -62,7 +58,6 @@ deserialize | 数据转入部件函数  | `function` | -
 **各种格式的配置**
 
 ```json
-
 {
 	"time": {
 		"type": "number",

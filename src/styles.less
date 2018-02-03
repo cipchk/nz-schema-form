@@ -1,7 +1,112 @@
 /* You can add global styles to this file, and also import other style files */
+app-layout router-outlet + * {
+    display: block;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+}
+
+.ant-menu-item {
+    outline: none;
+}
 
 body .ant-layout {
     background: #fff;
+}
+
+.header {
+    padding: 0 50px;
+    height: 64px;
+    line-height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px #f0f1f2;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+
+    .ant-menu-horizontal {
+        border: none;
+    }
+
+    &.home-header {
+        margin: 20px auto 0;
+        box-shadow: none;
+    }
+}
+
+.logo {
+    cursor: pointer;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    outline: none;
+
+    img {
+        max-height: 100%;
+        padding-right: 8px;
+    }
+
+    span {
+        font-size: 24px;
+    }
+}
+
+.content {
+    max-width: 1200px;
+    margin: 24px auto;
+}
+
+.menu-btn {
+    display: none;
+    background: #fff;
+    position: fixed;
+    z-index: 10;
+
+    i {
+        border: 1px solid #999;
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        line-height: 32px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .hide-lg {
+        display: none !important;
+    }
+    .header {
+        padding: 0 16px;
+
+        .ant-menu-item {
+            padding: 0 8px;
+        }
+    }
+    .logo span {
+        display: none;
+    }
+    .content {
+        padding: 0 8px;
+        .ant-layout-sider {
+            display: none;
+            position: absolute;
+        }
+        &.show-sider {
+            .ant-layout-sider {
+                display: block;
+            }
+            .menu-btn {
+                left: 150px;
+            }
+        }
+    }
+    .menu-btn {
+        display: block;
+    }
 }
 
 markdown {

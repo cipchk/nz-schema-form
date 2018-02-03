@@ -1,0 +1,24 @@
+<div class="header">
+    <div class="logo" routerLink="/"><img src="./assets/logo.svg"><span>nz-schema-form</span></div>
+    <ul nz-menu [nzMode]="'horizontal'" style="line-height: 64px;">
+        <li nz-menu-item routerLink="/">Home</li>
+        <li nz-menu-item routerLink="/document">Document</li>
+        <li nz-menu-item routerLink="/example">Example</li>
+        <li nz-menu-item routerLink="/validator">Validator</li>
+        <li nz-menu-item class="hide-lg">
+            <a href="//jsonschemalint.com" target="_blank" title="JSON Schema Lint">Lint</a>
+        </li>
+        <li nz-menu-item class="hide-lg">
+            <a href="http://json-schema.org/specification.html" target="_blank" title="JSON Schema Lint">Specification</a>
+        </li>
+        <li nz-menu-item class="hide-lg">
+            <a href="//github.com/cipchk/nz-schema-form" target="_blank" title="Fork me on GitHub">Github</a>
+        </li>
+    </ul>
+</div>
+<nz-content class="content" [ngClass]="{'show-sider': !menu}">
+    <div class="menu-btn" (click)="menu=!menu">
+        <i class="anticon anticon-menu-{{menu ? 'unfold' : 'fold'}}"></i>
+    </div>
+    <router-outlet></router-outlet>
+</nz-content>

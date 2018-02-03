@@ -71,7 +71,7 @@ export const DATA = {
         {
             id: 'date-range',
             title: '日期范围',
-            // content: getMd(require('!!raw-loader!../../../lib/src/widgets/date-range/index.md'))
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets/date-range/index.md'))
         },
         {
             id: 'time',
@@ -81,12 +81,12 @@ export const DATA = {
         {
             id: 'rate',
             title: '评分',
-            // content: getMd(require('!!raw-loader!../../../lib/src/widgets/rate/index.md'))
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets/rate/index.md'))
         },
         {
             id: 'select',
             title: '选择器',
-            // content: getMd(require('!!raw-loader!../../../lib/src/widgets/select/index.md'))
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets/select/index.md'))
         },
         {
             id: 'range',

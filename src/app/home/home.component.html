@@ -1,10 +1,17 @@
-<h1>horizontal</h1>
-<nz-sf [schema]="schema" [model]="model" [actions]="actions" (onChange)="value=$event.value">
-    <ng-template nz-template="custom" let-control let-schema>
-        <nz-input [formControl]="control">
-            <ng-template #addOnBefore>http://</ng-template>
-            <ng-template #addOnAfter>.com</ng-template>
-        </nz-input>
-    </ng-template>
-</nz-sf>
-<p>{{value | json}}</p>
+<div class="header home-header">
+    <div class="logo"><img src="./assets/logo.svg"><span>nz-schema-form</span></div>
+</div>
+<div class="banner">
+    <div class="text-wrapper">
+        <h1>Angular JSON-Schema Form</h1>
+        <p>
+            一个以 JSON Schema 标准的 Angular 动态构建表单。
+        </p>
+        <div class="banner-btns">
+            <a class="banner-btn components" routerLink="/document"><span>开始使用</span></a>
+            <a class="github" href="//github.com/cipchk/nz-schema-form/" target="_blank">
+                <img src="https://img.shields.io/github/stars/cipchk/nz-schema-form.svg?style=social&label=Star">
+            </a>
+        </div>
+    </div>
+</div>

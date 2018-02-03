@@ -17,6 +17,7 @@ import { UEditorWidget } from 'nz-schema-form/src/widgets-third/ueditor/ueditor.
 import { MyWidgetRegistry } from './my-widget-registry';
 
 import { AppComponent } from './app.component';
+import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import { ValidatorComponent } from './validator/validator.component';
 import { DocumentComponent } from './document/document.component';
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutComponent,
     HomeComponent,
     ValidatorComponent,
     DocumentComponent,
@@ -42,12 +44,18 @@ import { environment } from '../environments/environment';
     AceEditorModule,
     RouterModule.forRoot([
         { path: '', component: HomeComponent },
-        { path: 'example', loadChildren: './example/example.module#ExampleModule' },
-        { path: 'validator', component: ValidatorComponent },
-        { path: 'document', redirectTo: 'document/getting-started', pathMatch: 'full' },
         {
-            path: 'document/:id',
-            component: DocumentComponent
+            path: '',
+            component: LayoutComponent,
+            children: [
+                { path: 'example', loadChildren: './example/example.module#ExampleModule' },
+                { path: 'validator', component: ValidatorComponent },
+                { path: 'document', redirectTo: 'document/getting-started', pathMatch: 'full' },
+                {
+                    path: 'document/:id',
+                    component: DocumentComponent
+                }
+            ]
         }
     ], environment.production ? { useHash: true, preloadingStrategy: PreloadAllModules } : { useHash: true }),
     NgZorroAntdModule.forRoot(),
