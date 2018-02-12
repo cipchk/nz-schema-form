@@ -32,6 +32,7 @@
   },
   "peerDependencies": {
     "z-schema": "^3.19.0",
+    "@types/z-schema": "^3.16.32",
     "ng-zorro-antd": "^0.6.12"
   },
   "dependencies": {

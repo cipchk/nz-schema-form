@@ -32,7 +32,7 @@ nz-schema-form 尽可能满足不同需求，除现有内置的十几种小部�
 引用路径：
 
 ```ts
-import { UEditorWidget } from 'nz-schema-form/src/widgets-third/ueditor/ueditor.widget';
+import { UEditorWidget } from 'nz-schema-form/thirds';
 ```
 
 **自己创建小部件**
@@ -99,7 +99,7 @@ export class UEditorWidget extends ControlWidget implements OnInit {
 
 ```ts
 import { NzWidgetRegistry } from 'nz-schema-form';
-import { UEditorWidget } from 'nz-schema-form/src/widgets-third/ueditor/ueditor.widget';
+import { UEditorWidget } from 'nz-schema-form/thirds';
 
 export class MyWidgetRegistry extends NzWidgetRegistry {
     constructor() {

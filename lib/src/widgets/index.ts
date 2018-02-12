@@ -18,3 +18,4 @@ export { TagWidget } from './tag/tag.widget';
 export { RateWidget } from './rate/rate.widget';
 export { SelectWidget } from './select/select.widget';
 export { DateRangeWidget } from './date-range/date-range.widget';
+export { FixedLabelDirective } from './fixed-label.directive';
