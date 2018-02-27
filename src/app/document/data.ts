@@ -25,6 +25,11 @@ export const DATA = {
             id: 'error',
             title: '自定义错误格式',
             content: getMd(require('!!raw-loader!../../../docs/error.md'))
+        },
+        {
+            id: 'changelog',
+            title: '更新日志',
+            content: getMd(require('!!raw-loader!../../../docs/changelog.md'))
         }
     ],
     widgets: [
@@ -123,12 +128,12 @@ export const DATA = {
         {
             id: 'tinymce',
             title: 'Tinymce',
-            content: getMd(require('!!raw-loader!../../../widgets-third/tinymce/index.md'))
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/tinymce/index.md'))
         },
         {
             id: 'ueditor',
             title: 'UEditor',
-            content: getMd(require('!!raw-loader!../../../widgets-third/ueditor/index.md'))
+            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/ueditor/index.md'))
         }
     ]
 };

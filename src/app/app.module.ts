@@ -9,8 +9,7 @@ import { MarkdownModule } from 'ngx-md';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
-import { NzSchemaFormModule, WidgetRegistry } from 'nz-schema-form';
-import { MyWidgetRegistry, THIRD_COMPONENTS } from './my-widget-registry';
+import { JsonSchemaModule } from './shared/json-schema/json-schema.module';
 import { NgxTinymceModule } from 'ngx-tinymce';
 import { UEditorModule } from 'ngx-ueditor';
 
@@ -22,6 +21,7 @@ import { DocumentComponent } from './document/document.component';
 
 import { environment } from '../environments/environment';
 import { DemoComponent } from './demo/demo.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,12 +30,8 @@ import { DemoComponent } from './demo/demo.component';
     HomeComponent,
     DemoComponent,
     ValidatorComponent,
-    DocumentComponent,
-    ...THIRD_COMPONENTS
+    DocumentComponent
   ],
-  entryComponents: [
-      ...THIRD_COMPONENTS
-],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -43,7 +39,7 @@ import { DemoComponent } from './demo/demo.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AceEditorModule,
+    SharedModule,
     RouterModule.forRoot([
         { path: '', component: HomeComponent },
         { path: 'demo', component: DemoComponent },
@@ -62,9 +58,7 @@ import { DemoComponent } from './demo/demo.component';
         }
     ], environment.production ? { useHash: true, preloadingStrategy: PreloadAllModules } : { useHash: true }),
     NgZorroAntdModule.forRoot(),
-    NzSchemaFormModule.forRoot({
-        // onlyVisual: true
-    }),
+    JsonSchemaModule,
     MarkdownModule.forRoot(),
     UEditorModule.forRoot({
         // **注：** 建议使用本地路径；以下为了减少 ng-alain 脚手架的包体大小引用了CDN，可能会有部分功能受影响
@@ -78,9 +72,6 @@ import { DemoComponent } from './demo/demo.component';
     NgxTinymceModule.forRoot({
         baseURL: '//cdn.bootcss.com/tinymce/4.7.4/'
     })
-  ],
-  providers: [
-    { provide: WidgetRegistry, useClass: MyWidgetRegistry }
   ],
   bootstrap: [AppComponent]
 })
