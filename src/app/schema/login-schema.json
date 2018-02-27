@@ -5,7 +5,8 @@
             "type": "string",
             "title": "用户名",
             "widget": {
-                "placeholder": "请输入用户名，且3位以上"
+                "placeholder": "请输入用户名，且3位以上",
+                "autocomplete": "off"
             },
             "minLength": 3
         },

@@ -16,6 +16,7 @@ inherit: true
 ----|------|-----|------
 type | 等同 input 的 `type` 值，例如：`password`  | `string` | -
 placeholder | 在文字框中显示提示讯息  | `string` | -
+autocomplete | 自动完成功能的表单  | `on,off` | -
 maxLength | 表单最大长度  | `number` | -
 minLength | 表单最小长度  | `number` | -
 readOnly | 是否只读状态  | `boolean` | -

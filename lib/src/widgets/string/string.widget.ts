@@ -27,6 +27,7 @@ import { WidgetData } from './../../schema/types';
             [attr.maxLength]="schema.maxLength || null"
             [attr.minLength]="schema.minLength || null"
             [attr.disabled]="(schema.widget.id=='color' && schema.readOnly)?true:null"
+            [attr.autocomplete]="autocomplete"
             [nzSize]="size">
         <input *ngIf="(schema.widget.id==='color' && schema.readOnly)"
             [attr.name]="name" type="hidden" [formControl]="control">
@@ -37,10 +38,12 @@ import { WidgetData } from './../../schema/types';
 })
 export class StringWidget extends ControlWidget implements OnInit {
     type: string;
+    autocomplete: null;
 
     ngOnInit(): void {
         const w = this.widgetData;
         if (w.type) return w.type;
         this.type = !w || w.id === 'string' ? 'text' : w.id;
+        this.autocomplete = w.autocomplete || null;
     }
 }
