@@ -10,5 +10,4 @@ export * from './model';
 export * from './schema';
 
 export * from './widgets';
-export * from './widgets-third';
 export * from './widgets/nz-widget.registry';

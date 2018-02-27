@@ -1,6 +1,11 @@
 import { NzWidgetRegistry } from 'nz-schema-form';
-import { TinymceWidget } from 'nz-schema-form/src/widgets-third/tinymce/tinymce.widget';
-import { UEditorWidget } from 'nz-schema-form/src/widgets-third/ueditor/ueditor.widget';
+import { TinymceWidget } from '../../widgets-third/tinymce/tinymce.widget';
+import { UEditorWidget } from '../../widgets-third/ueditor/ueditor.widget';
+
+export const THIRD_COMPONENTS = [
+    TinymceWidget,
+    UEditorWidget
+];
 
 export class MyWidgetRegistry extends NzWidgetRegistry {
     constructor() {

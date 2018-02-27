@@ -11,10 +11,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { NzSchemaFormModule, WidgetRegistry } from 'nz-schema-form';
 import { NgxTinymceModule } from 'ngx-tinymce';
-import { TinymceWidget } from 'nz-schema-form/src/widgets-third/tinymce/tinymce.widget';
 import { UEditorModule } from 'ngx-ueditor';
-import { UEditorWidget } from 'nz-schema-form/src/widgets-third/ueditor/ueditor.widget';
-import { MyWidgetRegistry } from './my-widget-registry';
+import { MyWidgetRegistry, THIRD_COMPONENTS } from './my-widget-registry';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -31,9 +29,9 @@ import { environment } from '../environments/environment';
     HomeComponent,
     ValidatorComponent,
     DocumentComponent,
-    TinymceWidget,
-    UEditorWidget
+    ...THIRD_COMPONENTS
   ],
+  entryComponents: THIRD_COMPONENTS,
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -77,10 +75,6 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     { provide: WidgetRegistry, useClass: MyWidgetRegistry }
-  ],
-  entryComponents: [
-    TinymceWidget,
-    UEditorWidget
   ],
   bootstrap: [AppComponent]
 })

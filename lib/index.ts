@@ -143,7 +143,7 @@ export function optionsFactory(options: SchemaFormOptions) {
     exports: [ ...COMPONENTS, ...WIDGETS ]
 })
 export class NzSchemaFormModule {
-    public static forRoot(options?: SchemaFormOptions): ModuleWithProviders {
+    static forRoot(options?: SchemaFormOptions): ModuleWithProviders {
         return {
             ngModule: NzSchemaFormModule,
             providers: [

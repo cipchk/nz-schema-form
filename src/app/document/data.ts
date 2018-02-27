@@ -123,12 +123,12 @@ export const DATA = {
         {
             id: 'tinymce',
             title: 'Tinymce',
-            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/tinymce/index.md'))
+            content: getMd(require('!!raw-loader!../../../widgets-third/tinymce/index.md'))
         },
         {
             id: 'ueditor',
             title: 'UEditor',
-            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/ueditor/index.md'))
+            content: getMd(require('!!raw-loader!../../../widgets-third/ueditor/index.md'))
         }
     ]
 };
