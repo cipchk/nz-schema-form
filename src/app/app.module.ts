@@ -58,6 +58,7 @@ import { environment } from '../environments/environment';
     ], environment.production ? { useHash: true, preloadingStrategy: PreloadAllModules } : { useHash: true }),
     NgZorroAntdModule.forRoot(),
     NzSchemaFormModule.forRoot({
+        // onlyVisual: true
     }),
     MarkdownModule.forRoot(),
     UEditorModule.forRoot({
