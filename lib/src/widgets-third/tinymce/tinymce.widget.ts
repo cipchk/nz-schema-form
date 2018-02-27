@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlWidget } from 'nz-schema-form';
+import { ControlWidget } from '../../widget';
 
 @Component({
-    selector: 'nz-sf-ueditor-widget',
+    selector: 'nz-sf-tinymce-widget',
     template: `
     <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
         <label nz-form-item-required [nzRequired]="required" [attr.for]="id">
@@ -17,23 +17,22 @@ import { ControlWidget } from 'nz-schema-form';
     <div nz-form-control nz-col
         [nzSpan]="schema.span_control"
         [nzOffset]="schema.offset_control">
-        <ueditor
+        <tinymce
             [formControl]="control"
             [config]="config"
-            [loadingTip]="loadingTip"
-            (onContentChange)="change($event)"></ueditor>
+            [loading]="loading"></tinymce>
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
 })
-export class UEditorWidget extends ControlWidget implements OnInit {
-    static readonly KEY = 'ueditor';
+export class TinymceWidget extends ControlWidget implements OnInit {
+    static readonly KEY = 'tinymce';
 
     config: any;
-    loadingTip: string;
+    loading: string;
 
     ngOnInit(): void {
-        this.loadingTip = this.widgetData.loadingTip || '加载中……';
+        this.loading = this.widgetData.loading || '加载中……';
         this.config = this.widgetData.config || {};
     }
 

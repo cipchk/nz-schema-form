@@ -79,7 +79,7 @@ const WIDGETS: any[] = [
 
 // region: export
 
-export * from './src';
+export * from './src/index';
 export * from './schema-form.options';
 
 // endregion

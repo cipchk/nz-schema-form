@@ -10,9 +10,9 @@ import { AceEditorModule } from 'ng2-ace-editor';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { NzSchemaFormModule, WidgetRegistry } from 'nz-schema-form';
+import { MyWidgetRegistry, THIRD_COMPONENTS } from './my-widget-registry';
 import { NgxTinymceModule } from 'ngx-tinymce';
 import { UEditorModule } from 'ngx-ueditor';
-import { MyWidgetRegistry, THIRD_COMPONENTS } from './my-widget-registry';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -21,17 +21,21 @@ import { ValidatorComponent } from './validator/validator.component';
 import { DocumentComponent } from './document/document.component';
 
 import { environment } from '../environments/environment';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HomeComponent,
+    DemoComponent,
     ValidatorComponent,
     DocumentComponent,
     ...THIRD_COMPONENTS
   ],
-  entryComponents: THIRD_COMPONENTS,
+  entryComponents: [
+      ...THIRD_COMPONENTS
+],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -42,6 +46,7 @@ import { environment } from '../environments/environment';
     AceEditorModule,
     RouterModule.forRoot([
         { path: '', component: HomeComponent },
+        { path: 'demo', component: DemoComponent },
         {
             path: '',
             component: LayoutComponent,
