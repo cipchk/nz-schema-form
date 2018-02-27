@@ -45,7 +45,8 @@ export interface SchemaFormOptions {
 export const DEFAULT: SchemaFormOptions = {
     errors: ERRORSDEFAULT,
     ingoreTypeValidator: true,
-    onlyVisual: false,
+    // bug: https://github.com/cipchk/nz-schema-form/issues/18
+    onlyVisual: true,
     showDescription: false,
     date: {},
     time: {},

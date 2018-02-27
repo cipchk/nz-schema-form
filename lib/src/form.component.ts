@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnChanges, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, EventEmitter, Input, Output, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { Action, ActionRegistry, FormPropertyFactory, FormProperty, SchemaPreprocessor, ValidatorRegistry, Validator } from './model';
 import { SFSchema } from './schema';
 import { WidgetFactory } from './widget.factory';
@@ -28,7 +28,8 @@ export function useFactory(schemaValidatorFactory: any, validatorRegistry: any, 
             deps: [SchemaValidatorFactory, ValidatorRegistry, NZ_SF_OPTIONS_TOKEN]
         },
         TerminatorService
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent implements OnChanges {
 
@@ -52,7 +53,13 @@ export class FormComponent implements OnChanges {
 
     rootProperty: FormProperty = null;
 
-    constructor(private formPropertyFactory: FormPropertyFactory, private actionRegistry: ActionRegistry, private validatorRegistry: ValidatorRegistry, private cdr: ChangeDetectorRef, private terminator: TerminatorService) {}
+    constructor(
+        private formPropertyFactory: FormPropertyFactory,
+        private actionRegistry: ActionRegistry,
+        private validatorRegistry: ValidatorRegistry,
+        private cdr: ChangeDetectorRef,
+        private terminator: TerminatorService
+    ) {}
 
     private coverProperty(schema: SFSchema) {
         const isHorizontal = this.layout === 'horizontal';
