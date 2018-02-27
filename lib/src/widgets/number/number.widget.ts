@@ -38,8 +38,8 @@ export class NumberWidget extends ControlWidget implements OnInit {
     parser = (value: any) => value;
 
     ngOnInit(): void {
-        this.min = this.widgetData.min || -Infinity;
-        this.max = this.widgetData.max || Infinity;
+        this.min = this.schema.minimum || this.widgetData.min || -Infinity;
+        this.max = this.schema.maximum || this.widgetData.max || Infinity;
         this.step = this.widgetData.step || 1;
         this.allowClear = this.widgetData.allowClear || false;
         if (this.widgetData.formatter) this.formatter = this.widgetData.formatter;

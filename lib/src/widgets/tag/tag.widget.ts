@@ -31,7 +31,7 @@ export class TagWidget extends ControlWidget implements OnInit {
     tags: any[] = [];
 
     ngOnInit(): void {
-        this.tags = this.widgetData.tags || [];
+        this.tags = this.schema.enum || this.widgetData.tags || [];
         this.updateValue();
     }
 

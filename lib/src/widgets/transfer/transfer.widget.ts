@@ -53,7 +53,7 @@ export class TransferWidget extends ControlWidget implements OnInit {
         this.operations = this.widgetData.operations || ['', ''];
         this.itemUnit = this.widgetData.itemUnit || '项目';
         this.itemsUnit = this.widgetData.itemsUnit || '项目';
-        this._dataSource = this.widgetData.dataSource || [];
+        this._dataSource = this.schema.enum || this.widgetData.dataSource || [];
         this._data = this._dataSource.filter(w => w.direction === 'right');
         this.updateValue();
     }

@@ -47,7 +47,7 @@ export class RadioWidget extends ControlWidget implements OnInit {
 
     ngOnInit(): void {
         this.defaultStyle = (this.widgetData.style || 'default') === 'default';
-        const list: any[] = this.widgetData.selectList || [];
+        const list: any[] = this.schema.enum || this.widgetData.selectList || [];
         if (this.schema.readOnly === true) {
             this.data = list.map(i => i.disabled = true);
         } else {

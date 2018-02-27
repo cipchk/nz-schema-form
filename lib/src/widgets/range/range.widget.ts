@@ -44,8 +44,8 @@ export class RangeWidget extends ControlWidget implements OnInit {
     included: boolean;
 
     ngOnInit(): void {
-        this.min = this.widgetData.min || 0;
-        this.max = this.widgetData.max || 100;
+        this.min = this.schema.minimum || this.widgetData.min || 0;
+        this.max = this.schema.maximum || this.widgetData.max || 100;
         this.step = this.widgetData.step || 1;
         this.marks = this.widgetData.marks || null;
 

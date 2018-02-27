@@ -111,7 +111,7 @@ export class SelectWidget extends ControlWidget implements OnInit, OnDestroy {
         if (this.i.tags === true)
             this.type = 3;
 
-        this.data = this.widgetData.data || [];
+        this.data = this.schema.enum || this.widgetData.data || [];
         this.needSearch = !!this.widgetData.searchChange;
     }
 
