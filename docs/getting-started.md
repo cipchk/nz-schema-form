@@ -29,11 +29,24 @@ import { NzSchemaFormModule } from 'nz-schema-form';
 
 @NgModule({
     imports: [
-        NzSchemaFormModule.forRoot()
+        NzSchemaFormModule.forRoot(<SchemaFormOptions>{
+        })
     ]
 })
 export class AppModule { }
 ```
+
+**SchemaFormOptions**
+
+参数 | 说明 | 类型 | 默认值
+----|------|-----|------
+zSchemaOptions | [z-schema](https://github.com/zaggino/z-schema) 参数 | `any` | -
+ingoreTypeValidator | 是否忽略数据类型校验 <br>`false` 限定 Schema 中 `type` 类型，若产生的数据非 `type` 类型会视为错误<br>`true` 不限定 Schema 中 `type` 类型，若产生的数据非 `type` 类型会视为成功 | `boolean` | `true`
+onlyVisual | 是否只展示错误视觉不显示错误文本 | `boolean` | `false`
+showDescription | 是否展示 `description` | `boolean` | `false`
+errors | 自定义通用错误信息 | `{ [ key: string ]: string }` | -
+date | 日期小部件配置 | `any` | -
+time | 时间小部件配置 | `any` | -
 
 构建一个邮箱、姓名表单：
 
