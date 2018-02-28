@@ -8,10 +8,19 @@ import { FormComponent } from '../../form.component';
 @Component({
     selector: 'nz-sf-button-widget',
     template: `
-    <button nz-button [nzType]="type"
-        [disabled]="disabled"
-        [nzSize]="size"
-        (click)="button.action($event)">{{button.label}}</button>
+    <ng-container *ngIf="button.popconfirm; else btn">
+        <nz-popconfirm [nzTitle]="button.poptitle" (nzOnConfirm)="button.action($event)">
+            <button nz-button [nzType]="type" nz-popconfirm
+                [disabled]="disabled"
+                [nzSize]="size">{{button.label}}</button>
+        </nz-popconfirm>
+    </ng-container>
+    <ng-template #btn>
+        <button nz-button [nzType]="type"
+            [disabled]="disabled"
+            [nzSize]="size"
+            (click)="button.action($event)">{{button.label}}</button>
+    </ng-template>
     `
 })
 export class ButtonWidget implements OnInit, OnDestroy {

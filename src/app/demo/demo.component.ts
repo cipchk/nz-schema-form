@@ -46,7 +46,9 @@ export class DemoComponent {
                 {
                     label: '登录',
                     id: 'send',
-                    submit: true
+                    submit: true,
+                    popconfirm: true,
+                    poptitle: '123'
                 },
                 {
                     label: '重置',

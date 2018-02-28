@@ -32,4 +32,14 @@ export interface SFButtonItem extends SFActiveSchema {
      * 按钮类型
      */
     type?: 'primary' | 'default' | 'dashed' | 'danger';
+
+    /**
+     * 是否需要确认框
+     */
+    popconfirm?: boolean;
+
+    /**
+     * 确认框标题
+     */
+    poptitle?: string;
 }

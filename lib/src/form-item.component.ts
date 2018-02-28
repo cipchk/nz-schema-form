@@ -72,7 +72,7 @@ export class FormItemComponent implements OnInit, OnChanges {
                     action(this.formProperty, button.parameters);
                 }
             }
-            e.preventDefault();
+            if (e) e.preventDefault();
         };
     }
 

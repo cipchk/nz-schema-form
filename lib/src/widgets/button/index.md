@@ -20,6 +20,8 @@ label | 按钮文本  | `string` | -
 submit | 是否提交按钮，`true` 时校验结果 `invalid` 时为禁止状态且类型为 `primary`  | `boolean` | -
 type | 按钮类型  | `primary,default,dashed,danger` | -
 parameters | 回调携带参数  | `any` | -
+popconfirm | 是否需要确认框  | `boolean` | -
+poptitle | 确认框标题  | `string` | -
 
 ## Demo
 

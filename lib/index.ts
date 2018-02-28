@@ -104,7 +104,8 @@ import {
     NzRadioModule,
     NzTagModule,
     NzRateModule,
-    NzSelectModule
+    NzSelectModule,
+    NzPopconfirmModule
 } from 'ng-zorro-antd';
 const ZORROMODULES = [
     NzGridModule,
@@ -125,7 +126,8 @@ const ZORROMODULES = [
     NzRadioModule,
     NzTagModule,
     NzRateModule,
-    NzSelectModule
+    NzSelectModule,
+    NzPopconfirmModule
 ];
 // endregion
 
