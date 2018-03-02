@@ -157,6 +157,7 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRende
      * 指定条件时才显示，例如：
      *
      * - `visibleIf: { shown: [ true ] }`：当 `shown: true` 时才显示当前属性
+     * - `visibleIf: { shown: [ '$ANY$' ] }`：当 `shown` 包括任意值时
      * - `visibleIf: { shown: (value: any) => value > 0 }`：复杂表达式
      */
     visibleIf?: { [key: string]: any[] | ((value: any) => boolean) };
