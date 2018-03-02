@@ -226,10 +226,12 @@ export abstract class FormProperty {
                     if (property) {
                         let valueCheck = property.valueChanges.pipe(
                             map((value: any) => {
-                                if (visibleIf[dependencyPath].indexOf('$ANY$') !== -1) {
+                                const vi = visibleIf[dependencyPath];
+                                if (typeof vi === 'function') return vi(value);
+                                if (vi.indexOf('$ANY$') !== -1) {
                                     return value.length > 0;
                                 } else {
-                                    return visibleIf[dependencyPath].indexOf(value) !== -1;
+                                    return vi.indexOf(value) !== -1;
                                 }
                             })
                         );
