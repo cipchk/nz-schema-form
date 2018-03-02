@@ -113,6 +113,18 @@ export class FormComponent implements OnChanges {
             this.setActions();
         }
 
+        this._refreshSchema(changes);
+    }
+
+    private _refreshSchema(changes?: any) {
+        if (!changes) {
+            changes = {
+                schema: {
+                    firstChange: false
+                }
+            };
+        }
+
         if (this.schema && !this.schema.type) {
             this.schema.type = 'object';
         }
@@ -178,6 +190,7 @@ export class FormComponent implements OnChanges {
         }
     }
 
+    /** @private */
     _addTpl(path: string, templateRef: TemplateRef<any>) {
         const property = this.rootProperty.searchProperty(path);
         if (!property) {
@@ -187,6 +200,18 @@ export class FormComponent implements OnChanges {
         property.schema.__render = templateRef;
     }
 
+    /**
+     * 刷新 Schema，一般需要动态修改 Schema 某个值时可以方便调用
+     */
+    refreshSchema() {
+        this._refreshSchema({
+            schema: {
+                firstChange: false
+            }
+        });
+    }
+
+    /** 重置表单 */
     reset() {
         this.rootProperty._reset(null, true);
     }
