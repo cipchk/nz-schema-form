@@ -27,6 +27,11 @@ export const DATA = {
             content: getMd(require('!!raw-loader!../../../docs/error.md'))
         },
         {
+            id: 'qa',
+            title: '常见问题',
+            content: getMd(require('!!raw-loader!../../../docs/qa.md'))
+        },
+        {
             id: 'changelog',
             title: '更新日志',
             content: getMd(require('!!raw-loader!../../../docs/changelog.md'))

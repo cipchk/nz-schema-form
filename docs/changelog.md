@@ -4,6 +4,19 @@ title: 更新日志
 type: Basic
 ---
 
+### 0.1.0
+
+`2018-3-2`
+
+- `nz-sf` 组件
+    - 新增 `refreshSchema()` 方法，用于需要动态修改 Schema 某个值时可以方便调用
+    - 修复 `model` 参数双向绑定无效问题
+- Schema
+    - `visibleIf`：支持复杂表达式
+- Widgets
+    - `button`：新增 `popconfirm` 参数，允许设置按钮确认框
+    - `number`：修复 `default` 值无效问题
+
 ### 0.0.1
 
 `2018-2-27`

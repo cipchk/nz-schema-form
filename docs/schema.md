@@ -31,6 +31,15 @@ disabled | 是否禁用状态  | `boolean` | -
 class | 自定义类，等同 `[ngClass]` 值  | `string,string[]` | -
 style | 自定义样式，等同 `[ngStyle]` 值  | `object` | -
 grid | 响应式属性  | `SFGrid` | -
+visibleIf | 条件表单 | `{ [key: string]: any[] | ((value: any) => boolean) }` | -
+
+**visibleIf**
+
+指定条件时才显示，例如：
+
+- `visibleIf: { shown: [ true ] }`：当 `shown: true` 时才显示当前属性
+- `visibleIf: { shown: [ '$ANY$' ] }`：当 `shown` 包括任意值时
+- `visibleIf: { shown: (value: any) => value > 0 }`：复杂表达式
 
 ## 小部件Schema
 
