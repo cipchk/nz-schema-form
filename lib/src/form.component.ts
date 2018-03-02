@@ -39,17 +39,23 @@ export class FormComponent implements OnChanges {
 
     @Input() model: any;
 
+    @Output() modelChange = new EventEmitter<any>();
+
     @Input() actions: { [actionId: string]: Action } = {};
 
     @Input() validators: { [path: string]: Validator } = {};
 
     @Output() onChange = new EventEmitter<{ value: any }>();
 
-    @Output() modelChanged = new EventEmitter<any>();
-
     @Output() isValid = new EventEmitter<boolean>();
 
     @Output() onErrorChange = new EventEmitter<{ value: any[] }>();
+
+    _valid = true;
+
+    get valid(): boolean {
+        return this._valid;
+    }
 
     rootProperty: FormProperty = null;
 
@@ -126,20 +132,21 @@ export class FormComponent implements OnChanges {
             this.rootProperty = this.formPropertyFactory.createProperty(this.schema);
 
             this.rootProperty.valueChanges.subscribe(value => {
-                if (this.modelChanged.observers.length > 0) {
+                if (this.modelChange.observers.length > 0) {
                     // two way binding is used
                     if (this.model) {
-                        Object.assign(this.model, value);
+                        this.model = Object.assign(this.model, value);
                     } else {
                         this.model = value;
                     }
-                    this.modelChanged.emit(value);
+                    this.modelChange.emit(this.model);
                 }
                 this.onChange.emit({ value: value });
             });
             this.rootProperty.errorsChanges.subscribe(value => {
                 this.onErrorChange.emit({ value: value });
-                this.isValid.emit(!(value && value.length));
+                this._valid = !(value && value.length);
+                this.isValid.emit(this._valid);
             });
         }
 
