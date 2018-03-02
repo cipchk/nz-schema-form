@@ -44,6 +44,9 @@ export class NumberWidget extends ControlWidget implements OnInit {
         this.allowClear = this.widgetData.allowClear || false;
         if (this.widgetData.formatter) this.formatter = this.widgetData.formatter;
         if (this.widgetData.parser) this.parser = this.widgetData.parser;
-        if (this.min) this.formProperty.setValue(this.min, true);
+        if (typeof this.schema.default === 'number')
+            this.formProperty.setValue(this.schema.default, true);
+        else if (typeof this.min === 'number')
+            this.formProperty.setValue(this.min, true);
     }
 }
