@@ -38,15 +38,17 @@ export class NumberWidget extends ControlWidget implements OnInit {
     parser = (value: any) => value;
 
     ngOnInit(): void {
-        this.min = this.schema.minimum || this.widgetData.min || -Infinity;
-        this.max = this.schema.maximum || this.widgetData.max || Infinity;
+        this.min = this.schema.minimum || this.widgetData.min;
+        this.max = this.schema.maximum || this.widgetData.max;
         this.step = this.widgetData.step || 1;
         this.allowClear = this.widgetData.allowClear || false;
         if (this.widgetData.formatter) this.formatter = this.widgetData.formatter;
         if (this.widgetData.parser) this.parser = this.widgetData.parser;
-        if (typeof this.schema.default === 'number')
+        if (typeof this.schema.default === 'number') {
             this.formProperty.setValue(this.schema.default, true);
-        else if (typeof this.min === 'number')
-            this.formProperty.setValue(this.min, true);
+        } else if (typeof this.min !== 'undefined') {
+            // BUG: https://github.com/NG-ZORRO/ng-zorro-antd/issues/1104
+            this.formProperty.setValue(this.min, false);
+        }
     }
 }
