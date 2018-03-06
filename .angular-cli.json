@@ -55,6 +55,16 @@
   "test": {
     "karma": {
       "config": "./karma.conf.js"
+    },
+    "codeCoverage": {
+        "exclude": [
+            "./src/**",
+            "./scripts/**",
+            "./e2e/**",
+            "./docs/**",
+            "./dist/**",
+            "./.lib/**"
+        ]
     }
   },
   "defaults": {

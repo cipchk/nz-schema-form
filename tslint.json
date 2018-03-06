@@ -119,14 +119,14 @@
       "check-type"
     ],
     "directive-selector": [
-      true,
+        false,
       "nz",
       "attribute",
       "app",
       "camelCase"
     ],
     "component-selector": [
-      true,
+      false,
       "nz",
       "element",
       "app",
