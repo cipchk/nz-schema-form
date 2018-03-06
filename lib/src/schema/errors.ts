@@ -23,7 +23,7 @@ export interface ErrorSchema {
     /**
      * 自定义错误信息
      */
-    errors?: { [ key: string ]: string | ((obj: ErrorData) => string) }
+    errors?: { [ key: string ]: string | ((obj: ErrorData) => string) };
     /**
      * 是否只展示错误视觉不显示错误文本，默认：`false`
      */

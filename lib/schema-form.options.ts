@@ -30,7 +30,7 @@ export interface SchemaFormOptions {
     /**
      * 自定义通用错误信息
      */
-    errors?: { [ key: string ]: string }
+    errors?: { [ key: string ]: string };
     /**
      * 日期小部件配置
      */
@@ -39,7 +39,7 @@ export interface SchemaFormOptions {
     /**
      * 时间小部件配置
      */
-    time?:any
+    time?: any;
 }
 
 export const DEFAULT: SchemaFormOptions = {

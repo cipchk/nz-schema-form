@@ -5,12 +5,12 @@ function formatMessage(message: any, path: any) {
 }
 
 function schemaError(message: any, path: any): void {
-    let mesg = formatMessage(message, path);
+    const mesg = formatMessage(message, path);
     throw new Error(mesg);
 }
 
 function schemaWarning(message: any, path: any): void {
-    let mesg = formatMessage(message, path);
+    const mesg = formatMessage(message, path);
     throw new Error(mesg);
 }
 
@@ -30,7 +30,7 @@ export class SchemaPreprocessor {
     private static checkProperties(jsonSchema: any, path: string) {
         if (isBlank(jsonSchema.properties)) {
             jsonSchema.properties = {};
-            schemaWarning("Provided json schema does not contain a 'properties' entry. Output schema will be empty", path);
+            schemaWarning('Provided json schema does not contain a \'properties\' entry. Output schema will be empty', path);
         }
     }
 
@@ -46,10 +46,10 @@ export class SchemaPreprocessor {
     }
 
     private static checkFieldsUsage(jsonSchema: any, path: string) {
-        let fieldsId: string[] = Object.keys(jsonSchema.properties);
-        let usedFields: any = {};
-        for (let fieldset of jsonSchema.fieldsets) {
-            for (let fieldId of fieldset.fields) {
+        const fieldsId: string[] = Object.keys(jsonSchema.properties);
+        const usedFields: any = {};
+        for (const fieldset of jsonSchema.fieldsets) {
+            for (const fieldId of fieldset.fields) {
                 if (usedFields[fieldId] === undefined) {
                     usedFields[fieldId] = [];
                 }
@@ -57,7 +57,7 @@ export class SchemaPreprocessor {
             }
         }
 
-        for (let fieldId of fieldsId) {
+        for (const fieldId of fieldsId) {
             if (usedFields.hasOwnProperty(fieldId)) {
                 if (usedFields[fieldId].length > 1) {
                     schemaError(`${fieldId} is referenced by more than one fieldset: ${usedFields[fieldId]}`, path);
@@ -71,7 +71,7 @@ export class SchemaPreprocessor {
             }
         }
 
-        for (let remainingfieldsId in usedFields) {
+        for (const remainingfieldsId in usedFields) {
             if (usedFields.hasOwnProperty(remainingfieldsId)) {
                 schemaWarning(`Referencing non-existent field ${remainingfieldsId} in one or more fieldsets`, path);
             }
@@ -109,22 +109,22 @@ export class SchemaPreprocessor {
 
     private static checkItems(jsonSchema: any, path: string) {
         if (jsonSchema.items === undefined) {
-            schemaError("No 'items' property in array", path);
+            schemaError('No \'items\' property in array', path);
         }
     }
 
     private static recursiveCheck(jsonSchema: any, path: string) {
         if (jsonSchema.type === 'object') {
-            for (let fieldId in jsonSchema.properties) {
+            for (const fieldId in jsonSchema.properties) {
                 if (jsonSchema.properties.hasOwnProperty(fieldId)) {
-                    let fieldSchema = jsonSchema.properties[fieldId];
+                    const fieldSchema = jsonSchema.properties[fieldId];
                     SchemaPreprocessor.preprocess(fieldSchema, path + fieldId + '/');
                 }
             }
             if (jsonSchema.hasOwnProperty('definitions')) {
-                for (let fieldId in jsonSchema.definitions) {
+                for (const fieldId in jsonSchema.definitions) {
                     if (jsonSchema.definitions.hasOwnProperty(fieldId)) {
-                        let fieldSchema = jsonSchema.definitions[fieldId];
+                        const fieldSchema = jsonSchema.definitions[fieldId];
                         SchemaPreprocessor.removeRecursiveRefProperties(fieldSchema, `#/definitions/${fieldId}`);
                         SchemaPreprocessor.preprocess(fieldSchema, path + fieldId + '/');
                     }
@@ -138,7 +138,7 @@ export class SchemaPreprocessor {
     private static removeRecursiveRefProperties(jsonSchema: any, definitionPath: any) {
         // to avoid infinite loop
         if (jsonSchema.type === 'object') {
-            for (let fieldId in jsonSchema.properties) {
+            for (const fieldId in jsonSchema.properties) {
                 if (jsonSchema.properties.hasOwnProperty(fieldId)) {
                     if (jsonSchema.properties[fieldId].$ref && jsonSchema.properties[fieldId].$ref === definitionPath) {
                         delete jsonSchema.properties[fieldId];

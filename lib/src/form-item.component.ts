@@ -50,7 +50,7 @@ export class FormItemComponent implements OnInit, OnChanges {
             if (destroy) {
                 this.ref.destroy();
             }
-        })
+        });
     }
 
     private parseButtons() {
@@ -58,7 +58,7 @@ export class FormItemComponent implements OnInit, OnChanges {
         if (btn !== undefined) {
             this.btn = btn;
             this._grid = btn.grid || {};
-            for (let button of btn.items) {
+            for (const button of btn.items) {
                 this.createButtonCallback(button);
             }
         }
@@ -78,7 +78,7 @@ export class FormItemComponent implements OnInit, OnChanges {
 
     onWidgetInstanciated(widget: Widget<any>) {
         this.widget = widget;
-        let id = '_sf-' + FormItemComponent.counter++;
+        const id = '_sf-' + FormItemComponent.counter++;
 
         const schema = this.formProperty.schema;
         this.widget.formProperty = this.formProperty;

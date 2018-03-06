@@ -54,5 +54,5 @@ class TestComponent {
                 widget: 'custom'
             }
         }
-    }
+    };
 }

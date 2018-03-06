@@ -12,10 +12,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run release:validity",
     "test": "ng test -sr -sm=false",
+    "lint": "tslint -p tsconfig.json -c tslint.json 'lib/**/*.ts' -e 'lib/**/*.spec.ts'",
     "test-coverage": "ng test -sr -cc -sm=false",
-    "lint": "ng lint",
     "e2e": "ng e2e",
     "demo.gh-pages": "ng build --prod --build-optimizer && gh-pages -d dist",
     "clean:tmp": "rimraf .ng_build .ng_compiled",
@@ -94,6 +94,6 @@
     "rollup-plugin-replace": "^2.0.0",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.6.0"
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Input, OnChanges, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, Input, OnChanges, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { WidgetFactory } from './widget.factory';
 import { TerminatorService } from './terminator.service';
 
@@ -6,7 +6,7 @@ import { TerminatorService } from './terminator.service';
     selector: 'nz-sf-action',
     template: '<ng-template #target></ng-template>'
 })
-export class FormActionComponent implements OnChanges {
+export class FormActionComponent implements OnChanges, OnInit {
     @Input() button: any;
 
     @Input() formProperty: any;

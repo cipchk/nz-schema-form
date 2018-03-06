@@ -9,12 +9,12 @@ import { ValidatorRegistry } from './validatorregistry';
 
 describe('ObjectProperty', () => {
 
-  let A_VALIDATOR_REGISTRY = new ValidatorRegistry();
-  let A_SCHEMA_VALIDATOR_FACTORY = new ZSchemaValidatorFactory(null);
-  let A_FORM_PROPERTY_FACTORY = new FormPropertyFactory(A_SCHEMA_VALIDATOR_FACTORY, A_VALIDATOR_REGISTRY, {});
+  const A_VALIDATOR_REGISTRY = new ValidatorRegistry();
+  const A_SCHEMA_VALIDATOR_FACTORY = new ZSchemaValidatorFactory(null);
+  const A_FORM_PROPERTY_FACTORY = new FormPropertyFactory(A_SCHEMA_VALIDATOR_FACTORY, A_VALIDATOR_REGISTRY, {});
 
 
-  let THE_OBJECT_SCHEMA = {
+  const THE_OBJECT_SCHEMA = {
     type: 'object',
     properties: {
       FOO: {type: 'integer'},
@@ -40,9 +40,9 @@ describe('ObjectProperty', () => {
 
   it('should create same properties as in the schema', () => {
 
-    for (let propertyId in THE_OBJECT_SCHEMA.properties) {
+    for (const propertyId in THE_OBJECT_SCHEMA.properties) {
       if (THE_OBJECT_SCHEMA.properties.hasOwnProperty(propertyId)) {
-        let property = objProperty.getProperty(propertyId);
+        const property = objProperty.getProperty(propertyId);
         expect(property).toBeDefined();
       }
     }

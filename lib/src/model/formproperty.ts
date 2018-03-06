@@ -1,3 +1,4 @@
+// tslint:disable:no-use-before-declare
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { map, distinctUntilChanged } from 'rxjs/operators';
@@ -114,7 +115,7 @@ export abstract class FormProperty {
      */
     _runValidation(): any {
         let errors = this.schemaValidator(this._value) || [];
-        let customValidator = this.validatorRegistry.get(this.path);
+        const customValidator = this.validatorRegistry.get(this.path);
         if (customValidator) {
             let customErrors = customValidator(this.value, this, this.findRoot());
             // fix error format
@@ -215,16 +216,16 @@ export abstract class FormProperty {
 
     // A field is visible if AT LEAST ONE of the properties it depends on is visible AND has a value in the list
     _bindVisibility() {
-        let visibleIf = this.schema.visibleIf;
+        const visibleIf = this.schema.visibleIf;
         if (typeof visibleIf === 'object' && Object.keys(visibleIf).length === 0) {
             this.setVisible(false);
         } else if (visibleIf !== undefined) {
-            let propertiesBinding = [];
-            for (let dependencyPath in visibleIf) {
+            const propertiesBinding = [];
+            for (const dependencyPath in visibleIf) {
                 if (visibleIf.hasOwnProperty(dependencyPath)) {
-                    let property = this.searchProperty(dependencyPath);
+                    const property = this.searchProperty(dependencyPath);
                     if (property) {
-                        let valueCheck = property.valueChanges.pipe(
+                        const valueCheck = property.valueChanges.pipe(
                             map((value: any) => {
                                 const vi = visibleIf[dependencyPath];
                                 if (typeof vi === 'function') return vi(value);
@@ -235,11 +236,11 @@ export abstract class FormProperty {
                                 }
                             })
                         );
-                        let visibilityCheck = property._visibilityChanges;
-                        let and = combineLatest([valueCheck, visibilityCheck], (v1: any, v2: any) => v1 && v2);
+                        const visibilityCheck = property._visibilityChanges;
+                        const and = combineLatest([valueCheck, visibilityCheck], (v1: any, v2: any) => v1 && v2);
                         propertiesBinding.push(and);
                     } else {
-                        console.warn("Can't find property " + dependencyPath + ' for visibility check of ' + this.path);
+                        console.warn('Can\'t find property ' + dependencyPath + ' for visibility check of ' + this.path);
                     }
                 }
             }
@@ -269,21 +270,21 @@ export abstract class PropertyGroup extends FormProperty {
     }
 
     getProperty(path: string) {
-        let subPathIdx = path.indexOf('/');
-        let propertyId = subPathIdx !== -1 ? path.substr(0, subPathIdx) : path;
+        const subPathIdx = path.indexOf('/');
+        const propertyId = subPathIdx !== -1 ? path.substr(0, subPathIdx) : path;
 
         let property = this.properties[propertyId];
         if (property !== null && subPathIdx !== -1 && property instanceof PropertyGroup) {
-            let subPath = path.substr(subPathIdx + 1);
+            const subPath = path.substr(subPathIdx + 1);
             property = (<PropertyGroup>property).getProperty(subPath);
         }
         return property;
     }
 
     forEachChild(fn: (formProperty: FormProperty, str: String) => void) {
-        for (let propertyId in this.properties) {
+        for (const propertyId in this.properties) {
             if (this.properties.hasOwnProperty(propertyId)) {
-                let property = this.properties[propertyId];
+                const property = this.properties[propertyId];
                 fn(property, propertyId);
             }
         }

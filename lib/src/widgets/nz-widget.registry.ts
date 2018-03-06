@@ -30,7 +30,7 @@ export class NzWidgetRegistry extends WidgetRegistry {
         this.register('button', ButtonWidget);
 
         this.register('string', StringWidget);
-        this.register('radio',RadioWidget)
+        this.register('radio', RadioWidget);
         this.register('date', DateWidget);
         this.register('time', TimeWidget);
         this.register('boolean', BooleanWidget);

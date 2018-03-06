@@ -72,7 +72,7 @@ export class DateWidget extends ControlWidget implements OnInit {
         if (value instanceof Date) {
             return value.toISOString();
         } else {
-            return value
+            return value;
         }
     }
 

@@ -6,6 +6,7 @@ import { FormComponent } from '../../form.component';
 })
 export class CustomTemplateDirective implements OnInit {
 
+    // tslint:disable-next-line:no-input-rename
     @Input('nz-template') path: string;
 
     constructor(private templateRef: TemplateRef<any>, private table: FormComponent) {}

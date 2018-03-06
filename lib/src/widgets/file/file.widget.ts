@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UploadFile } from 'ng-zorro-antd';
-import { ControlWidget } from '../../widget';
 import { Subscription } from 'rxjs/Subscription';
+import { ControlWidget } from '../../widget';
 
 @Component({
     selector: 'nz-sf-file-widget',

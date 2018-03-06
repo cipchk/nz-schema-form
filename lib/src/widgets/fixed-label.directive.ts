@@ -5,7 +5,9 @@ import { Directive, Input, ElementRef, Renderer2, OnInit } from '@angular/core';
 })
 export class FixedLabelDirective implements OnInit {
 
+    // tslint:disable-next-line:no-input-rename
     @Input('fixed-label') num: number;
+
     private el: HTMLDivElement;
 
     constructor(er: ElementRef, private render: Renderer2) {

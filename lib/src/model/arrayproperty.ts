@@ -1,7 +1,7 @@
-import {FormProperty, PropertyGroup} from './formproperty';
-import {FormPropertyFactory} from './formpropertyfactory';
-import {SchemaValidatorFactory} from '../schema.validator.factory';
-import {ValidatorRegistry} from './validatorregistry';
+import { FormProperty, PropertyGroup } from './formproperty';
+import { FormPropertyFactory } from './formpropertyfactory';
+import { SchemaValidatorFactory } from '../schema.validator.factory';
+import { ValidatorRegistry } from './validatorregistry';
 import { SchemaFormOptions } from '../../schema-form.options';
 
 export class ArrayProperty extends PropertyGroup {
@@ -18,13 +18,13 @@ export class ArrayProperty extends PropertyGroup {
   }
 
   addItem(value: any = null): FormProperty {
-    let newProperty = this.addProperty();
+    const newProperty = this.addProperty();
     newProperty._reset(value, false);
     return newProperty;
   }
 
   private addProperty() {
-    let newProperty = this.formPropertyFactory.createProperty(this.schema.items, this);
+    const newProperty = this.formPropertyFactory.createProperty(this.schema.items, this);
     (<FormProperty[]>this.properties).push(newProperty);
     return newProperty;
   }
@@ -40,11 +40,11 @@ export class ArrayProperty extends PropertyGroup {
     this.updateValueAndValidity(onlySelf, true);
   }
 
-  public _hasValue(): boolean {
+  _hasValue(): boolean {
     return true;
   }
 
-  public _updateValue() {
+  _updateValue() {
     this.reduceValue();
   }
 
@@ -71,9 +71,9 @@ export class ArrayProperty extends PropertyGroup {
 
 
   private resetProperties(value: any) {
-    for (let idx in value) {
+    for (const idx in value) {
       if (value.hasOwnProperty(idx)) {
-        let property = this.addProperty();
+        const property = this.addProperty();
         property._reset(value[idx], true);
       }
     }

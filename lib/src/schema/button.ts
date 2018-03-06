@@ -1,5 +1,5 @@
-import { SFRenderSchema } from "./render";
-import { SFActiveSchema } from "./active";
+import { SFRenderSchema } from './render';
+import { SFActiveSchema } from './active';
 
 export interface SFButton extends SFRenderSchema {
     /**

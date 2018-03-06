@@ -48,5 +48,5 @@ class TestComponent {
                 maxLength: 20
             }
         }
-    }
+    };
 }

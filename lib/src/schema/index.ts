@@ -8,7 +8,7 @@ import { WidgetData } from './types';
 export * from './types';
 
 export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRenderSchema, SFActiveSchema {
-    ////////////任何实例类型/////////////
+    //////////// 任何实例类型/////////////
     /**
      * 调试模式
      */
@@ -25,7 +25,7 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRende
      * 枚举
      */
     enum?: any[];
-    ////////////数值类型/////////////
+    //////////// 数值类型/////////////
     /**
      * 最小值
      *
@@ -56,7 +56,7 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRende
      * 一般用于类型 `number` `slider`
      */
     multipleOf?: number;
-    ////////////字符串类型/////////////
+    //////////// 字符串类型/////////////
     /**
      * 定义字符串的最大长度
      *
@@ -73,7 +73,7 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRende
      * 验证输入字段正则表达式字符串
      */
     pattern?: string;
-    ////////////数组类型/////////////
+    //////////// 数组类型/////////////
     /**
      * 元素的类型描述
      */
@@ -96,7 +96,7 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRende
      * 限 `type=array` 时有效
      */
     uniqueItems?: boolean;
-    ////////////对象类型/////////////
+    //////////// 对象类型/////////////
     /**
      * 最大属性个数，必须是非负整数
      */
@@ -122,7 +122,7 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRende
      * TODO: ng-zorro-antd 本身并不支持 fieldsets 定义，因此不考虑该字段的实现
      */
     // fieldsets?: SFFieldsetsSchema[];
-    ////////////注释类型/////////////
+    //////////// 注释类型/////////////
     /**
      * 标题，相当于 `label` 值
      */
@@ -139,7 +139,7 @@ export interface SFSchema extends ErrorSchema, SFHorizontalLayoutSchema, SFRende
      * 默认值
      */
     default?: any;
-    ////////////其他/////////////
+    //////////// 其他/////////////
     /**
      * 按钮信息
      */
