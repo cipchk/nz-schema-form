@@ -39,7 +39,7 @@ export class ButtonWidget implements OnInit, OnDestroy {
         this.disabled = this.button.submit;
         this.type = this.button.type ? this.button.type : this.button.submit ? 'primary' : null;
         if (this.button.submit === true && this.formProperty.forEachChildRecursive) {
-            this.disabled$ = this.formComp.onErrorChange.pipe(debounceTime(300)).subscribe(() => {
+            this.disabled$ = this.formComp.errorChange.pipe(debounceTime(300)).subscribe(() => {
                 let disabled = false;
                 this.formProperty.forEachChildRecursive((p: FormProperty) => {
                     if (!disabled && !p.valid) disabled = true;

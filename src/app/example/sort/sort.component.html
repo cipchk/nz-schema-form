@@ -3,6 +3,6 @@
 <nz-sf
     [schema]="DATA.schema"
     [model]="DATA.model"
-    (onChange)="DATA.value=$event.value"></nz-sf>
+    (change)="DATA.value=$event.value"></nz-sf>
 {{ DATA.value | json }}
 <markdown [data]="demo"></markdown>

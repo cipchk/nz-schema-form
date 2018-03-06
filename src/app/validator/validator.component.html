@@ -45,7 +45,7 @@
                 [schema]="schema"
                 [model]="model"
                 [actions]="actions"
-                (onChange)="value=$event.value"></nz-sf>
+                (change)="value=$event.value"></nz-sf>
 
             <p style="padding-top: 16px">Result: {{value | json}}</p>
         </div>
