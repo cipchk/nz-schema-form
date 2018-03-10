@@ -20,6 +20,7 @@ autocomplete | 自动完成功能的表单  | `on,off` | -
 maxLength | 表单最大长度  | `number` | -
 minLength | 表单最小长度  | `number` | -
 readOnly | 是否只读状态  | `boolean` | -
+disabled | 是否禁止状态  | `boolean` | -
 
 ## Demo
 

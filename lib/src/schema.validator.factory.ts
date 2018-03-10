@@ -1,6 +1,6 @@
 import { Inject, Optional } from '@angular/core';
 import * as ZSchema from 'z-schema';
-import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from './schema-form.options';
 
 export abstract class SchemaValidatorFactory {
     abstract createValidatorFn(schema: any): (value: any) => any;

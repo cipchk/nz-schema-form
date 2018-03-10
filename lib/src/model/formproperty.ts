@@ -5,7 +5,7 @@ import { map, distinctUntilChanged } from 'rxjs/operators';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 import { SchemaValidatorFactory } from '../schema.validator.factory';
 import { ValidatorRegistry } from './validatorregistry';
-import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../../schema-form.options';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
 import { ErrorData } from './../schema/errors';
 
 export abstract class FormProperty {

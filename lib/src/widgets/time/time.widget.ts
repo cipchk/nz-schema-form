@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { ControlWidget } from '../../widget';
-import { SchemaFormOptions } from '../../../schema-form.options';
+import { SchemaFormOptions } from '../../schema-form.options';
 
 @Component({
     selector: 'nz-sf-time-widget',

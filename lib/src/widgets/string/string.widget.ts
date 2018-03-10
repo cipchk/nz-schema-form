@@ -26,10 +26,10 @@ import { WidgetData } from './../../schema/types';
             [attr.placeholder]="placeholder"
             [attr.maxLength]="schema.maxLength || null"
             [attr.minLength]="schema.minLength || null"
-            [attr.disabled]="(schema.widget.id=='color' && schema.readOnly)?true:null"
+            [attr.disabled]="disabled"
             [attr.autocomplete]="autocomplete"
             [nzSize]="size">
-        <input *ngIf="(schema.widget.id==='color' && schema.readOnly)"
+        <input *ngIf="(schema.widget.id === 'color' && schema.readOnly)"
             [attr.name]="name" type="hidden" [formControl]="control">
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
@@ -42,8 +42,8 @@ export class StringWidget extends ControlWidget implements OnInit {
 
     ngOnInit(): void {
         const w = this.widgetData;
-        if (w.type) return w.type;
-        this.type = !w || w.id === 'string' ? 'text' : w.id;
         this.autocomplete = w.autocomplete || null;
+        this.disabled = w.disabled || this.schema.readOnly ? true : null;
+        this.type = w.type || 'text';
     }
 }

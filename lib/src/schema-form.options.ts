@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import * as ZSchema from 'z-schema';
-import { ERROR, ERRORSDEFAULT } from './src/schema/errors';
+import { ERROR, ERRORSDEFAULT } from './schema/errors';
 
 export const NZ_SF_OPTIONS_TOKEN = new InjectionToken<SchemaFormOptions>('NZ_SF_OPTIONS_TOKEN');
 export const NZ_SF_USER_OPTIONS_TOKEN = new InjectionToken<SchemaFormOptions>('NZ_SF_USER_OPTIONS_TOKEN');

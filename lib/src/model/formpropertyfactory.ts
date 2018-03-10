@@ -7,7 +7,7 @@ import { ObjectProperty } from './objectproperty';
 import { ArrayProperty } from './arrayproperty';
 import { SchemaValidatorFactory } from '../schema.validator.factory';
 import { ValidatorRegistry } from './validatorregistry';
-import { SchemaFormOptions } from '../../schema-form.options';
+import { SchemaFormOptions } from '../schema-form.options';
 
 export class FormPropertyFactory {
     constructor(

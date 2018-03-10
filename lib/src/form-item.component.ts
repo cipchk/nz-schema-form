@@ -7,7 +7,7 @@ import { Widget } from './widget';
 import { ActionRegistry } from './model/actionregistry';
 import { WidgetFactory } from './widget.factory';
 import { TerminatorService } from './terminator.service';
-import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from '../schema-form.options';
+import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from './schema-form.options';
 
 @Component({
     selector: 'nz-sf-item',

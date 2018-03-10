@@ -34,5 +34,5 @@ script:
   - npm run $TASK
   - |
     if [ "$TASK" = "test" ]; then
-      npm run test-coverage
+      cat ./coverage/lcov.info | ./node_modules/.bin/codecov
     fi

@@ -2,7 +2,7 @@ import { PropertyGroup } from './formproperty';
 import { FormPropertyFactory } from './formpropertyfactory';
 import { SchemaValidatorFactory } from '../schema.validator.factory';
 import { ValidatorRegistry } from './validatorregistry';
-import { SchemaFormOptions } from '../../schema-form.options';
+import { SchemaFormOptions } from '../schema-form.options';
 
 export class ObjectProperty extends PropertyGroup {
     private propertiesId: string[] = [];
