@@ -6,7 +6,7 @@ type: Basic
 
 ## 写在前面
 
-nz-schema-form 尽可能满足不同需求，除现有内置的十几种小部件外，可以通过以下两种方式进一步扩展需求：
+nz-schema-form 尽可能满足不同需求，除现有内置的十几种基础组件小部件外，可以通过以下两种方式进一步扩展需求：
 
 ## 一、利用 `custom` 小部件进行扩展
 
@@ -18,23 +18,16 @@ nz-schema-form 尽可能满足不同需求，除现有内置的十几种小部�
 
 ### 1、编写小部件
 
-**使用未注册小部件库**
+**常见小部件库**
 
-默认情况下 nz-schema-form 实现了一些常见需求，但需要额外类库支持的，称它为第三方组件小部件，这一部分默认情况下未注册；只需要简单注册即可使用，见注册小部件说明。
+默认情况下 nz-schema-form 实现了一些常见需求，但需要额外类库支持的，称它为第三方组件小部件，这一部分小部件存在于[widgets-third](https://github.com/cipchk/nz-schema-form/tree/master/widgets-third)目录里；你可以直接复制使用。
 
 这些组件包括：
 
 | 名称 | 描述 | 描述 |
 | --- | ---- | ---- |
-| `tinymce` | Tinymce 富文本框 | [文档](https://cipchk.github.io/nz-schema-form/#/document/tinymce) |
-| `ueditor` | UEditor 富文本框 | [文档](https://cipchk.github.io/nz-schema-form/#/document/ueditor) |
-
-引用路径：
-
-```ts
-import { TinymceWidget } from 'nz-schema-form/src/widgets-third/tinymce/tinymce.widget';
-import { UEditorWidget } from 'nz-schema-form/src/widgets-third/ueditor/ueditor.widget';
-```
+| `tinymce` | Tinymce 富文本框 | [文档](https://github.com/cipchk/nz-schema-form/blob/master/widgets-third/tinymce/index.md) |
+| `ueditor` | UEditor 富文本框 | [文档](https://github.com/cipchk/nz-schema-form/blob/master/widgets-third/ueditor/index.md) |
 
 **自己创建小部件**
 

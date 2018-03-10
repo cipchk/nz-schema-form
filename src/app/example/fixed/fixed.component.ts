@@ -143,7 +143,7 @@ export class ExampleFixedComponent {
             role: {
                 type: 'string',
                 title: '角色',
-                grid: { span: 24 },
+                grid: { span: 16 },
                 widget: {
                     id: 'transfer',
                     dataSource: Array(10)
@@ -152,6 +152,12 @@ export class ExampleFixedComponent {
                             return { title: `content${i + 1}`, direction: i === 1 ? 'right' : '' };
                         })
                 }
+            },
+            color: {
+                type: 'string',
+                title: '颜色',
+                grid: { span: 8 },
+                widget: 'color'
             },
             products: {
                 type: 'array',

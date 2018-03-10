@@ -128,17 +128,5 @@ export const DATA = {
             title: '自定义',
             content: getMd(require('!!raw-loader!../../../lib/src/widgets/custom/index.md'))
         }
-    ],
-    third: [
-        {
-            id: 'tinymce',
-            title: 'Tinymce',
-            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/tinymce/index.md'))
-        },
-        {
-            id: 'ueditor',
-            title: 'UEditor',
-            content: getMd(require('!!raw-loader!../../../lib/src/widgets-third/ueditor/index.md'))
-        }
     ]
 };
