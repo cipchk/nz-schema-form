@@ -15,7 +15,9 @@ schema: SFSchema = {
     properties: {
         parent_id: {
             type: 'string',
-            widget: 'hidden'
+            widget: {
+                type: 'hidden'
+            }
         },
         remark: {
             type: 'string',
