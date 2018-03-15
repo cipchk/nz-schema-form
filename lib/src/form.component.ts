@@ -89,6 +89,9 @@ export class FormComponent implements OnChanges {
             if (p.items && p.type === 'array') {
                 this.coverProperty(p.items);
             }
+
+            if (p.properties && Object.keys(p.properties).length)
+                this.coverProperty(p);
         });
     }
 
