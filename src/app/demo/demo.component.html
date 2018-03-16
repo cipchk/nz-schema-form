@@ -1,6 +1,11 @@
 <nz-sf
 [schema]="schema"
+[(model)]="model"
 [actions]="actions" (change)="value=$event.value"></nz-sf>
+
+<p>
+    {{ model | json }}
+</p>
 
 <p>
     {{ value | json }}

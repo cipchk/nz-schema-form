@@ -8,7 +8,6 @@ import { SFSchema, PropertyGroup, FormProperty } from 'nz-schema-form';
 })
 export class ExampleSortComponent {
     DATA: any = {
-        value: {},
         model: { name: 'cipchk' }
     };
 

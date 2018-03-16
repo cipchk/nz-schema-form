@@ -43,11 +43,11 @@
             <nz-sf *ngIf="schema && model"
                 [layout]="layout"
                 [schema]="schema"
-                [model]="model"
+                [(model)]="model"
                 [actions]="actions"
-                (change)="value=$event.value"></nz-sf>
+                (change)="change($event)"></nz-sf>
 
-            <p style="padding-top: 16px">Result: {{value | json}}</p>
+            <p style="padding-top: 16px">Result: {{model | json}}</p>
         </div>
     </div>
 </div>

@@ -4,8 +4,8 @@
     <ng-template #body>
         <nz-sf layout="horizontal"
             [schema]="DATA.horizontal.schema"
-            [model]="DATA.horizontal.model"
-            [actions]="actions" (change)="DATA.horizontal.value=$event.value"></nz-sf>
+            [(model)]="DATA.horizontal.model"
+            [actions]="actions"></nz-sf>
     </ng-template>
 </nz-card>
 <h3>垂直布局：</h3>
@@ -13,8 +13,8 @@
     <ng-template #body>
         <nz-sf layout="vertical"
             [schema]="DATA.vertical.schema"
-            [model]="DATA.vertical.model"
-            [actions]="actions" (change)="DATA.vertical.value=$event.value"></nz-sf>
+            [(model)]="DATA.vertical.model"
+            [actions]="actions"></nz-sf>
     </ng-template>
 </nz-card>
 <h3>内联布局：</h3>
@@ -22,8 +22,8 @@
     <ng-template #body>
         <nz-sf layout="inline"
             [schema]="DATA.inline.schema"
-            [model]="DATA.inline.model"
-            [actions]="actions" (change)="DATA.inline.value=$event.value"></nz-sf>
+            [(model)]="DATA.inline.model"
+            [actions]="actions"></nz-sf>
     </ng-template>
 </nz-card>
 <div ace-editor

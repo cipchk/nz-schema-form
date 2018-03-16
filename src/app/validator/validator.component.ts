@@ -58,4 +58,8 @@ export class ValidatorComponent implements OnInit {
         this.schema = s;
         this.model = m;
     }
+
+    change(res: any) {
+        console.log(res);
+    }
 }

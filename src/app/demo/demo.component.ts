@@ -18,6 +18,12 @@ export class DemoComponent {
         }
     };
 
+    model: any = {
+        id: 1,
+        name: 'test',
+        age: 10
+    };
+
     schema = {
         debug: true,
         properties: {
@@ -30,32 +36,25 @@ export class DemoComponent {
                 },
                 minLength: 3
             },
-            password: {
-                type: 'string',
-                title: '密码',
-                widget: {
-                    type: 'password',
-                    placeholder: '请输入密码，且6位以上'
-                },
-                minLength: 6
+            'menu': {
+                'type': 'object',
+                title: 'test',
+                'properties': {
+                    'id': {
+                        'type': 'string',
+                        'title': '菜单',
+                        span_label: 5,
+                        span_control: 5
+                    },
+                    'title': {
+                        'type': 'string',
+                        'title': '标题',
+                        span_label: 5,
+                        span_control: 5
+                    }
+                }
             }
         },
-        required: ['name', 'password'],
-        button: {
-            items: [
-                {
-                    label: '登录',
-                    id: 'send',
-                    submit: true,
-                    popconfirm: true,
-                    poptitle: '123'
-                },
-                {
-                    label: '重置',
-                    id: 'reset'
-                }
-            ]
-        }
     };
 
     constructor(private msg: NzMessageService) {

@@ -6,7 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 @Component({
     selector: 'app-example-fixed',
     template: `
-    <nz-sf [schema]="schema" [model]="model" [actions]="actions" (change)="value=$event.value">
+    <nz-sf [schema]="schema" [(model)]="model" [actions]="actions">
         <ng-template nz-template="custom" let-control let-schema>
             <nz-input [formControl]="control">
                 <ng-template #addOnBefore>http://</ng-template>
@@ -17,7 +17,6 @@ import { NzMessageService } from 'ng-zorro-antd';
     `
 })
 export class ExampleFixedComponent {
-    value: any;
     schema: SFSchema = {
         debug: true,
         span_label_fixed: 100,

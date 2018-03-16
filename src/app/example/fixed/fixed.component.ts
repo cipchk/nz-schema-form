@@ -7,7 +7,6 @@ import { NzMessageService } from 'ng-zorro-antd';
     templateUrl: './fixed.component.html'
 })
 export class ExampleFixedComponent {
-    value: any;
     schema: SFSchema = {
         debug: true,
         span_label_fixed: 100,

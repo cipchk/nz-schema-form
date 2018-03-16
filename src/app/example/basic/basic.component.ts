@@ -20,17 +20,14 @@ export class ExampleBasicComponent {
     DATA: any = {
         horizontal: {
             code: '' + require('!!raw-loader!../../schema/login-schema.json'),
-            value: {},
             model: { email: 'cipchk@qq.com' }
         },
         vertical: {
             code: '' + require('!!raw-loader!../../schema/login-schema.json'),
-            value: {},
             model: { email: 'cipchk@qq.com' }
         },
         inline: {
             code: '' + require('!!raw-loader!../../schema/login-schema.json'),
-            value: {},
             model: { email: 'cipchk@qq.com' }
         }
     };

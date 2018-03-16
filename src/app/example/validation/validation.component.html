@@ -3,8 +3,8 @@
 <p><strong>注：</strong>目前并不支持异步校验。</p>
 <nz-sf
     [schema]="DATA.register.schema"
-    [model]="DATA.register.model"
+    [(model)]="DATA.register.model"
     [validators]="validators"
-    [actions]="actions"
-    (change)="DATA.register.value=$event.value"></nz-sf>
+    [actions]="actions"></nz-sf>
+model: {{ DATA.register.model | json }}
 <markdown [data]="demo"></markdown>
