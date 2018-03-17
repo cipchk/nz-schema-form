@@ -23,12 +23,13 @@ format | 日期格式  | `string` | -
 showTime | 是否显示时间选择器 | `boolean` | `false`
 start |  开始placeholder | `string`| `start`
 end |  结束placeholder | `string`| `end`
-
+separator | 日期分隔符 | `string` | `~`
 ## Demo
 
 **各种格式的配置**
 
 ```json
+
 {
 	"dateRange": {
 		"type": "string",
@@ -38,4 +39,42 @@ end |  结束placeholder | `string`| `end`
 		}
 	}
 }
+
+{
+	"dateRange": {
+		"type": "string",
+		"title": "日期范围",
+		"default": "2018-01-02~2018-02-03",
+		"widget": {
+			"id": "date-range",
+			"format": "YYYY-MM-DD"
+		}
+	}
+}
+
+{
+	"dateRange": {
+		"type": "array",
+		"items":{
+			"type":"number"
+		},
+		"title": "日期范围",
+		"default": [1520438400000, 1524326400000],
+		"widget": "date-range"
+	}
+}
+
+{
+	"dateRange": {
+		"type": "array",
+		"items":{
+			"type":"string"
+		},
+		"title": "日期范围",
+		"default": ["2018-01-02", "2018-01-10"],
+		"widget": "date-range"
+	}
+}
+
+
 ```
