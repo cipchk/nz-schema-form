@@ -16,7 +16,6 @@ import * as moment from 'moment';
         </label>
     </div>
     <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
-
         <nz-rangepicker
             [formControl]="control"
             [nzFormat]="format"
@@ -25,7 +24,6 @@ import * as moment from 'moment';
             [nzShowTime]="showTime"
             [nzPlaceholder]="[start, end]">
         </nz-rangepicker>
-
         <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
         <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
     </div>`
@@ -36,20 +34,73 @@ export class DateRangeWidget extends ControlWidget implements OnInit {
     showTime: boolean;
     start: string;
     end: string;
+    separator: string;
 
     ngOnInit(): void {
         this.format = this.widgetData.format || 'YYYY-MM-DD';
         this.showTime = this.widgetData.showTime === true;
         this.start = this.widgetData.start || 'start';
         this.end = this.widgetData.end || 'end';
+        this.separator = this.widgetData.separator || '~';
     }
 
-    serialize(value: any) {
-        return value;  // TODO should parse value to different type;
+    isNumberFormat() {
+        return this.schema && this.schema.items && this.schema.items.type === 'number';
     }
 
-    deserialize(value: string): any {
-        return value;  // TODO
+    serialize(value: any[]) {
+
+        const dates = value.filter((date) => {
+            return date !== null;
+        }).map((date) => {
+            if (this.format && !this.isNumberFormat())
+                return moment(date).format(this.format);
+            if (this.isNumberFormat()) {
+                return date.getTime();
+            }
+            return date;
+        });
+
+        if (this.schema.type === 'array') {
+            return dates;
+        } else {
+            if (dates.length) {
+                return dates.join(this.separator);
+            } else {
+                return undefined;
+            }
+        }
+    }
+
+    deserialize(value: any): any {
+
+        if (typeof value === 'string') {
+            const values = value.split(this.separator);
+
+            if (values.length === 2) {
+                return values.map((entry) => {
+                    return moment(entry, this.format).toDate();
+                });
+            } else {
+                return [null, null];
+            }
+        } else {
+
+            if (!Array.isArray(value) || value.length !== 2) {
+                return [null, null];
+            }
+
+            if (this.isNumberFormat()) {
+                const result = value.map((entry) => {
+                    return new Date(entry);
+                });
+                return result;
+            } else {
+                return value.map((entry) => {
+                    return moment(entry, this.format).toDate();
+                });
+            }
+        }
     }
 
 }
