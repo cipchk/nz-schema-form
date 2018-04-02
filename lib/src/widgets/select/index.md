@@ -9,17 +9,18 @@ title: 选择器
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
-style | 设置 `nz-select` 样式，等同 `ngStyle` 值 | `Object` | -
-data | 数据源 | `{ "label": string, "value": string }{]` | -
-mode | 设置 Select 的模式 | `multiple,tags` | -
-openChange | 下拉菜单打开关闭回调函数 | `Func` | -
-filter | 是否根据输入过滤选项 | `Boolean` | `true`
-keepUnListOptions | 当添加该属性时，将保留不在当前选项框但已被选择的数据，仅对多选有效 | `attribute` | -
-allowClear | 当添加该属性时，支持清除, 单选模式有效 | `attribute` | -
-showSearch | 是否启用搜索框 | `Boolean` | `false`
-searchChange | 搜索内容变化回调函数，参数为搜索内容，必须返回 `Promise` 对象 | `Func` | -
-notFoundContent | 当下拉列表为空时显示的内容 | `String` | `无法找到`
-tags | tags select，随意输入的内容，回车键新增tag | `Boolean` | -
+allowClear | 支持清除 | `boolean` | `false`
+autoFocus | 默认获取焦点 | `boolean` | `false`
+dropdownClassName | 下拉菜单的 className 属性 | `string` | -
+dropdownMatchSelectWidth | 下拉菜单和选择器同宽 | `boolean` | `true`
+dropdownStyle | 下拉菜单的 style 属性 | `object` | -
+serverSearch | 是否使用服务端搜索，当为 true 时，将不再在前端对 nz-option 进行过滤 | `boolean` | `false`
+filterOption | 是否根据输入项进行筛选。当其为一个函数时，会接收 `inputValue` `option` 两个参数，当 `option` 符合筛选条件时，应返回 `true`，反之则返回 `false`。 | `(input?: string, option?: NzOptionComponent) => boolean;` | -
+maxMultipleCount | 最多选中多少个标签| `number` | `Infinity`
+mode | 设置 nz-select 的模式 | `multiple,tags,default` | `default`
+notFoundContent | 当下拉列表为空时显示的内容 | `string` | -
+showSearch | 使单选模式可搜索 | `boolean` | `false`
+searchChange | 搜索内容变化回调函数，参数为搜索内容，必须返回 `Promise` 对象 | `Function` | -
 openChange | 下拉菜单打开关闭回调函数 | `Function` | -
 scrollToBottom | 下拉菜单滚动到底部回调，可用于作为动态加载的触发条件 | `Function` | -
 

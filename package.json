@@ -1,6 +1,6 @@
 {
   "name": "nz-schema-form",
-  "version": "0.2.1",
+  "version": "1.0.0-beta.0",
   "license": "MIT",
   "description": "ng-zorro-antd form generation based on JSON-Schema",
   "main": "./bundles/index.js",
@@ -13,7 +13,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run release:validity",
-	"test": "ng test -sr -cc",
+    "test": "ng test -sr -cc",
     "lint": "tslint -p tsconfig.json -c tslint.json 'lib/**/*.ts' -e 'lib/**/*.spec.ts'",
     "e2e": "ng e2e",
     "demo.gh-pages": "ng build --prod --build-optimizer && gh-pages -d dist",
@@ -32,7 +32,7 @@
   "peerDependencies": {
     "z-schema": "^3.19.0",
     "@types/z-schema": "^3.16.32",
-    "ng-zorro-antd": "^0.6.12"
+    "ng-zorro-antd": "^0.7.0-beta.3"
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",
@@ -45,8 +45,7 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
-    "moment": "^2.20.1",
-    "ng-zorro-antd": "^0.6.12",
+    "ng-zorro-antd": "^0.7.0-beta.3",
     "ng2-ace-editor": "^0.3.4",
     "ngx-highlight-js": "^1.0.3",
     "ngx-md": "^3.1.0",

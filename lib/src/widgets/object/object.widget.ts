@@ -5,34 +5,33 @@ import { ObjectLayoutWidget } from '../../widget';
   selector: 'nz-sf-object',
   template: `
     <ng-container *ngIf="grid; else noGrid">
-        <div nz-row [nzGutter]="grid.gutter">
+        <nz-row [nzGutter]="grid.gutter">
             <ng-container *ngFor="let i of list">
                 <ng-container *ngIf="i.property.visible">
-                    <div nz-col
+                    <nz-col
                         [nzSpan]="i.grid.span" [nzOffset]="i.grid.offset"
                         [nzXs]="i.grid.xs" [nzSm]="i.grid.sm" [nzMd]="i.grid.md"
-                        [nzLg]="i.grid.lg" [nzXl]="i.grid.xl">
-                        <div nz-row nz-form-item>
+                        [nzLg]="i.grid.lg" [nzXl]="i.grid.xl" [nzXXl]="i.grid.xxl">
+                        <nz-form-item>
                             <nz-sf-item [formProperty]="i.property" [fixed-label]="i.span_label_fixed"></nz-sf-item>
-                        </div>
-                    </div>
+                        </nz-form-item>
+                    </nz-col>
                 </ng-container>
             </ng-container>
-        </div>
+        </nz-row>
     </ng-container>
     <ng-template #noGrid>
         <ng-container *ngFor="let i of list">
             <ng-container *ngIf="i.property.visible">
-                <div nz-row nz-form-item>
+                <nz-form-item>
                     <nz-sf-item [formProperty]="i.property" [fixed-label]="i.span_label_fixed"></nz-sf-item>
-                </div>
+                </nz-form-item>
             </ng-container>
         </ng-container>
     </ng-template>
     `
 })
 export class ObjectWidget extends ObjectLayoutWidget implements OnInit {
-    // TODO: no yet ` [nzXXl]="grid.xxl"`
     list: any[] = [];
     grid: any;
 

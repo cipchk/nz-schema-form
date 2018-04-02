@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,6 +22,11 @@ import { DocumentComponent } from './document/document.component';
 import { environment } from '../environments/environment';
 import { DemoComponent } from './demo/demo.component';
 import { SharedModule } from './shared/shared.module';
+import { StartupService } from './core/startup.service';
+
+export function StartupServiceFactory(startupService: StartupService): Function {
+    return () => startupService.load();
+}
 
 @NgModule({
   declarations: [
@@ -72,6 +77,15 @@ import { SharedModule } from './shared/shared.module';
     NgxTinymceModule.forRoot({
         baseURL: '//cdn.bootcss.com/tinymce/4.7.4/'
     })
+  ],
+  providers: [
+    StartupService,
+    {
+        provide: APP_INITIALIZER,
+        useFactory: StartupServiceFactory,
+        deps: [StartupService],
+        multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

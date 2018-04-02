@@ -9,8 +9,8 @@ title: 布尔类型
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
-checked | 选中时的内容  | `string` | -
-unchecked | 非选中时的内容  | `string` | -
+checkedChildren | 选中时的内容  | `string` | -
+unCheckedChildren | 非选中时的内容  | `string` | -
 
 ## Demo
 

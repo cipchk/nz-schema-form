@@ -21,9 +21,20 @@ const globals = {
     'rxjs/observable/combineLatest': 'Rx.Observable',
 
     'ng-zorro-antd': 'ngZorro.antd',
-    'moment': 'moment',
-    'z-schema': 'z-schema'
+    'z-schema': 'z-schema',
+
+    'date-fns/format': 'date-fns/format/index',
 };
+
+const listOfDateFns = [
+    'format'
+];
+
+const listOfReplace = listOfDateFns.map(name => {
+    const map = {};
+    map[`import * as ${name}`] = `import ${name}`;
+    return replace(map)
+});
 
 module.exports = {
     rollup: require('rollup'),
@@ -36,7 +47,7 @@ module.exports = {
         globals: globals
     },
     plugins: [
-        replace({ "import * as moment": "import moment" }),
+        ...listOfReplace,
         resolve({
             jsnext: true,
             main: true

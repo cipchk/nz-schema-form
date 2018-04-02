@@ -18,10 +18,11 @@ export class FixedLabelDirective implements OnInit {
         if (this.el.children.length === 0 || this.num == null || this.num <= 0) return;
         const widgetEl = this.el.children[0];
         this.render.addClass(widgetEl, 'nz-sf-fixed');
-        const labelEl = widgetEl.querySelector('[nz-form-label]');
+        const labelEl = widgetEl.querySelector('nz-form-label');
         const unit = this.num + 'px';
         if (labelEl) {
             this.render.setStyle(labelEl, 'width', unit);
+            this.render.setStyle(labelEl, 'flex', `0 0 ${unit}`);
         } else {
             const controlEl = widgetEl.querySelector('.ant-form-item-control');
             if (controlEl) this.render.setStyle(controlEl, 'margin-left', unit);

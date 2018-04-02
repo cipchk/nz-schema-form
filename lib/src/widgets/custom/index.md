@@ -22,12 +22,11 @@ title: 自定义
 相对应模板：
 
 ```html
-<nz-sf [schema]="schema" [model]="model" (onChange)="value=$event.value">
+<nz-sf [schema]="schema">
     <ng-template nz-template="custom" let-control let-schema>
-        <nz-input [formControl]="control">
-            <ng-template #addOnBefore>http://</ng-template>
-            <ng-template #addOnAfter>.com</ng-template>
-        </nz-input>
+        <nz-input-group nzAddOnBefore="Http://" nzAddOnAfter=".com">
+            <input type="text" nz-input [(ngModel)]="inputValue">
+        </nz-input-group>
     </ng-template>
 </nz-sf>
 ```

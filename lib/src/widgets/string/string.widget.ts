@@ -5,35 +5,30 @@ import { WidgetData } from './../../schema/types';
 @Component({
     selector: 'nz-sf-string-widget',
     template: `
-  <input *ngIf="type==='hidden'; else notHiddenFieldBlock" [attr.name]="name" type="hidden" [formControl]="control">
+  <input *ngIf="type==='hidden'; else notHiddenFieldBlock" type="hidden" [formControl]="control">
   <ng-template #notHiddenFieldBlock>
-    <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
-        <label nz-form-item-required [nzRequired]="required" [attr.for]="id">
-            <span>
-                {{ schema.title }}
-                <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
-                    <i nz-tooltip class="anticon anticon-question-circle-o"></i>
-                </nz-tooltip>
-            </span>
-        </label>
-    </div>
-    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
+    <nz-form-label *ngIf="schema.title" [nzSpan]="schema.span_label" [nzRequired]="required" [nzFor]="id">
+        {{ schema.title }}
+        <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
+            <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+        </nz-tooltip>
+    </nz-form-label>
+    <nz-form-control [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
         <input nz-input
             [formControl]="control"
-            [name]="name"
             [attr.id]="id"
             [attr.type]="type"
             [attr.placeholder]="placeholder"
             [attr.maxLength]="schema.maxLength || null"
             [attr.minLength]="schema.minLength || null"
-            [attr.disabled]="disabled"
+            [disabled]="disabled"
             [attr.autocomplete]="autocomplete"
             [nzSize]="size">
         <input *ngIf="(schema.widget.id === 'color' && schema.readOnly)"
-            [attr.name]="name" type="hidden" [formControl]="control">
-        <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
-        <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
-    </div>
+            type="hidden" [formControl]="control">
+        <nz-form-extra *ngIf="extra" [innerHTML]="extra"></nz-form-extra>
+        <nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</nz-form-explain>
+    </nz-form-control>
   </ng-template>`
 })
 export class StringWidget extends ControlWidget implements OnInit {
@@ -43,7 +38,6 @@ export class StringWidget extends ControlWidget implements OnInit {
     ngOnInit(): void {
         const w = this.widgetData;
         this.autocomplete = w.autocomplete || null;
-        this.disabled = w.disabled || this.schema.readOnly ? true : null;
         this.type = w.type || 'text';
     }
 }

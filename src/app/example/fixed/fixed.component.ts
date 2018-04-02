@@ -2,6 +2,42 @@ import { Component } from '@angular/core';
 import { SFSchema } from 'nz-schema-form';
 import { NzMessageService } from 'ng-zorro-antd';
 
+const provinces = [{
+    value: 'zhejiang',
+    label: 'Zhejiang'
+  }, {
+    value: 'jiangsu',
+    label: 'Jiangsu'
+}];
+
+const cities = {
+    zhejiang: [{
+        value: 'hangzhou',
+        label: 'Hangzhou'
+    }, {
+        value: 'ningbo',
+        label: 'Ningbo',
+        isLeaf: true
+    }],
+    jiangsu: [{
+        value: 'nanjing',
+        label: 'Nanjing'
+    }]
+};
+
+const scenicspots = {
+    hangzhou: [{
+        value: 'xihu',
+        label: 'West Lake',
+        isLeaf: true
+    }],
+    nanjing: [{
+        value: 'zhonghuamen',
+        label: 'Zhong Hua Men',
+        isLeaf: true
+    }]
+};
+
 @Component({
     selector: 'app-example-fixed',
     templateUrl: './fixed.component.html'
@@ -92,14 +128,19 @@ export class ExampleFixedComponent {
                 widget: {
                     id: 'cascader',
                     placeholder: '请选择',
-                    load: (options: any) => {
-                        options.resolve([
-                            {
-                                value: 'zhonghuamen',
-                                label: 'Zhong Hua Men',
-                                isLeaf: true
-                            }
-                        ]);
+                    load: (node: any, index: number) => {
+                        return new Promise((resolve) => {
+                            setTimeout(() => {
+                                if (index < 0) { // if index less than 0 it is root node
+                                    node.children = provinces;
+                                } else if (index === 0) {
+                                    node.children = cities[node.value];
+                                } else {
+                                    node.children = scenicspots[node.value];
+                                }
+                                resolve();
+                            }, 1000);
+                        });
                     }
                 }
             },
@@ -161,8 +202,9 @@ export class ExampleFixedComponent {
             products: {
                 type: 'array',
                 title: '产品清单',
-                maxItems: 2,
-                grid: { span: 24 },
+                maxItems: 9,
+                class: 'product-list',
+                grid: { span: 24, array_span: 8 },
                 items: {
                     type: 'object',
                     span_label: 5,

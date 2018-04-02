@@ -13,15 +13,15 @@ import { SchemaFormOptions, NZ_SF_OPTIONS_TOKEN } from './schema-form.options';
     selector: 'nz-sf-item',
     template: `
     <ng-template #target></ng-template>
-    <div *ngIf="btn" nz-form-item nz-row [ngClass]="btn.class" [ngStyle]="btn.style">
-        <div nz-col
+    <nz-form-item *ngIf="btn" [ngClass]="btn.class" [ngStyle]="btn.style">
+        <nz-col
             [nzSpan]="_grid.span" [nzOffset]="_grid.offset"
             [nzXs]="_grid.xs" [nzSm]="_grid.sm" [nzMd]="_grid.md"
             [nzLg]="_grid.lg" [nzXl]="_grid.xl">
             <nz-sf-action *ngFor="let i of btn.items"
                 [button]="i" [formProperty]="formProperty"></nz-sf-action>
-        </div>
-    </div>
+        </nz-col>
+    </nz-form-item>
     `
 })
 export class FormItemComponent implements OnInit, OnChanges {

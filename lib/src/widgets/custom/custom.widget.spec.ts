@@ -37,10 +37,9 @@ describe('widgets: custom', () => {
     template: `
     <nz-sf [schema]="schema">
         <ng-template nz-template="custom" let-control let-schema>
-            <nz-input [formControl]="control">
-                <ng-template #addOnBefore>http://</ng-template>
-                <ng-template #addOnAfter>.com</ng-template>
-            </nz-input>
+            <nz-input-group nzAddOnBefore="Http://" nzAddOnAfter=".com">
+                <input type="text" nz-input [(ngModel)]="inputValue">
+            </nz-input-group>
         </ng-template>
     </nz-sf>
     `

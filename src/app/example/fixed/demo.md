@@ -7,12 +7,9 @@ import { NzMessageService } from 'ng-zorro-antd';
     selector: 'app-example-fixed',
     template: `
     <nz-sf [schema]="schema" [(model)]="model" [actions]="actions">
-        <ng-template nz-template="custom" let-control let-schema>
-            <nz-input [formControl]="control">
-                <ng-template #addOnBefore>http://</ng-template>
-                <ng-template #addOnAfter>.com</ng-template>
-            </nz-input>
-        </ng-template>
+        <nz-input-group nzAddOnBefore="Http://" nzAddOnAfter=".com">
+            <input type="text" nz-input [(ngModel)]="inputValue">
+        </nz-input-group>
     </nz-sf>
     `
 })

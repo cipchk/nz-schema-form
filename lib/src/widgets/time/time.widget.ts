@@ -1,40 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import * as format from 'date-fns/format';
 import { ControlWidget } from '../../widget';
 import { SchemaFormOptions } from '../../schema-form.options';
 
 @Component({
     selector: 'nz-sf-time-widget',
     template: `
-    <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
-        <label nz-form-item-required [nzRequired]="required" [attr.for]="id">
-            <span>
-                {{ schema.title }}
-                <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
-                    <i nz-tooltip class="anticon anticon-question-circle-o"></i>
-                </nz-tooltip>
-            </span>
-        </label>
-    </div>
-    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control" nzHasFeedback>
+    <nz-form-label *ngIf="schema.title" [nzSpan]="schema.span_label" [nzRequired]="required" [nzFor]="id">
+        {{ schema.title }}
+        <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
+            <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+        </nz-tooltip>
+    </nz-form-label>
+    <nz-form-control [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
 
-        <nz-timepicker
+        <input nz-input
             [formControl]="control"
-            [nzSize]="size"
-            [nzPlaceHolder]="placeholder"
-            [nzDisabled]="schema.readOnly"
-            [nzFormat]="format"
-            [nzDisabledHours]="widgetData.disabledHours"
-            [nzDisabledMinutes]="widgetData.disabledMinutes"
-            [nzDisabledSeconds]="widgetData.disabledSeconds"
-            [nzHideDisabledOptions]="hideDisabledOptions"></nz-timepicker>
+            [attr.id]="id"
+            [attr.placeholder]="placeholder"
+            [attr.maxLength]="schema.maxLength || null"
+            [attr.minLength]="schema.minLength || null"
+            [disabled]="disabled"
+            [nzSize]="size">
 
-        <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
-        <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
-    </div>`
+        <nz-form-extra *ngIf="extra" [innerHTML]="extra"></nz-form-extra>
+        <nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</nz-form-explain>
+    </nz-form-control>`
 })
 export class TimeWidget extends ControlWidget implements OnInit {
-
+    // <nz-timepicker
+    // [formControl]="control"
+    // [nzSize]="size"
+    // [nzPlaceHolder]="placeholder"
+    // [nzDisabled]="disabled"
+    // [nzFormat]="format"
+    // [nzDisabledHours]="widgetData.disabledHours"
+    // [nzDisabledMinutes]="widgetData.disabledMinutes"
+    // [nzDisabledSeconds]="widgetData.disabledSeconds"
+    // [nzHideDisabledOptions]="hideDisabledOptions"></nz-timepicker>
     format: string;
     hideDisabledOptions: boolean;
 
@@ -57,19 +60,19 @@ export class TimeWidget extends ControlWidget implements OnInit {
 
         // 如果schema 的widget 上存在 format 则使用
         if (this.format)
-            return moment(value).format(this.format);
+            return format(value, this.format);
 
 
         // 如果schema 上存在 format 则使用
         if (this.schema.format)
-            return moment(value).format(this.schema.format);
+            return format(value, this.schema.format);
 
         const option = this.options.date || {};
 
         // 若存在 dateFormat 则使用 option 的format;
         const dateFormat = option.format;
         if (dateFormat)
-            return moment(value).format(dateFormat);
+            return format(value, dateFormat);
 
         // 如果在 provider 设置了转化方法，则调用provider 的转化方法
         const providerSerialize = option.serialize;
@@ -96,7 +99,7 @@ export class TimeWidget extends ControlWidget implements OnInit {
             if (this.schema.type === 'number')
                 return value;
 
-            return moment(value, this.format);
+            return format(value, this.format);
         }
         return null;
     }

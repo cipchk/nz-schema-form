@@ -4,17 +4,13 @@ import { ControlWidget } from '../../widget';
 @Component({
     selector: 'nz-sf-radio-widget',
     template: `
-    <div *ngIf="schema.title" nz-form-label nz-col [nzSpan]="schema.span_label">
-        <label nz-form-item-required [nzRequired]="required" [attr.for]="id">
-            <span>
-                {{ schema.title }}
-                <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
-                    <i nz-tooltip class="anticon anticon-question-circle-o"></i>
-                </nz-tooltip>
-            </span>
-        </label>
-    </div>
-    <div nz-form-control nz-col [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
+    <nz-form-label *ngIf="schema.title" [nzSpan]="schema.span_label" [nzRequired]="required" [nzFor]="id">
+        {{ schema.title }}
+        <nz-tooltip *ngIf="showDescription && description" [nzTitle]="description">
+            <i nz-tooltip class="anticon anticon-question-circle-o"></i>
+        </nz-tooltip>
+    </nz-form-label>
+    <nz-form-control [nzSpan]="schema.span_control" [nzOffset]="schema.offset_control">
         <nz-radio-group *ngIf="defaultStyle; else button"
             [formControl]="control"
             [nzSize]="size">
@@ -37,9 +33,9 @@ import { ControlWidget } from '../../widget';
                 </label>
             </nz-radio-group>
         </ng-template>
-        <div nz-form-extra *ngIf="extra" [innerHTML]="extra"></div>
-        <div nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</div>
-    </div>`
+        <nz-form-extra *ngIf="extra" [innerHTML]="extra"></nz-form-extra>
+        <nz-form-explain *ngIf="!onlyVisual && hasError">{{errorMessage}}</nz-form-explain>
+    </nz-form-control>`
 })
 export class RadioWidget extends ControlWidget implements OnInit {
     data: any[] = [];

@@ -25,4 +25,8 @@ export interface SFGrid {
     lg?: number | SFGridSize;
     xl?: number | SFGridSize;
     xxl?: number | SFGridSize;
+    /**
+     * 数组每个项占用几行
+     */
+    array_span?: number;
 }

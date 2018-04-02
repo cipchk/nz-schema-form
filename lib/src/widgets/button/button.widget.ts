@@ -35,7 +35,7 @@ export class ButtonWidget implements OnInit, OnDestroy {
     constructor(private formComp: FormComponent) {}
 
     ngOnInit(): void {
-        this.size = this.button.size || 'large';
+        this.size = this.button.size;
         this.disabled = this.button.submit;
         this.type = this.button.type ? this.button.type : this.button.submit ? 'primary' : null;
         if (this.button.submit === true && this.formProperty.forEachChildRecursive) {

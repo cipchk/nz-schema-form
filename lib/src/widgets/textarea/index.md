@@ -10,7 +10,6 @@ title: 多行文本框
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
 autosize | 自适应内容高度，可设置为 `true|false` 或对象：`{ minRows: 2, maxRows: 6 }`  | `Boolean|Object` | `true`
-rows | 控制固定框的行数  | `String` | -
 
 ## Demo
 

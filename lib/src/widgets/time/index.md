@@ -6,6 +6,8 @@ inherit: true
 
 默认小部件，一般用于时间选择。
 
+**注意：** 由于 ng-zorro-antd 0.7.0 还未提供日期相关组件，因此由 `nz-input` 暂时替代。
+
 ## type 
 
 类型支持 `string`、`number`，若选择 number 类型则默认为时间戳。

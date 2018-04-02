@@ -33,7 +33,7 @@ export class BaseWidget extends Widget<FormProperty> {
     }
 
     get size() {
-        return this.schema.size || 'large';
+        return this.schema.size;
     }
 
     @HostBinding('class')
@@ -60,7 +60,15 @@ export class BaseWidget extends Widget<FormProperty> {
 
     required: boolean;
 
-    disabled: boolean = this.widgetData.disabled || null;
+    get disabled(): boolean {
+        if (typeof this.schema.readOnly !== 'undefined')
+            return this.schema.readOnly;
+
+        if (typeof this.widgetData.disabled !== 'undefined')
+            return this.widgetData.disabled;
+
+        return null;
+    }
 }
 
 /**

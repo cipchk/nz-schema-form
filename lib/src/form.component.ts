@@ -11,7 +11,7 @@ export function useFactory(schemaValidatorFactory: any, validatorRegistry: any, 
 }
 
 @Component({
-    selector: 'nz-sf',
+    selector: 'nz-sf, [nz-sf]',
     template: `
     <form nz-form [nzLayout]="layout" *ngIf="rootProperty && rootProperty.visible">
         <nz-sf-item [formProperty]="rootProperty"></nz-sf-item>
@@ -28,8 +28,7 @@ export function useFactory(schemaValidatorFactory: any, validatorRegistry: any, 
             deps: [SchemaValidatorFactory, ValidatorRegistry, NZ_SF_OPTIONS_TOKEN]
         },
         TerminatorService
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    ]
 })
 export class FormComponent implements OnChanges {
 
@@ -63,7 +62,6 @@ export class FormComponent implements OnChanges {
         private formPropertyFactory: FormPropertyFactory,
         private actionRegistry: ActionRegistry,
         private validatorRegistry: ValidatorRegistry,
-        private cdr: ChangeDetectorRef,
         private terminator: TerminatorService
     ) {}
 
@@ -167,7 +165,6 @@ export class FormComponent implements OnChanges {
 
         if (this.schema && (changes.model || changes.schema)) {
             this.rootProperty.reset(this.model, false);
-            this.cdr.detectChanges();
         }
     }
 

@@ -77,50 +77,7 @@ const WIDGETS: any[] = [
 // endregion
 
 // region: ng-zorro-antd
-import {
-    NzGridModule,
-    NzCardModule,
-    NzFormModule,
-    NzInputModule,
-    NzButtonModule,
-    NzDatePickerModule,
-    NzTimePickerModule,
-    NzCheckboxModule,
-    NzInputNumberModule,
-    NzSwitchModule,
-    NzUploadModule,
-    NzToolTipModule,
-    NzCascaderModule,
-    NzTransferModule,
-    NzSliderModule,
-    NzRadioModule,
-    NzTagModule,
-    NzRateModule,
-    NzSelectModule,
-    NzPopconfirmModule
-} from 'ng-zorro-antd';
-const ZORROMODULES = [
-    NzGridModule,
-    NzCardModule,
-    NzFormModule,
-    NzInputModule,
-    NzButtonModule,
-    NzDatePickerModule,
-    NzTimePickerModule,
-    NzCheckboxModule,
-    NzInputNumberModule,
-    NzSwitchModule,
-    NzUploadModule,
-    NzToolTipModule,
-    NzCascaderModule,
-    NzTransferModule,
-    NzSliderModule,
-    NzRadioModule,
-    NzTagModule,
-    NzRateModule,
-    NzSelectModule,
-    NzPopconfirmModule
-];
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 // endregion
 
 export function optionsFactory(options: SchemaFormOptions) {
@@ -129,8 +86,7 @@ export function optionsFactory(options: SchemaFormOptions) {
 
 @NgModule({
     imports: [
-        CommonModule, FormsModule, ReactiveFormsModule,
-        ...ZORROMODULES
+        CommonModule, FormsModule, ReactiveFormsModule, NgZorroAntdModule
     ],
     declarations: [ ...COMPONENTS, ...WIDGETS ],
     entryComponents: WIDGETS,
