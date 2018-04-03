@@ -29,7 +29,8 @@
         "products": {
             "type": "array",
             "title": "产品清单",
-            "maxItems": 2,
+            "maxItems": 4,
+            "grid": { "span": 24, "array_span": 8 },
             "items": {
                 "type": "object",
                 "properties": {

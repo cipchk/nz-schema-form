@@ -27,7 +27,7 @@
     "version:bump": "gulp bump",
     "release:prepare": "npm run build:package",
     "release:validity": "npm run version:bump && npm run release:prepare",
-    "release": "npm run version:bump && npm run release:prepare && npm publish --access=public .lib"
+    "release": "npm run version:bump && npm run release:prepare && npm publish --access=public .lib --tag next"
   },
   "peerDependencies": {
     "z-schema": "^3.19.0",

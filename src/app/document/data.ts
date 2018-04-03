@@ -30,11 +30,6 @@ export const DATA = {
             id: 'qa',
             title: '常见问题',
             content: getMd(require('!!raw-loader!../../../docs/qa.md'))
-        },
-        {
-            id: 'changelog',
-            title: '更新日志',
-            content: getMd(require('!!raw-loader!../../../docs/changelog.md'))
         }
     ],
     widgets: [
