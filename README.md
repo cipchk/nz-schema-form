@@ -1,3 +1,6 @@
+# 停止维护，[@delon/form](https://ng-alain.com/form/getting-started) 提供一种更高效、更符合标准、更可靠的基于 JSON Schema的动态表单。
+
+
 # nz-schema-form
 
 [![Build Status](https://travis-ci.org/cipchk/nz-schema-form.svg?branch=master)](https://travis-ci.org/cipchk/nz-schema-form)
